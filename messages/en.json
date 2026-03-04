@@ -1,0 +1,1174 @@
+{
+  "sidebar": {
+    "users": "Users Management",
+    "adminDashboard": "Admin Dashboard",
+    "supervisorDashboard": "Supervisor Dashboard",
+    "programManagerDashboard": "Program Manager Dashboard",
+    "programBanks": "Program Banks",
+    "questionBank": "Questions Bank",
+    "dashboard": "Dashboard",
+    "courses": "Courses",
+    "monitor": "Monitor",
+    "recheckQuestions": "Recheck Questions",
+    "programs": "Study program",
+    "lightMode": "Light Mode",
+    "darkMode": "Dark Mode",
+    "logout": "Logout",
+    "hello": "Hello",
+    "switchToArabic": "Switch to Arabic",
+    "switchToEnglish": "Switch to English",
+    "universities": "Universities"
+  },
+  "questionbank": {
+    "title": "Course Management",
+    "description": "Manage all university courses and their question banks",
+    "CourseSupervision": "Course Supervision",
+    "manageCourses": "Manage and supervise assigned courses",
+    "myCourses": "My Courses",
+    "showing": "Showing",
+    "courses": "courses",
+    "of": "of",
+    "addNewCourse": "Add New Course",
+    "addCourseDescription": "Create a new course with basic information",
+    "addCourseARName": "Arabic Name ",
+    "addCourseENName": "English Name ",
+    "addCourseCode": "Course Code",
+    "addCourseARDescription": "Arabic Description ",
+    "addCourseENDescription": "English Description ",
+    "addCourse": "Add Course ",
+    "publicCourses": "Public Courses",
+    "totalBanks": "Total Banks",
+    "activeCourses": "Active Courses",
+    "totalCourses": "Total Courses",
+    "code": "Code",
+    "name": "Name",
+    "numberOfBanks": "Number of Banks",
+    "allTypes": "All Types ",
+    "privateOnly": "Private Only",
+    "PublicOnly": "Public Only",
+    "all": "All",
+    "active": "Active",
+    "searchPlaceHolder": "Search courses by name, code, or program",
+    "noCourses": "No courses",
+    "noDescription": "No description",
+    "edit": "Edit",
+    "delete": "Delete",
+    "viewDetails": "View Details",
+    "cancel": "Cancel",
+    "editCourse": "Edit Course",
+    "editCourseDescription": "Update course information",
+    "courseStatus": "Course Status",
+    "inactive": "Inactive",
+    "saveChanges": "Save Changes",
+    "deleteCourse": "Delete Course",
+    "deleteConfirmation": "Are you sure you want to delete {name}? This action cannot be undone.",
+    "deleteWarning": "{count} question banks associated with this course will be deleted.",
+    "banks": "bank"
+  },
+  "questionRecheck": {
+    "title": "Question Review",
+    "description": "Review and confirm pending questions",
+    "pending": "Pending",
+    "chapters": "Chapters",
+    "foldAllCourses": "Fold All Courses",
+    "expandAllCourses": "Expand All Courses",
+    "foldAllChapters": "Fold All Chapters",
+    "expandAllChapters": "Expand All Chapters",
+    "showStatistics": "Show Statistics",
+    "hideStatistics": "Hide Statistics",
+    "noQuestionsTitle": "No Unconfirmed Questions",
+    "noQuestionsDescription": "All questions have been reviewed and confirmed. New unconfirmed questions will appear here for review.",
+    "table": {
+      "serial": "#",
+      "courseChapter": "Course / Chapter",
+      "questions": "Questions",
+      "difficulty": "Difficulty",
+      "questionType": "Question Type",
+      "time": "Time",
+      "actions": "Actions",
+      "courseNumber": "Number",
+      "chapterCount": "chapter",
+      "difficultyEasy": "Easy",
+      "difficultyMedium": "Medium",
+      "difficultyHard": "Hard",
+      "difficultyUnknown": "Unknown",
+      "questionTypeUnknown": "Unknown",
+      "noQuestions": "No Questions",
+      "timeUnavailable": "Unavailable",
+      "fold": "Fold",
+      "expand": "Expand",
+      "note": "Note:",
+      "optionsCount": "option",
+      "questionId": "ID",
+      "seconds": "seconds",
+      "edit": "Edit",
+      "confirm": "Confirm",
+      "delete": "Delete"
+    },
+    "deleteDialog": {
+      "title": "Delete Question",
+      "description": "Are you sure you want to delete this question? This action cannot be undone.",
+      "questionPreview": "Question:",
+      "cancel": "Cancel",
+      "deleteQuestion": "Delete Question"
+    },
+    "errors": {
+      "confirmFailed": "Failed to confirm question.",
+      "deleteFailed": "Failed to delete question."
+    }
+  },
+  "programManagment": {
+    "programManagment": "Program Management",
+    "description": "Manage academic programs, courses, and course repositories",
+    "totalprgm": "Total Programs",
+    "showing": "Showing",
+    "programs": "programs",
+    "MyPrograms": "My Programs",
+    "viewDetails": "View Details"
+  },
+  "courseDetails": {
+    "title": "Course Details",
+    "courseBanks": "Course Banks",
+    "totalQuestions": "Total Questions",
+    "totalChapters": "Total Chapters",
+    "activeBanks": "Active Banks",
+    "overview": "Overview",
+    "banks": "Question Banks",
+    "analytics": "Analytics",
+    "courseInfo": {
+      "title": "Course Information",
+      "courseDetails": "Course Details",
+      "description": "Detailed course information",
+      "arabicDescription": "Arabic Description",
+      "englishDescription": "English Description",
+      "courseCode": "Course Code",
+      "program": "Program",
+      "visibility": "Visibility",
+      "status": "Status",
+      "supervisor": "Supervisor",
+      "noArabicDescription": "No Arabic description available.",
+      "noEnglishDescription": "No English description provided.",
+      "private": "Private",
+      "public": "Public",
+      "active": "Active",
+      "inactive": "Inactive",
+      "noSupervisor": "Not Assigned"
+    },
+    "banksSection": {
+      "title": "Question Banks",
+      "description": "Question banks for this course",
+      "addBank": "Add Bank",
+      "searchPlaceholder": "Search question banks...",
+      "statusFilter": "Status",
+      "allStatuses": "All Statuses",
+      "activeStatus": "Active",
+      "inactiveStatus": "Inactive",
+      "createdOn": "Created on:",
+      "chapters": "chapters",
+      "questions": "questions",
+      "questionLevels": "Question Levels:",
+      "questionTypes": "Question Types:",
+      "edit": "Edit",
+      "delete": "Delete",
+      "details": "Details",
+      "create": "Create",
+      "templates": "Templates",
+      "noBanks": "No Question Banks",
+      "noBanksDescription": "This course doesn't have any question banks yet",
+      "adjustSearch": "Try adjusting your search or filter criteria",
+      "createFirstBank": "Create First Bank"
+    },
+    "analyticsSection": {
+      "title": "Course Analytics",
+      "description": "Performance and statistics overview",
+      "levelDistribution": "Question Level Distribution",
+      "typeDistribution": "Question Type Distribution",
+      "bankPerformance": "Bank Performance",
+      "percentageOfTotal": "% of Total",
+      "levelNames": {
+        "easy": "Easy",
+        "medium": "Medium",
+        "hard": "Hard",
+        "distinguish": "Distinguish"
+      },
+      "typeNames": {
+        "true_false": "True/False",
+        "multiple_choice": "Multiple Choice",
+        "essay": "Essay"
+      }
+    },
+    "editBankDialog": {
+      "title": "Edit Question Bank",
+      "description": "Update settings for {code}",
+      "bankStatus": "Bank Status",
+      "bankActive": "Bank is Active",
+      "bankInactive": "Bank is Inactive",
+      "cancel": "Cancel",
+      "saveChanges": "Save Changes"
+    },
+    "deleteBankDialog": {
+      "title": "Delete Bank",
+      "description": "Are you sure you want to delete {code}? This action cannot be undone.",
+      "warning": "{count} questions associated with this bank will be deleted.",
+      "cancel": "Cancel",
+      "deleteBank": "Delete Bank"
+    },
+    "loading": "Loading..."
+  },
+  "bankDetails": {
+    "title": "Bank Details",
+    "loadingBank": "Loading bank details...",
+    "back": "Back",
+    "refresh": "Refresh",
+    "stats": {
+      "totalQuestions": "Total Questions",
+      "chapters": "Chapters",
+      "confirmed": "Confirmed",
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard",
+      "distinguish": "Distinguish",
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "tabs": {
+      "chapters": "Chapters",
+      "questions": "All Questions"
+    },
+    "chaptersTab": {
+      "title": "Chapters",
+      "description": "{count} chapters in this bank",
+      "addChapter": "Add Chapter",
+      "searchPlaceholder": "Search chapters...",
+      "chapterDescription": "Description",
+      "noDescription": "No description",
+      "questionsCount": "question",
+      "order": "Order:",
+      "chapterId": "Chapter ID",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "questionLevels": "Question Levels",
+      "questionTypes": "Question Types",
+      "chapterQuestions": "Questions in this chapter",
+      "options": "Options:",
+      "correct": "Correct",
+      "unconfirmed": "Unconfirmed"
+    },
+    "questionsTab": {
+      "title": "All Questions",
+      "description": "Browse all questions across all chapters",
+      "searchPlaceholder": "Search questions...",
+      "showingQuestions": "Showing questions {start}-{end} of {total}",
+      "pageInfo": "Page {current} of {total}",
+      "questionsPerPage": "{count} questions per page",
+      "goTo": "Go to:",
+      "chapter": "Chapter {order}: {title}",
+      "noQuestions": "No questions found matching your search",
+      "firstPage": "First Page",
+      "previousPage": "Previous Page",
+      "nextPage": "Next Page",
+      "lastPage": "Last Page",
+      "options": "Options:"
+    },
+    "bankInfo": {
+      "title": "Bank Information",
+      "description": "Basic details about this question bank",
+      "bankCode": "Bank Code",
+      "course": "Course",
+      "courseId": "Course ID",
+      "supervisor": "Supervisor",
+      "createdDate": "Created Date",
+      "status": "Status"
+    },
+    "statistics": {
+      "title": "Statistics",
+      "description": "Performance metrics",
+      "questionDistribution": "Question Distribution",
+      "total": "Total",
+      "easyPercentage": "Easy: {count} ({percentage}%)",
+      "confirmationStatus": "Confirmation Status",
+      "questions": "Questions",
+      "confirmed": "Confirmed"
+    },
+    "questionTypes": {
+      "true_false": "True/False",
+      "multiple_choice": "Multiple Choice",
+      "multiple_response": "Multiple Response",
+      "essay": "Essay",
+      "unknown": "Unknown"
+    },
+    "addChapterDialog": {
+      "title": "Add New Chapter",
+      "description": "Create a new chapter for this question bank",
+      "chapterTitle": "Chapter Title *",
+      "chapterTitlePlaceholder": "Enter chapter title",
+      "chapterDescription": "Description",
+      "chapterDescriptionPlaceholder": "Enter chapter description",
+      "chapterOrder": "Order",
+      "chapterOrderPlaceholder": "Enter order number",
+      "cancel": "Cancel",
+      "createChapter": "Create Chapter"
+    },
+    "editChapterDialog": {
+      "title": "Edit Chapter",
+      "description": "Update details for chapter {title}",
+      "cancel": "Cancel",
+      "updateChapter": "Update Chapter"
+    },
+    "deleteChapterDialog": {
+      "title": "Delete Chapter",
+      "description": "Are you sure you want to delete {title}? This action cannot be undone. All questions in this chapter will also be deleted.",
+      "warning": "Warning: This will delete {count} questions in this chapter.",
+      "cancel": "Cancel",
+      "deleteChapter": "Delete Chapter"
+    },
+    "errors": {
+      "bankNotFound": "Bank ID not found",
+      "missingData": "Missing data",
+      "tokenNotFound": "Authentication token not found",
+      "createChapterFailed": "Failed to create chapter",
+      "updateChapterFailed": "Failed to update chapter",
+      "deleteChapterFailed": "Failed to delete chapter",
+      "deleteQuestionFailed": "Failed to delete question",
+      "loadBankFailed": "Failed to load bank details"
+    }
+  },
+  "bankTemplates": {
+    "title": "Exam Templates",
+    "loadingTemplates": "Loading templates...",
+    "back": "Back",
+    "createTemplate": "Create Template",
+    "bankInfo": "Bank Information",
+    "bankDetails": "Details about this question bank",
+    "quickActions": "Quick Actions",
+    "stats": {
+      "totalTemplates": "Total Templates",
+      "totalQuestions": "Total Questions",
+      "creationBatches": "Batches",
+      "averagePerBatch": "Average Templates per Batch",
+      "active": "Active",
+      "inactive": "Inactive",
+      "bankCode": "Bank Code",
+      "course": "Course",
+      "courseId": "Course ID",
+      "supervisor": "Supervisor",
+      "creationDate": "Creation Date",
+      "status": "Status"
+    },
+    "table": {
+      "searchPlaceholder": "Search templates...",
+      "code": "Code",
+      "instructions": "Instructions",
+      "questions": "Questions",
+      "mark": "Mark",
+      "time": "Time",
+      "actions": "Actions",
+      "noInstructions": "No Instructions",
+      "delete": "Delete",
+      "preview": "Preview",
+      "attach": "Attachments"
+    },
+    "group": {
+      "templates": "template",
+      "expandAll": "Expand All Groups",
+      "collapseAll": "Collapse All Groups"
+    },
+    "noTemplates": {
+      "title": "No Templates Found",
+      "searchMessage": "Try changing your search terms",
+      "emptyMessage": "Create your first exam template to get started"
+    },
+    "deleteDialog": {
+      "title": "Delete Template",
+      "description": "Are you sure you want to delete {code}? This action cannot be undone.",
+      "warning": "Warning: This will permanently remove the template.",
+      "cancel": "Cancel",
+      "deleteTemplate": "Delete Template"
+    },
+    "previewDialog": {
+      "title": "Template Preview: {code}",
+      "description": "Preview exam template details",
+      "instructions": "Instructions",
+      "questions": "Questions",
+      "totalMark": "Total Mark",
+      "minutes": "minutes",
+      "templateInfo": "Template Information",
+      "templateId": "Template ID:",
+      "creationDate": "Creation Date:",
+      "code": "Code:",
+      "close": "Close"
+    },
+    "errors": {
+      "loadTemplatesFailed": "Failed to load templates",
+      "deleteTemplateFailed": "Failed to delete template",
+      "unknownDate": "Unknown"
+    },
+    "quickActionsButtons": {
+      "createNewTemplate": "Create New Template",
+      "expandAllGroups": "Expand All Groups",
+      "collapseAllGroups": "Collapse All Groups"
+    }
+  },
+  "examTemplate": {
+    "title": "Create New Exam Template",
+    "loadingBank": "Loading bank details...",
+    "back": "Back",
+    "reset": "Reset",
+    "saveTemplate": "Save Exam Template",
+    "savingTemplate": "Creating template...",
+    "questionsAvailable": "question available",
+    "validationErrors": "Distribution Warnings:",
+    "andMoreWarnings": "and {count} more warnings",
+    "templateResetted": "Template has been reset to default values",
+    "generalSettings": {
+      "minutes": "minute",
+      "templates": "template",
+      "title": "General Settings",
+      "description": "Configure basic exam template settings",
+      "templatesCount": "Number of Templates",
+      "totalQuestions": "Total Questions",
+      "available": "Available",
+      "totalMark": "Total Mark",
+      "totalTime": "Total Time (minutes)",
+      "repeatLimits": "Repeat Limits from Previous Exams",
+      "optional": "Optional",
+      "repeatPreviousExam": "Repeat Percentage - Previous Exam",
+      "repeatTwoExamsAgo": "Repeat Percentage - Two Exams Ago",
+      "repeatThreeExamsAgo": "Repeat Percentage - Three Exams Ago",
+      "repeatOtherExams": "Repeat Percentage - Other Exams",
+      "allowedRepeatPercentage": "Allowed question repeat percentage",
+      "examInstructions": "Exam Instructions",
+      "instructionsPlaceholder": "Enter exam instructions for students...",
+      "randomQuestions": "Random Question Order",
+      "randomDescription": "Questions will be shuffled automatically",
+      "fixedDescription": "Maintain fixed order"
+    },
+    "chaptersDistribution": {
+      "title": "Chapters Distribution",
+      "description": "Select chapters and number of questions per chapter",
+      "availableChapters": "Available Chapters",
+      "chapters": "chapter",
+      "totalQuestions": "Total Questions",
+      "chapter": "Chapter Name",
+      "descriptionColumn": "Description",
+      "availableQuestions": "Available Questions",
+      "action": "Action",
+      "add": "Add",
+      "remove": "Remove",
+      "noDescription": "No description",
+      "selectedChapters": "Selected Chapters Summary"
+    },
+    "difficultyLevels": {
+      "level": "Level {id}",
+      "title": "Difficulty Levels",
+      "description": "Distribute questions by difficulty",
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard",
+      "available": "Available",
+      "addLevel": "Add Level",
+      "totalPercentage": "% of Total",
+      "questions": "question"
+    },
+    "questionTypes": {
+      "type": "Type {id}",
+      "title": "Question Types",
+      "description": "Distribute questions by type",
+      "addType": "Add Type",
+      "trueFalse": "True/False",
+      "multipleChoice": "Multiple Choice",
+      "multipleResponse": "Multiple Response",
+      "essay": "Essay"
+    },
+    "finalReview": {
+      "title": "Final Review & Save",
+      "description": "Distribution is balanced and ready to save",
+      "needsReview": "Please review the distribution",
+      "ready": "Ready",
+      "needsReviewBadge": "Needs Review",
+      "templateSummary": "Template Summary",
+      "distributionPreview": "Distribution Preview",
+      "chaptersPreview": "Chapters",
+      "difficultyPreview": "Difficulty Levels",
+      "typesPreview": "Question Types",
+      "andMore": "...and {count} more chapters",
+      "randomOrder": "Random Order",
+      "enabled": "Enabled",
+      "disabled": "Disabled",
+      "repeatExam1": "Repeat Percentage - Exam 1",
+      "repeatExam2": "Repeat Percentage - Exam 2",
+      "repeatExam3": "Repeat Percentage - Exam 3",
+      "repeatOther": "Repeat Percentage - Other Exams"
+    },
+    "errors": {
+      "validationFailed": "There are errors in the template configuration. Review the warning messages.",
+      "loadBankFailed": "Failed to load bank details",
+      "saveTemplateFailed": "Failed to save exam template",
+      "totalQuestionsZero": "Total number of questions must be greater than zero",
+      "atLeastOneChapter": "At least one chapter must be selected",
+      "chapterDistributionMismatch": "Total chapter questions ({chaptersTotal}) does not equal total questions ({questionsTotal})",
+      "exceedsAvailableChapter": "{chapter}: Required count ({required}) exceeds available ({available})",
+      "levelsMismatch": "Total difficulty levels ({levelsTotal}) does not equal total questions ({questionsTotal})",
+      "exceedsAvailableLevel": "{level}: Required count ({required}) exceeds available ({available})",
+      "typesMismatch": "Total question types ({typesTotal}) does not equal total questions ({questionsTotal})",
+      "exceedsAvailableType": "{type}: Required count ({required}) exceeds available ({available})",
+      "questionsExceedAvailable": "Only {count} questions are available in the bank",
+      "oneChapterMinimum": "There must be at least one chapter"
+    },
+    "distribution": {
+      "balanced": "Distribution Balanced",
+      "unbalanced": "Distribution Unbalanced",
+      "total": "Total"
+    }
+  },
+  "createQuestionDialog": {
+    "title": "Create New Question",
+    "createQuestionButton": "Create Question",
+    "creatingInProgress": "Creating...",
+    "cancelButton": "Cancel",
+    "chapterLabel": "Chapter",
+    "questionTypeLabel": "Question Type",
+    "questionTypePlaceholder": "Select question type",
+    "questionTextLabel": "Question Text",
+    "questionTextPlaceholder": "Enter your question here...",
+    "difficultyLevelLabel": "Difficulty Level",
+    "difficultyLevelPlaceholder": "Select difficulty level",
+    "difficultyLevels": {
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard"
+    },
+    "optionsLabel": "Options",
+    "multipleResponseHint": "(Multiple correct answers can be selected)",
+    "singleChoiceHint": "(Exactly one correct answer must be selected)",
+    "correctOptionsCount": "{count, plural, =0 {No correct options} =1 {1 correct option selected} other {# correct options selected}}",
+    "addOptionButton": "Add Option ({count}/5)",
+    "noOptionsAdded": "No options added yet",
+    "addFirstOptionButton": "Add First Option",
+    "optionNumber": "Option {number}",
+    "optionPlaceholder": "Option {number} text...",
+    "multipleResponseCorrect": "Correct ✓",
+    "multipleResponseSelect": "Mark as correct",
+    "singleChoiceCorrect": "Correct Answer ✓",
+    "singleChoiceSelect": "Correct Answer",
+    "errors": {
+      "questionTextRequired": "Question text is required",
+      "chapterRequired": "Chapter is required",
+      "questionTypeRequired": "Question type is required",
+      "difficultyLevelRequired": "Difficulty level is required",
+      "atLeastOneOption": "At least one option is required",
+      "atLeastOneCorrectAnswer": "At least one correct answer must be selected",
+      "exactlyOneCorrectAnswer": "Exactly one correct answer must be selected",
+      "optionTextRequired": "Option text is required",
+      "maxOptionsLimit": "Maximum 5 options allowed",
+      "fixFormErrors": "Please fix form errors before submitting",
+      "authTokenNotFound": "Authentication token not found",
+      "createQuestionFailed": "Failed to create question"
+    }
+  },
+  "UniversitiesPage": {
+    "title": "Universities Management",
+    "subtitle": "Manage and monitor all universities in the system",
+    "noAdminAssigned": "No admin assigned",
+    "errors": {
+      "loadFailed": "Failed to load universities",
+      "operationFailed": "Operation failed",
+      "deleteFailed": "Failed to delete"
+    },
+    "form": {
+      "validation": {
+        "requiredFields": "Please fill in the required fields (Arabic name, English name, and code)"
+      },
+      "fields": {
+        "nameAr": "Arabic Name",
+        "nameEn": "English Name",
+        "code": "Code",
+        "country": "Country",
+        "city": "City",
+        "admin": "Admin",
+        "universityType": "University Type",
+        "universityStatus": "University Status"
+      },
+      "placeholders": {
+        "nameAr": "Arabic name",
+        "nameEn": "University Name",
+        "code": "UNI-001",
+        "country": "e.g., Saudi Arabia",
+        "city": "e.g., Riyadh",
+        "selectAdmin": "Select admin"
+      },
+      "labels": {
+        "publicUniversity": "Public university",
+        "privateUniversity": "Private university"
+      }
+    },
+    "messages": {
+      "updateSuccess": "Updated successfully",
+      "createSuccess": "Created successfully",
+      "deleteSuccess": "Deleted successfully"
+    },
+    "common": {
+      "refresh": "Refresh",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "processing": "Processing...",
+      "public": "Public",
+      "private": "Private",
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "actions": {
+      "addUniversity": "Add University",
+      "addNewUniversity": "Add New University"
+    },
+    "stats": {
+      "total": "Total",
+      "active": "Active",
+      "inactive": "Inactive",
+      "public": "Public",
+      "private": "Private"
+    },
+    "search": {
+      "placeholder": "Search universities by name, code, city, or country...",
+      "resultsFound": {
+        "showing": "Showing",
+        "of": "of",
+        "universities": "universities"
+      },
+
+      "for": "for"
+    },
+    "filters": {
+      "type": "Type",
+      "status": "Status",
+      "allTypes": "All Types",
+      "allStatuses": "All Statuses",
+      "public": "Public",
+      "private": "Private",
+      "active": "Active",
+      "inactive": "Inactive",
+      "clearFilters": "Clear Filters"
+    },
+    "emptyState": {
+      "noUniversities": "No universities yet",
+      "noResults": "No matching universities found",
+      "startAdding": "Start by adding the first university to the system.",
+      "adjustSearch": "Try adjusting your search or filters to find what you're looking for."
+    },
+    "dialog": {
+      "editTitle": "Edit University",
+      "createTitle": "Create New University",
+      "editDescription": "Update the university information below.",
+      "createDescription": "Fill in the details to add a new university to the system.",
+      "updateButton": "Update University",
+      "createButton": "Create University"
+    },
+    "deleteConfirmation": {
+      "message": "Are you sure you want to delete this item? This action cannot be undone."
+    }
+  },
+  "UniversityCard": {
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "type": {
+      "public": "Public",
+      "private": "Private"
+    },
+    "noAdminAssigned": "No admin assigned",
+    "programs": "Programs",
+    "viewDetails": "View Details"
+  },
+  "UniversityDetailsPage": {
+    "errors": {
+      "loadFailed": "Failed to load university details",
+      "createProgramFailed": "Failed to create program",
+      "deleteFailed": "Failed to delete"
+    },
+    "form": {
+      "validation": {
+        "requiredFields": "Please fill in the required fields (Arabic name, English name, and code)"
+      }
+    },
+    "messages": {
+      "programCreated": "Program created successfully",
+      "universityDeleted": "University deleted successfully"
+    },
+    "common": {
+      "active": "Active",
+      "inactive": "Inactive",
+      "public": "Public",
+      "private": "Private",
+      "delete": "Delete",
+      "cancel": "Cancel",
+      "deleting": "Deleting...",
+      "creating": "Creating..."
+    },
+    "actions": {
+      "backToUniversities": "Back to Universities"
+    },
+    "stats": {
+      "programs": "Programs",
+      "activePrograms": "Active Programs",
+      "totalCourses": "Total Courses",
+      "courseBanks": "Course Banks"
+    },
+    "emptyState": {
+      "universityNotFound": "University Not Found",
+      "universityNotFoundDescription": "The university you're looking for doesn't exist or has been deleted."
+    },
+    "deleteDialog": {
+      "title": "Delete University",
+      "description": "Are you sure you want to delete {universityName}? This action cannot be undone and all associated programs and data will be deleted.",
+      "deleteButton": "Delete University"
+    },
+    "universityInfo": {
+      "title": "University Information",
+      "description": "Detailed information about the university",
+      "fields": {
+        "universityCode": "University Code",
+        "location": "Location",
+        "admin": "Admin",
+        "status": "Status",
+        "universityType": "University Type",
+        "programsCount": "Number of Programs"
+      },
+      "noAdmin": "No admin",
+      "id": "ID",
+      "publicUniversity": "Public university",
+      "privateUniversity": "Private university"
+    },
+    "programsSection": {
+      "title": "Programs",
+      "addProgram": "Add Program",
+      "courses": "Courses",
+      "courseBanks": "Course Banks",
+      "createdAt": "Created",
+      "viewDetails": "View Details",
+      "emptyState": {
+        "title": "No Programs Yet",
+        "description": "This university doesn't have any programs yet. Start by adding the first program.",
+        "createFirstProgram": "Create First Program"
+      }
+    },
+    "statusManagement": {
+      "title": "Status Management",
+      "fields": {
+        "universityStatus": "University Status"
+      },
+      "statusDescription": {
+        "active": "Active and visible",
+        "inactive": "Inactive and hidden"
+      }
+    },
+    "universityCode": {
+      "title": "University Code",
+      "description": "Use this code for all operations and references related to the university"
+    },
+    "programDialog": {
+      "title": "Add New Program",
+      "description": "Create a new program for {universityName}",
+      "fields": {
+        "nameAr": "Arabic Name",
+        "nameEn": "English Name",
+        "code": "Program Code",
+        "description": "Description",
+        "universityId": "University ID",
+        "managerId": "Manager ID"
+      },
+      "placeholders": {
+        "nameAr": "Program name in Arabic",
+        "nameEn": "Program Name",
+        "code": "e.g., CS101",
+        "description": "Program description...",
+        "selectManager": "Select manager"
+      },
+      "createButton": "Create Program"
+    }
+  },
+  "programDetails": {
+    "title": "Program Details",
+    "notFound": {
+      "title": "Program Not Found",
+      "description": "The program you are looking for does not exist or has been deleted."
+    },
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "actions": {
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "deleteDialog": {
+      "title": "Delete Program",
+      "description": "Are you sure you want to delete {programName}? This action cannot be undone."
+    },
+    "stats": {
+      "courses": "Courses",
+      "activeCourses": "Active Courses",
+      "courseBanks": "Course Banks"
+    },
+    "tabs": {
+      "overview": "Overview",
+      "courses": "Courses"
+    },
+    "programInfo": {
+      "title": "Program Information",
+      "description": "Description",
+      "noDescription": "No description available.",
+      "manager": "Program Manager",
+      "university": "University",
+      "notAvailable": "Not available",
+      "createdAt": "Creation Date",
+      "updatedAt": "Last Update"
+    },
+    "courses": {
+      "title": "Program Courses",
+      "description": "Manage courses in this program",
+      "addCourse": "Add Course",
+      "searchPlaceholder": "Search courses...",
+      "status": "Status",
+      "filter": {
+        "all": "All Statuses",
+        "active": "Active",
+        "inactive": "Inactive"
+      },
+      "table": {
+        "code": "Code",
+        "courseName": "Course Name",
+        "supervisor": "Supervisor",
+        "description": "Description",
+        "actions": "Actions",
+        "notAssigned": "Not assigned",
+        "noCourses": "No courses",
+        "trySearch": "Try adjusting your search",
+        "noCoursesAdded": "No courses have been added yet",
+        "addFirstCourse": "Add first course",
+        "details": "Details"
+      }
+    },
+    "programCode": {
+      "title": "Program Code"
+    },
+    "statusManagement": {
+      "title": "Status",
+      "active": "Active",
+      "inactive": "Inactive",
+      "visible": "Program is visible",
+      "hidden": "Program is hidden",
+      "enable": "Enable",
+      "disable": "Disable"
+    },
+    "editDialog": {
+      "title": "Edit Program",
+      "dialogDescription": "Update program information",
+      "nameAr": "Arabic Name *",
+      "nameArPlaceholder": "Arabic Name",
+      "nameEn": "English Name *",
+      "nameEnPlaceholder": "Program Name",
+      "code": "Program Code *",
+      "codePlaceholder": "PROG-001",
+      "description": "Description",
+      "descriptionPlaceholder": "Program description...",
+      "managerId": "Manager ID",
+      "status": "Status",
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "addCourseDialog": {
+      "title": "Add New Course",
+      "description": "Create a new course for {programName}",
+      "nameAr": "Arabic Name *",
+      "nameArPlaceholder": "Course name in Arabic",
+      "nameEn": "English Name *",
+      "nameEnPlaceholder": "Course Name",
+      "code": "Course Code *",
+      "codePlaceholder": "Example: CS101",
+      "descriptionAr": "Arabic Description",
+      "descriptionArPlaceholder": "Course description in Arabic",
+      "descriptionEn": "English Description",
+      "descriptionEnPlaceholder": "Course description in English",
+      "programId": "Program ID",
+      "createCourse": "Create Course"
+    },
+    "common": {
+      "back": "Back",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "deleting": "Deleting...",
+      "saving": "Saving...",
+      "saveChanges": "Save Changes",
+      "creating": "Creating..."
+    },
+    "errors": {
+      "loadFailed": "Failed to load program details",
+      "updateFailed": "Update failed",
+      "deleteFailed": "Delete failed",
+      "createCourseFailed": "Failed to create course",
+      "requiredFields": "Please fill in required fields (Arabic name, English name, and code)"
+    },
+    "messages": {
+      "updateSuccess": "Program updated successfully",
+      "deleteSuccess": "Program deleted successfully",
+      "createCourseSuccess": "Course created successfully"
+    }
+  },
+  "adminCourseDetails": {
+    "title": "Course Details",
+    "notFound": {
+      "title": "Course Not Found",
+      "description": "The course you are looking for does not exist or has been deleted."
+    },
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive",
+      "private": "Private",
+      "public": "Public"
+    },
+    "actions": {
+      "editCourse": "Edit Course",
+      "delete": "Delete",
+      "addBank": "Add Bank"
+    },
+    "stats": {
+      "banks": "Banks",
+      "questions": "Questions",
+      "chapters": "Chapters",
+      "program": "Program"
+    },
+    "courseInfo": {
+      "title": "Course Information",
+      "code": "Course Code",
+      "arabicDescription": "Arabic Description",
+      "englishDescription": "English Description",
+      "noArabicDescription": "No Arabic description provided.",
+      "noEnglishDescription": "No English description provided.",
+      "supervisor": "Supervisor",
+      "noSupervisor": "Not assigned",
+      "privacy": "Privacy",
+      "private": "Private Course",
+      "public": "Public Course"
+    },
+    "banks": {
+      "title": "Course Banks",
+      "description": "Manage question banks for this course",
+      "addBank": "Add Bank",
+      "searchPlaceholder": "Search banks...",
+      "status": "Status",
+      "filter": {
+        "all": "All",
+        "active": "Active",
+        "inactive": "Inactive"
+      },
+      "statusActive": "Active",
+      "statusInactive": "Inactive",
+      "chapters": "chapters",
+      "questions": "questions",
+      "noSupervisor": "No supervisor",
+      "createdAt": "Created",
+      "noBanks": "No Banks",
+      "noBanksDescription": "This course has no question banks yet",
+      "trySearch": "Try adjusting your search or filter criteria",
+      "createFirstBank": "Create First Bank"
+    },
+    "sidebar": {
+      "quickActions": "Quick Actions",
+      "editCourse": "Edit Course",
+      "addBank": "Add Bank",
+      "deleteCourse": "Delete Course",
+      "analytics": "Analytics",
+      "questions": "questions"
+    },
+    "breadcrumb": {
+      "universities": "Universities"
+    },
+    "editDialog": {
+      "title": "Edit Course",
+      "description": "Update course information and settings",
+      "nameAr": "Arabic Name",
+      "nameArPlaceholder": "Course name in Arabic",
+      "nameEn": "English Name",
+      "nameEnPlaceholder": "Course name in English",
+      "code": "Course Code",
+      "codePlaceholder": "Example: CS101",
+      "descriptionAr": "Arabic Description",
+      "descriptionArPlaceholder": "Course description in Arabic",
+      "descriptionEn": "English Description",
+      "descriptionEnPlaceholder": "Course description in English",
+      "programId": "Program ID",
+      "supervisorId": "Supervisor ID",
+      "supervisorIdPlaceholder": "Optional",
+      "status": "Status",
+      "active": "Active",
+      "inactive": "Inactive",
+      "privacy": "Privacy",
+      "private": "Private",
+      "public": "Public"
+    },
+    "addBankDialog": {
+      "title": "Create New Question Bank",
+      "description": "Add a new question bank to courseName}",
+      "supervisor": "Supervisor",
+      "selectSupervisor": "Select Supervisor",
+      "createBank": "Create Bank"
+    },
+    "editBankDialog": {
+      "title": "Edit Question Bank",
+      "description": "Update bank settings",
+      "status": "Bank Status",
+      "active": "Active",
+      "inactive": "Inactive",
+      "supervisor": "Supervisor",
+      "selectSupervisor": "Select Supervisor",
+      "noSupervisor": "No Supervisor"
+    },
+    "deleteDialog": {
+      "title": "Delete Course",
+      "description": "Are you sure you want to delete {courseName}? This action cannot be undone.",
+      "warning": "Warning: {banks} banks and {questions} questions will be deleted.",
+      "deleteCourse": "Delete Course"
+    },
+    "common": {
+      "back": "Back",
+      "cancel": "Cancel",
+      "saveChanges": "Save Changes",
+      "updating": "Updating...",
+      "deleting": "Deleting..."
+    },
+    "errors": {
+      "loadFailed": "Failed to load course details",
+      "missingData": "Missing data",
+      "missingCourse": "Missing course ID",
+      "deleteBankFailed": "Failed to delete bank",
+      "updateBankFailed": "Failed to update bank",
+      "updateCourseFailed": "Failed to update course",
+      "deleteCourseFailed": "Failed to delete course",
+      "createBankFailed": "Failed to create bank"
+    },
+    "messages": {
+      "bankDeleted": "Bank deleted successfully",
+      "bankUpdated": "Bank updated successfully",
+      "courseUpdated": "Course updated successfully",
+      "courseDeleted": "Course deleted successfully",
+      "bankCreated": "Bank created successfully"
+    }
+  },
+  "usersManagement": {
+    "title": "Users Management",
+    "totalUsers": "users",
+    "actions": {
+      "createUser": "Create User"
+    },
+    "stats": {
+      "totalUsers": "Total Users",
+      "activeUsers": "Active Users",
+      "maleUsers": "Male Users",
+      "femaleUsers": "Female Users"
+    },
+    "usesrsFilters": {
+      "states": {
+        "all": "All states",
+        "active": "Active",
+        "inActive": "In active"
+      },
+      "sort": {
+        "recent": "Recent",
+        "older": "Older",
+        "fullNameA": "Name (A-Z)",
+        "fullNameB": "Name (Z-A)"
+      }
+    },
+    "usersTable": {
+      "title": "Users",
+      "description": "List of all registered users",
+      "searchPlaceholder": "Search users...",
+      "filterByStatus": "Filter by status",
+      "filterByGender": "Filter by gender",
+      "allStatus": "All Status",
+      "allGender": "All Gender",
+      "usersSelected": "Users selected",
+      "deleteSelected": "Delete Selected",
+      "headers": {
+        "name": "Full Name",
+        "username": "Username",
+        "contact": "Contact Info",
+        "gender": "Gender",
+        "status": "Status",
+        "created": "Created",
+        "actions": "Actions",
+        "email": "Email",
+        "address": "Address",
+        "phoneNumber": "Phone Number"
+      },
+      "actions": {
+        "view": "View",
+        "edit": "Edit",
+        "delete": "Delete"
+      },
+      "emptyState": {
+        "title": "No Users Found",
+        "description": "There are no users registered yet.",
+        "noResults": "No matching users",
+        "noResultsDescription": "Try adjusting your search or filter criteria",
+        "createFirstUser": "Create First User"
+      }
+    },
+    "createDialog": {
+      "title": "Create New User",
+      "description": "Fill in the details to create a new user account",
+      "arabicNameSection": "Arabic Name",
+      "englishNameSection": "English Name",
+      "nameAr": "Arabic First Name",
+      "nameArPlaceholder": "Enter Arabic first name",
+      "fatherNameAr": "Arabic Father Name",
+      "fatherNameArPlaceholder": "Enter Arabic father name",
+      "surnameAr": "Arabic Surname",
+      "surnameArPlaceholder": "Enter Arabic surname",
+      "nameEn": "English First Name",
+      "nameEnPlaceholder": "Enter English first name",
+      "fatherNameEn": "English Father Name",
+      "fatherNameEnPlaceholder": "Enter English father name",
+      "surnameEn": "English Surname",
+      "surnameEnPlaceholder": "Enter English surname",
+      "userName": "Username",
+      "userNamePlaceholder": "Enter username",
+      "password": "Password",
+      "passwordPlaceholder": "Enter password",
+      "gender": "Gender",
+      "genderPlaceholder": "Select gender",
+      "email": "Email Address",
+      "emailPlaceholder": "Enter email address",
+      "mobile": "Mobile Number",
+      "mobilePlaceholder": "Enter mobile number",
+      "address": "Address",
+      "addressPlaceholder": "Enter address",
+      "createButton": "Create User"
+    },
+    "form": {
+      "validation": {
+        "requiredFields": "Please fill all required fields",
+        "invalidEmail": "Please enter a valid email address"
+      }
+    },
+    "errors": {
+      "loadFailed": "Failed to load users",
+      "createFailed": "Failed to create user"
+    },
+    "messages": {
+      "createSuccess": "User created successfully"
+    },
+    "common": {
+      "active": "Active",
+      "inactive": "Inactive",
+      "male": "Male",
+      "female": "Female",
+      "notSpecified": "Not Specified",
+      "unknown": "Unknown",
+      "cancel": "Cancel",
+      "creating": "Creating...",
+      "saveChanges": "Save Changes"
+    }
+  }
+}

@@ -1,0 +1,1188 @@
+{
+  "sidebar": {
+    "users": "إدارة المستخدمين",
+    "adminDashboard": "لوحة تحكم المسؤول",
+    "supervisorDashboard": "لوحة تحكم المشرف",
+    "programManagerDashboard": "لوحة تحكم مدير البرنامج",
+    "programBanks": "بنوك البرامج",
+    "courses": "الكورسات",
+    "monitor": "مراقبة",
+    "recheckQuestions": " مراجعة الأسئلة",
+    "questionBank": "بنك الأسئلة",
+    "programs": "البرامج",
+    "lightMode": "الوضع النهاري",
+    "darkMode": "الوضع الليلي",
+    "logout": "تسجيل الخروج",
+    "hello": "مرحباً",
+    "dashboard": "لوحة التحكم",
+    "switchToArabic": "التغيير إلى العربية",
+    "switchToEnglish": "التغيير إلى الإنجليزية",
+    "universities": "الجامعات"
+  },
+  "questionbank": {
+    "title": "إدارة المقررات الدراسية",
+    "description": "إدارة جميع مقررات الجامعة وبنوك الأسئلة الخاصة بها",
+    "CourseSupervision": "الإشراف على المقرر",
+    "manageCourses": "إدارة والإشراف على المقررات المسندة إليك",
+    "myCourses": "مقرراتي",
+    "showing": "عرض",
+    "courses": "مقرر",
+    "of": "من",
+    "addNewCourse": "إضافة مقرر جديد",
+    "addCourseDescription": "إنشاء مقرر جديد مع معلوماته الأساسية",
+    "addCourseARName": "الاسم بالعربي ",
+    "addCourseENName": "الاسم بالإنجليزية ",
+    "addCourseCode": "رمز المقرر",
+    "addCourseARDescription": " الوصف بالعربي ",
+    "addCourseENDescription": " الوصف بالإنجليزية ",
+    "addCourse": "إضافة مقرر ",
+    "publicCourses": "المقررات العامة",
+    "totalBanks": "إجمالي البنوك",
+    "activeCourses": "المقررات النشطة",
+    "totalCourses": "إجمالي المقررات",
+    "code": "الرمز",
+    "name": "الاسم",
+    "numberOfBanks": "عدد البنوك",
+    "allTypes": "كل الأنواع ",
+    "privateOnly": "خاص فقط",
+    "PublicOnly": "عام فقط",
+    "all": "الكل",
+    "active": "نشط",
+    "searchPlaceHolder": "ابحث عن المقررات بالاسم، الرمز، أو البرنامج",
+    "noCourses": "لا توجد مقررات",
+    "noDescription": "لا يوجد وصف",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "viewDetails": "عرض التفاصيل",
+    "cancel": "إلغاء",
+    "editCourse": "تعديل المقرر",
+    "editCourseDescription": "تحديث معلومات المقرر",
+    "courseStatus": "حالة المقرر",
+    "inactive": "غير نشط",
+    "saveChanges": "حفظ التغييرات",
+    "deleteCourse": "حذف المقرر",
+    "deleteConfirmation": "هل أنت متأكد من رغبتك في حذف {name}؟ هذا الإجراء لا يمكن التراجع عنه.",
+    "deleteWarning": "سيتم حذف {count} بنك أسئلة مرتبط بهذا المقرر.",
+    "banks": "بنك"
+  },
+  "questionRecheck": {
+    "title": "مراجعة الأسئلة",
+    "description": "مراجعة وتأكيد الأسئلة المنتظرة",
+    "pending": "قيد الانتظار",
+    "chapters": "الفصول",
+    "foldAllCourses": "طي جميع المقررات",
+    "expandAllCourses": "فتح جميع المقررات",
+    "foldAllChapters": "طي جميع الفصول",
+    "expandAllChapters": "فتح جميع الفصول",
+    "showStatistics": "عرض الإحصائيات",
+    "hideStatistics": "إخفاء الإحصائيات",
+    "noQuestionsTitle": "لا توجد أسئلة غير مؤكدة",
+    "noQuestionsDescription": "تمت مراجعة وتأكيد جميع الأسئلة. ستظهر الأسئلة الجديدة غير المعتمدة هنا للمراجعة.",
+    "table": {
+      "serial": "#",
+      "courseChapter": "المقرر / الفصل",
+      "questions": "الأسئلة",
+      "difficulty": "الصعوبة",
+      "questionType": "نوع السؤال",
+      "time": "الوقت",
+      "actions": "الإجراءات",
+      "courseNumber": "الرقم",
+      "chapterCount": "فصل",
+      "difficultyEasy": "سهل",
+      "difficultyMedium": "متوسط",
+      "difficultyHard": "صعب",
+      "difficultyUnknown": "غير معروف",
+      "questionTypeUnknown": "غير معروف",
+      "noQuestions": "لا توجد أسئلة",
+      "timeUnavailable": "غير متاح",
+      "fold": "طي",
+      "expand": "فتح",
+      "note": "ملاحظة:",
+      "optionsCount": "خيار",
+      "questionId": "الرقم",
+      "seconds": "ثانية",
+      "edit": "تعديل",
+      "confirm": "تأكيد",
+      "delete": "حذف"
+    },
+    "deleteDialog": {
+      "title": "حذف السؤال",
+      "description": "هل أنت متأكد من رغبتك في حذف هذا السؤال؟ هذا الإجراء لا يمكن التراجع عنه.",
+      "questionPreview": "السؤال:",
+      "cancel": "إلغاء",
+      "deleteQuestion": "حذف السؤال"
+    },
+    "errors": {
+      "confirmFailed": "فشل تأكيد السؤال.",
+      "deleteFailed": "فشل حذف السؤال."
+    }
+  },
+  "programManagment": {
+    "programManagment": "إدارة البرامج",
+    "description": "إدارة البرامج الأكاديمية والمقررات ومستودعات المقررات",
+    "totalprgm": "إجمالي البرامج",
+    "showing": "عرض",
+    "programs": "برامج",
+    "MyPrograms": "برامجي",
+    "viewDetails": "عرض التفاصيل"
+  },
+  "courseDetails": {
+    "title": "تفاصيل المقرر",
+    "courseBanks": "بنوك المقرر",
+    "totalQuestions": "إجمالي الأسئلة",
+    "totalChapters": "إجمالي الفصول",
+    "activeBanks": "البنوك النشطة",
+    "overview": "نظرة عامة",
+    "banks": "بنوك الأسئلة",
+    "analytics": "التحليلات",
+    "courseInfo": {
+      "title": "معلومات المقرر",
+      "courseDetails": "تفاصيل المقرر",
+      "description": "معلومات تفصيلية عن المقرر",
+      "arabicDescription": "الوصف بالعربية",
+      "englishDescription": "الوصف بالإنجليزية",
+      "courseCode": "رمز المقرر",
+      "program": "البرنامج",
+      "visibility": "الرؤية",
+      "status": "الحالة",
+      "supervisor": "المشرف",
+      "noArabicDescription": "لا يوجد وصف باللغة العربية.",
+      "noEnglishDescription": "No English description provided.",
+      "private": "خاص",
+      "public": "عام",
+      "active": "نشط",
+      "inactive": "غير نشط",
+      "noSupervisor": "غير معين"
+    },
+    "banksSection": {
+      "title": "بنوك الأسئلة",
+      "description": "بنوك أسئلة هذا المقرر",
+      "addBank": "إضافة بنك",
+      "searchPlaceholder": "ابحث في بنوك الأسئلة...",
+      "statusFilter": "الحالة",
+      "allStatuses": "جميع الحالات",
+      "activeStatus": "نشط",
+      "inactiveStatus": "غير نشط",
+      "createdOn": "تم الإنشاء:",
+      "chapters": "فصول",
+      "questions": "أسئلة",
+      "questionLevels": "مستويات الأسئلة:",
+      "questionTypes": "أنواع الأسئلة:",
+      "edit": "تعديل",
+      "delete": "حذف",
+      "details": "تفاصيل",
+      "create": "إنشاء",
+      "templates": "نماذج",
+      "noBanks": "لا توجد بنوك أسئلة",
+      "noBanksDescription": "هذا المقرر لا يحتوي على بنوك أسئلة بعد",
+      "adjustSearch": "حاول تعديل معايير البحث أو الفلترة",
+      "createFirstBank": "إنشاء أول بنك"
+    },
+    "analyticsSection": {
+      "title": "تحليلات المقرر",
+      "description": "نظرة عامة على الأداء والإحصائيات",
+      "levelDistribution": "توزيع مستويات الأسئلة",
+      "typeDistribution": "توزيع أنواع الأسئلة",
+      "bankPerformance": "أداء البنوك",
+      "percentageOfTotal": "% من الإجمالي",
+      "levelNames": {
+        "easy": "سهل",
+        "medium": "متوسط",
+        "hard": "صعب",
+        "distinguish": "متميز"
+      },
+      "typeNames": {
+        "true_false": "صح وخطأ",
+        "multiple_choice": "اختيار متعدد",
+        "essay": "مقال"
+      }
+    },
+    "editBankDialog": {
+      "title": "تعديل بنك الأسئلة",
+      "description": "تحديث إعدادات البنك {code}",
+      "bankStatus": "حالة البنك",
+      "bankActive": "البنك نشط",
+      "bankInactive": "البنك غير نشط",
+      "cancel": "إلغاء",
+      "saveChanges": "حفظ التغييرات"
+    },
+    "deleteBankDialog": {
+      "title": "حذف البنك",
+      "description": "هل أنت متأكد من رغبتك في حذف {code}؟ هذا الإجراء لا يمكن التراجع عنه.",
+      "warning": "سيتم حذف {count} سؤال مرتبط بهذا البنك.",
+      "cancel": "إلغاء",
+      "deleteBank": "حذف البنك"
+    },
+    "loading": "جاري التحميل..."
+  },
+  "bankDetails": {
+    "title": "تفاصيل البنك",
+    "loadingBank": "جاري تحميل تفاصيل البنك...",
+    "back": "رجوع",
+    "refresh": "تحديث",
+    "stats": {
+      "totalQuestions": "إجمالي الأسئلة",
+      "chapters": "الفصول",
+      "confirmed": "تم تأكيدها",
+      "easy": "سهل",
+      "medium": "متوسط",
+      "hard": "صعب",
+      "distinguish": "متميز",
+      "active": "نشط",
+      "inactive": "غير نشط"
+    },
+    "tabs": {
+      "chapters": "الفصول",
+      "questions": "جميع الأسئلة"
+    },
+    "chaptersTab": {
+      "title": "الفصول",
+      "description": "{count} فصل في هذا البنك",
+      "addChapter": "إضافة فصل",
+      "searchPlaceholder": "ابحث في الفصول...",
+      "chapterDescription": "الوصف",
+      "noDescription": "لا يوجد وصف",
+      "questionsCount": "سؤال",
+      "order": "الترتيب:",
+      "chapterId": "معرف الفصل",
+      "createdDate": "تاريخ الإنشاء",
+      "updatedDate": "تاريخ التحديث",
+      "questionLevels": "مستويات الأسئلة",
+      "questionTypes": "أنواع الأسئلة",
+      "chapterQuestions": "الأسئلة في هذا الفصل",
+      "options": "الخيارات:",
+      "correct": "صحيح",
+      "unconfirmed": "غير مؤكد"
+    },
+    "questionsTab": {
+      "title": "جميع الأسئلة",
+      "description": "تصفح جميع الأسئلة عبر جميع الفصول",
+      "searchPlaceholder": "ابحث في الأسئلة...",
+      "showingQuestions": "عرض الأسئلة {start}-{end} من {total}",
+      "pageInfo": "الصفحة {current} من {total}",
+      "questionsPerPage": "{count} سؤال في كل صفحة",
+      "goTo": "اذهب إلى:",
+      "chapter": "الفصل {order}: {title}",
+      "noQuestions": "لم يتم العثور على أسئلة تطابق بحثك",
+      "firstPage": "الصفحة الأولى",
+      "previousPage": "الصفحة السابقة",
+      "nextPage": "الصفحة التالية",
+      "lastPage": "الصفحة الأخيرة",
+      "options": "الخيارات:"
+    },
+    "bankInfo": {
+      "title": "معلومات البنك",
+      "description": "تفاصيل أساسية حول بنك الأسئلة هذا",
+      "bankCode": "رمز البنك",
+      "course": "المقرر",
+      "courseId": "معرف المقرر",
+      "supervisor": "المشرف",
+      "createdDate": "تاريخ الإنشاء",
+      "status": "الحالة"
+    },
+    "statistics": {
+      "title": "الإحصائيات",
+      "description": "مقاييس الأداء",
+      "questionDistribution": "توزيع الأسئلة",
+      "total": "إجمالي",
+      "easyPercentage": "سهل: {count} ({percentage}%)",
+      "confirmationStatus": "حالة التأكيد",
+      "questions": "أسئلة",
+      "confirmed": "تم تأكيدها"
+    },
+    "questionTypes": {
+      "true_false": "صح/خطأ",
+      "multiple_choice": "اختيار من متعدد",
+      "multiple_response": "اختيارات متعددة",
+      "essay": "مقالي",
+      "unknown": "غير معروف"
+    },
+    "addChapterDialog": {
+      "title": "إضافة فصل جديد",
+      "description": "إنشاء فصل جديد لبنك الأسئلة هذا",
+      "chapterTitle": "عنوان الفصل *",
+      "chapterTitlePlaceholder": "أدخل عنوان الفصل",
+      "chapterDescription": "الوصف",
+      "chapterDescriptionPlaceholder": "أدخل وصف الفصل",
+      "chapterOrder": "الترتيب",
+      "chapterOrderPlaceholder": "أدخل رقم الترتيب",
+      "cancel": "إلغاء",
+      "createChapter": "إنشاء فصل"
+    },
+    "editChapterDialog": {
+      "title": "تعديل الفصل",
+      "description": "تحديث تفاصيل الفصل {title}",
+      "cancel": "إلغاء",
+      "updateChapter": "تحديث الفصل"
+    },
+    "deleteChapterDialog": {
+      "title": "حذف الفصل",
+      "description": "هل أنت متأكد من حذف {title}؟ لا يمكن التراجع عن هذا الإجراء. سيتم حذف جميع الأسئلة في هذا الفصل أيضًا.",
+      "warning": "تحذير: سيؤدي هذا إلى حذف {count} سؤالاً في هذا الفصل.",
+      "cancel": "إلغاء",
+      "deleteChapter": "حذف الفصل"
+    },
+    "errors": {
+      "bankNotFound": "لم يتم العثور على معرف البنك",
+      "missingData": "بيانات مفقودة",
+      "tokenNotFound": "لم يتم العثور على رمز المصادقة",
+      "createChapterFailed": "فشل في إنشاء الفصل",
+      "updateChapterFailed": "فشل في تحديث الفصل",
+      "deleteChapterFailed": "فشل في حذف الفصل",
+      "deleteQuestionFailed": "فشل في حذف السؤال",
+      "loadBankFailed": "فشل  تحميل تفاصيل البنك"
+    }
+  },
+  "bankTemplates": {
+    "title": "نماذج الامتحانات",
+    "loadingTemplates": "جاري تحميل النماذج...",
+    "back": "رجوع",
+    "createTemplate": "إنشاء نموذج",
+    "bankInfo": "معلومات البنك",
+    "bankDetails": "تفاصيل حول بنك الأسئلة هذا",
+    "quickActions": "إجراءات سريعة",
+    "stats": {
+      "totalTemplates": "إجمالي النماذج",
+      "totalQuestions": "إجمالي الأسئلة",
+      "creationBatches": "مجموعات",
+      "averagePerBatch": "متوسط النماذج لكل مجموعة",
+      "active": "نشط",
+      "inactive": "غير نشط",
+      "bankCode": "رمز البنك",
+      "course": "المقرر",
+      "courseId": "معرف المقرر",
+      "supervisor": "المشرف",
+      "creationDate": "تاريخ الإنشاء",
+      "status": "الحالة"
+    },
+    "table": {
+      "searchPlaceholder": "ابحث في النماذج...",
+      "code": "الرمز",
+      "instructions": "التعليمات",
+      "questions": "الأسئلة",
+      "mark": "العلامة",
+      "time": "الوقت",
+      "actions": "الإجراءات",
+      "noInstructions": "لا توجد تعليمات",
+      "delete": "حذف",
+      "preview": "معاينة",
+      "attach": "مرفقات"
+    },
+    "group": {
+      "templates": "نموذج",
+      "expandAll": "توسيع كل المجموعات",
+      "collapseAll": "طي كل المجموعات"
+    },
+    "noTemplates": {
+      "title": "لم يتم العثور على نماذج",
+      "searchMessage": "حاول تغيير مصطلحات البحث",
+      "emptyMessage": "قم بإنشاء أول نموذج امتحان للبدء"
+    },
+    "deleteDialog": {
+      "title": "حذف النموذج",
+      "description": "هل أنت متأكد من حذف {code}؟ لا يمكن التراجع عن هذا الإجراء.",
+      "warning": "تحذير: سيؤدي هذا إلى إزالة النموذج بشكل دائم.",
+      "cancel": "إلغاء",
+      "deleteTemplate": "حذف النموذج"
+    },
+    "previewDialog": {
+      "title": "معاينة النموذج: {code}",
+      "description": "معاينة تفاصيل نموذج الامتحان",
+      "instructions": "التعليمات",
+      "questions": "أسئلة",
+      "totalMark": "العلامة الكلية",
+      "minutes": "دقائق",
+      "templateInfo": "معلومات النموذج",
+      "templateId": "معرف النموذج:",
+      "creationDate": "تاريخ الإنشاء:",
+      "code": "الرمز:",
+      "close": "إغلاق"
+    },
+    "errors": {
+      "loadTemplatesFailed": "فشل في تحميل النماذج",
+      "deleteTemplateFailed": "فشل في حذف النموذج",
+      "unknownDate": "غير معروف"
+    },
+    "quickActionsButtons": {
+      "createNewTemplate": "إنشاء نموذج جديد",
+      "expandAllGroups": "توسيع كل المجموعات",
+      "collapseAllGroups": "طي كل المجموعات"
+    }
+  },
+  "examTemplate": {
+    "title": "إنشاء نموذج امتحان جديد",
+    "loadingBank": "جاري تحميل تفاصيل البنك...",
+    "back": "رجوع",
+    "reset": "إعادة تعيين",
+    "saveTemplate": "حفظ نموذج الامتحان",
+    "savingTemplate": "جاري إنشاء النموذج...",
+    "questionsAvailable": "سؤال متاح",
+    "validationErrors": "تحذيرات التوزيع:",
+    "andMoreWarnings": "و {count} تحذيرات أخرى",
+    "templateResetted": "تم إعادة تعيين النموذج إلى القيم الافتراضية",
+    "generalSettings": {
+      "minutes": "دقيقة",
+      "templates": "نموذج",
+      "title": "الإعدادات العامة",
+      "description": "تكوين أساسيات نموذج الامتحان",
+      "templatesCount": "عدد النماذج",
+      "totalQuestions": "إجمالي الأسئلة",
+      "available": "متاح",
+      "totalMark": "العلامة الكلية",
+      "totalTime": "الوقت الكلي (دقيقة)",
+      "repeatLimits": "حدود تكرار الأسئلة من الامتحانات السابقة",
+      "optional": "اختياري",
+      "repeatPreviousExam": "نسبة تكرار الامتحان السابق",
+      "repeatTwoExamsAgo": "نسبة تكرار الامتحان قبل السابق",
+      "repeatThreeExamsAgo": "نسبة تكرار الامتحان قبل ثلاث دورات",
+      "repeatOtherExams": "نسبة تكرار الامتحانات الأخرى",
+      "allowedRepeatPercentage": "نسبة الأسئلة المسموح تكرارها",
+      "examInstructions": "تعليمات الامتحان",
+      "instructionsPlaceholder": "أدخل تعليمات الامتحان للطلاب...",
+      "randomQuestions": "ترتيب الأسئلة عشوائي",
+      "randomDescription": "سيتم خلط الأسئلة تلقائيًا",
+      "fixedDescription": "الحفاظ على ترتيب ثابت"
+    },
+    "chaptersDistribution": {
+      "title": "توزيع الفصول",
+      "description": "حدد الفصول وعدد الأسئلة لكل فصل",
+      "availableChapters": "الفصول المتاحة",
+      "chapters": "فصل",
+      "totalQuestions": "إجمالي الأسئلة",
+      "chapter": "اسم الفصل",
+      "descriptionColumn": "الوصف",
+      "availableQuestions": "الأسئلة المتاحة",
+      "action": "الإجراء",
+      "add": "إضافة",
+      "remove": "إزالة",
+      "noDescription": "لا يوجد وصف",
+      "selectedChapters": "ملخص الفصول المحددة"
+    },
+    "difficultyLevels": {
+      "level": "المستوى {id}",
+      "title": "مستويات الصعوبة",
+      "description": "توزيع الأسئلة حسب الصعوبة",
+      "easy": "سهل",
+      "medium": "متوسط",
+      "hard": "صعب",
+      "available": "متاح",
+      "addLevel": "إضافة المستوى",
+      "totalPercentage": "% من الإجمالي",
+      "questions": "سؤال"
+    },
+    "questionTypes": {
+      "type": "النوع {id}",
+      "title": "أنواع الأسئلة",
+      "description": "توزيع الأسئلة حسب النوع",
+      "addType": "إضافة النوع",
+      "trueFalse": "صح/خطأ",
+      "multipleChoice": "اختيار من متعدد",
+      "multipleResponse": "اختيارات متعددة",
+      "essay": "مقالي"
+    },
+    "finalReview": {
+      "title": "مراجعة نهائية وحفظ",
+      "description": "التوزيع متوازن وجاهز للحفظ",
+      "needsReview": "يرجى مراجعة التوزيع",
+      "ready": "جاهز",
+      "needsReviewBadge": "يحتاج مراجعة",
+      "templateSummary": "ملخص النموذج",
+      "distributionPreview": "معاينة التوزيع",
+      "chaptersPreview": "الفصول",
+      "difficultyPreview": "مستويات الصعوبة",
+      "typesPreview": "أنواع الأسئلة",
+      "andMore": "...و {count} فصل آخر",
+      "randomOrder": "الترتيب العشوائي",
+      "enabled": "مفعل",
+      "disabled": "معطل",
+      "repeatExam1": "نسبة تكرار الامتحان 1",
+      "repeatExam2": "نسبة تكرار الامتحان 2",
+      "repeatExam3": "نسبة تكرار الامتحان 3",
+      "repeatOther": "نسبة تكرار الامتحانات الأخرى"
+    },
+    "errors": {
+      "validationFailed": "يوجد أخطاء في تكوين النموذج. راجع الرسائل التحذيرية.",
+      "loadBankFailed": "فشل في تحميل تفاصيل البنك",
+      "saveTemplateFailed": "فشل في حفظ نموذج الامتحان",
+      "totalQuestionsZero": "يجب أن يكون عدد الأسئلة الكلي أكبر من صفر",
+      "atLeastOneChapter": "يجب اختيار فصل واحد على الأقل",
+      "chapterDistributionMismatch": "مجموع أسئلة الفصول ({chaptersTotal}) لا يساوي العدد الكلي للأسئلة ({questionsTotal})",
+      "exceedsAvailableChapter": "{chapter}: العدد المطلوب ({required}) يتجاوز المتاح ({available})",
+      "levelsMismatch": "مجموع مستويات الصعوبة ({levelsTotal}) لا يساوي العدد الكلي للأسئلة ({questionsTotal})",
+      "exceedsAvailableLevel": "{level}: العدد المطلوب ({required}) يتجاوز المتاح ({available})",
+      "typesMismatch": "مجموع أنواع الأسئلة ({typesTotal}) لا يساوي العدد الكلي للأسئلة ({questionsTotal})",
+      "exceedsAvailableType": "{type}: العدد المطلوب ({required}) يتجاوز المتاح ({available})",
+      "questionsExceedAvailable": "عدد الأسئلة المتاحة في البنك هو {count} فقط",
+      "oneChapterMinimum": "يجب أن يكون هناك فصل واحد على الأقل"
+    },
+    "distribution": {
+      "balanced": "التوزيع متوازن",
+      "unbalanced": "التوزيع غير متوازن",
+      "total": "إجمالي"
+    }
+  },
+  "createQuestionDialog": {
+    "title": "إنشاء سؤال جديد",
+    "createQuestionButton": "إنشاء سؤال",
+    "creatingInProgress": "جاري الإنشاء...",
+    "cancelButton": "إلغاء",
+    "chapterLabel": "الفصل",
+    "questionTypeLabel": "نوع السؤال",
+    "questionTypePlaceholder": "اختر نوع السؤال",
+    "questionTextLabel": "نص السؤال",
+    "questionTextPlaceholder": "أدخل سؤالك هنا...",
+    "difficultyLevelLabel": "مستوى الصعوبة",
+    "difficultyLevelPlaceholder": "اختر مستوى الصعوبة",
+    "difficultyLevels": {
+      "easy": "سهل",
+      "medium": "متوسط",
+      "hard": "صعب"
+    },
+    "optionsLabel": "الخيارات",
+    "multipleResponseHint": "(يمكن اختيار إجابات متعددة صحيحة)",
+    "singleChoiceHint": "(يجب اختيار إجابة واحدة صحيحة فقط)",
+    "correctOptionsCount": "{count, plural, =0 {لا توجد خيارات صحيحة} =1 {خيار واحد صحيح محدد} other {# خيارات صحيحة محددة}}",
+    "addOptionButton": "إضافة خيار ({count}/5)",
+    "noOptionsAdded": "لم تتم إضافة أي خيارات بعد",
+    "addFirstOptionButton": "إضافة أول خيار",
+    "optionNumber": "الخيار {number}",
+    "optionPlaceholder": "نص الخيار {number}...",
+    "multipleResponseCorrect": "صحيحة ✓",
+    "multipleResponseSelect": "حدد كصحيحة",
+    "singleChoiceCorrect": "الإجابة الصحيحة ✓",
+    "singleChoiceSelect": "الإجابة الصحيحة",
+    "errors": {
+      "questionTextRequired": "يجب تقديم نص السؤال",
+      "chapterRequired": "الفصل مطلوب",
+      "questionTypeRequired": "نوع السؤال مطلوب",
+      "difficultyLevelRequired": "مستوى الصعوبة مطلوب",
+      "atLeastOneOption": "مطلوب خيار واحد على الأقل",
+      "atLeastOneCorrectAnswer": "يجب تحديد خيار واحد على الأقل كإجابة صحيحة",
+      "exactlyOneCorrectAnswer": "يجب تحديد خيار واحد فقط كإجابة صحيحة",
+      "optionTextRequired": "يجب أن يحتوي الخيار على نص",
+      "maxOptionsLimit": "الحد الأقصى 5 خيارات مسموح بها",
+      "fixFormErrors": "يرجى إصلاح أخطاء النموذج قبل الإرسال",
+      "authTokenNotFound": "لم يتم العثور على رمز المصادقة",
+      "createQuestionFailed": "فشل إنشاء السؤال"
+    }
+  },
+  "UniversitiesPage": {
+    "title": "إدارة الجامعات",
+    "subtitle": "إدارة ومراقبة جميع الجامعات في النظام",
+    "noAdminAssigned": "لم يتم تعيين مدير",
+    "errors": {
+      "loadFailed": "فشل في تحميل الجامعات",
+      "operationFailed": "فشلت العملية",
+      "deleteFailed": "فشل الحذف"
+    },
+    "form": {
+      "validation": {
+        "requiredFields": "يرجى ملء الحقول المطلوبة (الاسم العربي، الاسم الإنجليزي، والرمز)"
+      },
+      "fields": {
+        "nameAr": "الاسم العربي",
+        "nameEn": "الاسم الإنجليزي",
+        "code": "الرمز",
+        "country": "الدولة",
+        "city": "المدينة",
+        "admin": "المدير",
+        "universityType": "نوع الجامعة",
+        "universityStatus": "حالة الجامعة"
+      },
+      "placeholders": {
+        "nameAr": "الاسم العربي",
+        "nameEn": "University Name",
+        "code": "UNI-001",
+        "country": "مثال: المملكة العربية السعودية",
+        "city": "مثال: الرياض",
+        "selectAdmin": "اختر المدير"
+      },
+      "labels": {
+        "publicUniversity": "جامعة حكومية",
+        "privateUniversity": "جامعة خاصة"
+      }
+    },
+    "messages": {
+      "updateSuccess": "تم التحديث بنجاح",
+      "createSuccess": "تم الإنشاء بنجاح",
+      "deleteSuccess": "تم الحذف بنجاح"
+    },
+    "common": {
+      "refresh": "تحديث",
+      "cancel": "إلغاء",
+      "delete": "حذف",
+      "processing": "جاري المعالجة...",
+      "public": "حكومي",
+      "private": "خاص",
+      "active": "نشط",
+      "inactive": "غير نشط"
+    },
+    "actions": {
+      "addUniversity": "إضافة جامعة",
+      "addNewUniversity": "إضافة جامعة جديدة"
+    },
+    "stats": {
+      "total": "الإجمالي",
+      "active": "نشط",
+      "inactive": "غير نشط",
+      "public": "حكومي",
+      "private": "خاص"
+    },
+    "search": {
+      "placeholder": "ابحث عن الجامعات بالاسم، الرمز، المدينة، أو الدولة...",
+      "resultsFound": {
+        "showing": "عرض",
+        "of": "من",
+        "universities": "جامعة"
+      },
+      "for": "لـ"
+    },
+    "filters": {
+      "type": "النوع",
+      "status": "الحالة",
+      "allTypes": "جميع الأنواع",
+      "allStatuses": "جميع الحالات",
+      "public": "حكومي",
+      "private": "خاص",
+      "active": "نشط",
+      "inactive": "غير نشط",
+      "clearFilters": "مسح الفلاتر"
+    },
+    "emptyState": {
+      "noUniversities": "لا توجد جامعات حتى الآن",
+      "noResults": "لا توجد جامعات مطابقة",
+      "startAdding": "ابدأ بإضافة أول جامعة إلى النظام.",
+      "adjustSearch": "حاول ضبط بحثك أو فلاتر للعثور على ما تبحث عنه."
+    },
+    "dialog": {
+      "editTitle": "تعديل الجامعة",
+      "createTitle": "إنشاء جامعة جديدة",
+      "editDescription": "قم بتحديث معلومات الجامعة أدناه.",
+      "createDescription": "املأ التفاصيل لإضافة جامعة جديدة إلى النظام.",
+      "updateButton": "تحديث الجامعة",
+      "createButton": "إنشاء الجامعة"
+    },
+    "deleteConfirmation": {
+      "message": "هل أنت متأكد أنك تريد حذف هذا العنصر؟ لا يمكن التراجع عن هذا الإجراء."
+    }
+  },
+  "UniversityCard": {
+    "status": {
+      "active": "نشط",
+      "inactive": "غير نشط"
+    },
+    "type": {
+      "public": "حكومي",
+      "private": "خاص"
+    },
+    "noAdminAssigned": "لم يتم تعيين مدير",
+    "programs": "برنامج دراسي",
+    "viewDetails": "عرض التفاصيل"
+  },
+  "UniversityDetailsPage": {
+    "universityUsers": {
+      "title": "مستخدمي الجامعة",
+      "description": "عرض جميع المستخدمين المرتبطين بـ {name}",
+      "searchPlaceholder": "بحث بالاسم، البريد الإلكتروني، أو رقم الجوال...",
+      "viewProfile": "عرض الملف الشخصي",
+      "showing": "عرض {count} من أصل {total} مستخدم",
+      "emptyState": {
+        "title": "لا يوجد مستخدمين",
+        "description": "لم يتم العثور على أي مستخدمين مرتبطين بهذه الجامعة.",
+        "noResults": "لا توجد نتائج",
+        "noResultsDescription": "لم نتمكن من العثور على أي مستخدم يطابق بحثك. جرب كلمات بحث مختلفة."
+      }
+    },
+    "errors": {
+      "loadFailed": "فشل في تحميل تفاصيل الجامعة",
+      "createProgramFailed": "فشل إنشاء البرنامج",
+      "deleteFailed": "فشل الحذف"
+    },
+    "form": {
+      "validation": {
+        "requiredFields": "يرجى ملء الحقول المطلوبة (الاسم العربي، الاسم الإنجليزي، والرمز)"
+      }
+    },
+    "messages": {
+      "programCreated": "تم إنشاء البرنامج بنجاح",
+      "universityDeleted": "تم حذف الجامعة بنجاح"
+    },
+    "common": {
+      "active": "نشط",
+      "close": "إغلاق",
+      "notSpecified": "غير محدد",
+      "inactive": "غير نشط",
+      "public": "حكومي",
+      "male": "ذكر",
+      "female": "أنثى",
+      "private": "خاص",
+      "delete": "حذف",
+      "cancel": "إلغاء",
+      "deleting": "جاري الحذف...",
+      "creating": "جاري الإنشاء..."
+    },
+    "actions": {
+      "backToUniversities": "العودة للجامعات"
+    },
+    "stats": {
+      "programs": "البرامج",
+      "activePrograms": "البرامج النشطة",
+      "totalCourses": "إجمالي المقررات",
+      "courseBanks": "بنوك المقررات"
+    },
+    "emptyState": {
+      "universityNotFound": "الجامعة غير موجودة",
+      "universityNotFoundDescription": "الجامعة التي تبحث عنها غير موجودة أو تم حذفها."
+    },
+    "deleteDialog": {
+      "title": "حذف الجامعة",
+      "description": "هل أنت متأكد أنك تريد حذف {universityName}؟ لا يمكن التراجع عن هذا الإجراء وسيتم حذف جميع البرامج والبيانات المرتبطة.",
+      "deleteButton": "حذف الجامعة"
+    },
+    "universityInfo": {
+      "title": "معلومات الجامعة",
+      "description": "معلومات مفصلة عن الجامعة",
+      "fields": {
+        "universityCode": "رمز الجامعة",
+        "location": "الموقع",
+        "admin": "المدير",
+        "status": "الحالة",
+        "universityType": "نوع الجامعة",
+        "programsCount": "عدد البرامج"
+      },
+      "noAdmin": "لا يوجد مدير",
+      "id": "الرقم",
+      "publicUniversity": "جامعة حكومية",
+      "privateUniversity": "جامعة خاصة"
+    },
+    "programsSection": {
+      "title": "البرامج",
+      "addProgram": "إضافة برنامج",
+      "courses": "المقررات",
+      "courseBanks": "بنوك المقررات",
+      "createdAt": "أنشئت",
+      "viewDetails": "عرض التفاصيل",
+      "emptyState": {
+        "title": "لا توجد برامج بعد",
+        "description": "هذه الجامعة ليس لديها أي برامج بعد. ابدأ بإضافة أول برنامج.",
+        "createFirstProgram": "إنشاء أول برنامج"
+      }
+    },
+    "statusManagement": {
+      "title": "إدارة الحالة",
+      "fields": {
+        "universityStatus": "حالة الجامعة"
+      },
+      "statusDescription": {
+        "active": "نشط ومرئي",
+        "inactive": "غير نشط ومخفي"
+      }
+    },
+    "universityCode": {
+      "title": "رمز الجامعة",
+      "description": "استخدم هذا الرمز لجميع العمليات والمراجع المتعلقة بالجامعة"
+    },
+    "programDialog": {
+      "title": "إضافة برنامج جديد",
+      "description": "إنشاء برنامج جديد لـ {universityName}",
+      "fields": {
+        "nameAr": "الاسم العربي",
+        "nameEn": "الاسم الإنجليزي",
+        "code": "رمز البرنامج",
+        "description": "الوصف",
+        "universityId": "رقم الجامعة",
+        "managerId": "رقم المدير"
+      },
+      "placeholders": {
+        "nameAr": "اسم البرنامج بالعربي",
+        "nameEn": "Program Name",
+        "code": "مثال: CS101",
+        "description": "وصف البرنامج...",
+        "selectManager": "اختر المدير"
+      },
+      "createButton": "إنشاء البرنامج"
+    }
+  },
+  "programDetails": {
+    "title": "تفاصيل البرنامج",
+    "notFound": {
+      "title": "البرنامج غير موجود",
+      "description": "البرنامج الذي تبحث عنه غير موجود أو تم حذفه."
+    },
+    "status": {
+      "active": "نشط",
+      "inactive": "غير نشط"
+    },
+    "actions": {
+      "edit": "تعديل",
+      "delete": "حذف"
+    },
+    "deleteDialog": {
+      "title": "حذف البرنامج",
+      "description": "هل أنت متأكد أنك تريد حذف {programName}؟ لا يمكن التراجع عن هذا الإجراء."
+    },
+    "stats": {
+      "courses": "المقررات",
+      "activeCourses": "المقررات النشطة",
+      "courseBanks": "بنوك المقررات"
+    },
+    "tabs": {
+      "overview": "نظرة عامة",
+      "courses": "المقررات"
+    },
+    "programInfo": {
+      "title": "معلومات البرنامج",
+      "description": "الوصف",
+      "noDescription": "لا يوجد وصف.",
+      "manager": "مدير البرنامج",
+      "university": "الجامعة",
+      "notAvailable": "غير متاح",
+      "createdAt": "تاريخ الإنشاء",
+      "updatedAt": "آخر تحديث"
+    },
+    "courses": {
+      "title": "مقررات البرنامج",
+      "description": "إدارة المقررات في هذا البرنامج",
+      "addCourse": "إضافة مقرر",
+      "searchPlaceholder": "ابحث عن المقررات...",
+      "status": "الحالة",
+      "filter": {
+        "all": "جميع الحالات",
+        "active": "نشط",
+        "inactive": "غير نشط"
+      },
+      "table": {
+        "code": "الرمز",
+        "courseName": "اسم المقرر",
+        "supervisor": "المشرف",
+        "description": "الوصف",
+        "actions": "الإجراءات",
+        "notAssigned": "غير معين",
+        "noCourses": "لا توجد مقررات",
+        "trySearch": "حاول تعديل بحثك",
+        "noCoursesAdded": "لم تتم إضافة أي مقررات بعد",
+        "addFirstCourse": "إضافة أول مقرر",
+        "details": "التفاصيل"
+      }
+    },
+    "programCode": {
+      "title": "رمز البرنامج"
+    },
+    "statusManagement": {
+      "title": "الحالة",
+      "active": "نشط",
+      "inactive": "غير نشط",
+      "visible": "البرنامج مرئي",
+      "hidden": "البرنامج مخفي",
+      "enable": "تفعيل",
+      "disable": "تعطيل"
+    },
+    "editDialog": {
+      "title": "تعديل البرنامج",
+      "dialogDescription": "تحديث معلومات البرنامج",
+      "nameAr": "الاسم العربي *",
+      "nameArPlaceholder": "الاسم العربي",
+      "nameEn": "الاسم الإنجليزي *",
+      "nameEnPlaceholder": "اسم البرنامج",
+      "code": "رمز البرنامج *",
+      "codePlaceholder": "PROG-001",
+      "description": "الوصف",
+      "descriptionPlaceholder": "وصف البرنامج...",
+      "managerId": "رقم المدير",
+      "status": "الحالة",
+      "active": "نشط",
+      "inactive": "غير نشط"
+    },
+    "addCourseDialog": {
+      "title": "إضافة مقرر جديد",
+      "description": "إنشاء مقرر جديد لـ {programName}",
+      "nameAr": "الاسم العربي *",
+      "nameArPlaceholder": "اسم المقرر بالعربي",
+      "nameEn": "الاسم الإنجليزي *",
+      "nameEnPlaceholder": "اسم المقرر",
+      "code": "رمز المقرر *",
+      "codePlaceholder": "مثال: CS101",
+      "descriptionAr": "الوصف العربي",
+      "descriptionArPlaceholder": "وصف المقرر بالعربي",
+      "descriptionEn": "الوصف الإنجليزي",
+      "descriptionEnPlaceholder": "وصف المقرر بالإنجليزية",
+      "programId": "رقم البرنامج",
+      "createCourse": "إنشاء المقرر"
+    },
+    "common": {
+      "back": "العودة",
+      "cancel": "إلغاء",
+      "delete": "حذف",
+      "deleting": "جاري الحذف...",
+      "saving": "جاري الحفظ...",
+      "saveChanges": "حفظ التغييرات",
+      "creating": "جاري الإنشاء..."
+    },
+    "errors": {
+      "loadFailed": "فشل في تحميل تفاصيل البرنامج",
+      "updateFailed": "فشل التحديث",
+      "deleteFailed": "فشل الحذف",
+      "createCourseFailed": "فشل إنشاء المقرر",
+      "requiredFields": "يرجى ملء الحقول المطلوبة (الاسم العربي، الاسم الإنجليزي، والرمز)"
+    },
+    "messages": {
+      "updateSuccess": "تم تحديث البرنامج بنجاح",
+      "deleteSuccess": "تم حذف البرنامج بنجاح",
+      "createCourseSuccess": "تم إنشاء المقرر بنجاح"
+    }
+  },
+  "adminCourseDetails": {
+    "title": "تفاصيل المقرر",
+    "notFound": {
+      "title": "المقرر غير موجود",
+      "description": "المقرر الذي تبحث عنه غير موجود أو تم حذفه."
+    },
+    "status": {
+      "active": "نشط",
+      "inactive": "غير نشط",
+      "private": "خاص",
+      "public": "عام"
+    },
+    "actions": {
+      "editCourse": "تعديل المقرر",
+      "delete": "حذف",
+      "addBank": "إضافة بنك"
+    },
+    "stats": {
+      "banks": "البنوك",
+      "questions": "الأسئلة",
+      "chapters": "الفصول",
+      "program": "البرنامج"
+    },
+    "courseInfo": {
+      "title": "معلومات المقرر",
+      "code": "رمز المقرر",
+      "arabicDescription": "الوصف العربي",
+      "englishDescription": "الوصف الإنجليزي",
+      "noArabicDescription": "لا يوجد وصف عربي.",
+      "noEnglishDescription": "لا يوجد وصف إنجليزي.",
+      "supervisor": "المشرف",
+      "noSupervisor": "غير معين",
+      "privacy": "الخصوصية",
+      "private": "مقرر خاص",
+      "public": "مقرر عام"
+    },
+    "banks": {
+      "title": "بنوك المقرر",
+      "description": "إدارة بنوك الأسئلة لهذا المقرر",
+      "addBank": "إضافة بنك",
+      "searchPlaceholder": "ابحث عن البنوك...",
+      "status": "الحالة",
+      "filter": {
+        "all": "الكل",
+        "active": "نشط",
+        "inactive": "غير نشط"
+      },
+      "statusActive": "نشط",
+      "statusInactive": "غير نشط",
+      "chapters": "فصل",
+      "questions": "سؤال",
+      "noSupervisor": "لا يوجد مشرف",
+      "createdAt": "تم الإنشاء",
+      "noBanks": "لا توجد بنوك",
+      "noBanksDescription": "هذا المقرر ليس لديه أي بنوك أسئلة بعد",
+      "trySearch": "حاول تعديل بحثك أو معايير الفلتر",
+      "createFirstBank": "إنشاء أول بنك"
+    },
+    "sidebar": {
+      "quickActions": "إجراءات سريعة",
+      "editCourse": "تعديل المقرر",
+      "addBank": "إضافة بنك",
+      "deleteCourse": "حذف المقرر",
+      "analytics": "تحليلات",
+      "questions": "أسئلة"
+    },
+    "breadcrumb": {
+      "universities": "الجامعات"
+    },
+    "editDialog": {
+      "title": "تعديل المقرر",
+      "description": "تحديث معلومات وإعدادات المقرر",
+      "nameAr": "الاسم العربي",
+      "nameArPlaceholder": "اسم المقرر بالعربي",
+      "nameEn": "الاسم الإنجليزي",
+      "nameEnPlaceholder": "اسم المقرر بالإنجليزية",
+      "code": "رمز المقرر",
+      "codePlaceholder": "مثال: CS101",
+      "descriptionAr": "الوصف العربي",
+      "descriptionArPlaceholder": "وصف المقرر بالعربي",
+      "descriptionEn": "الوصف الإنجليزي",
+      "descriptionEnPlaceholder": "وصف المقرر بالإنجليزية",
+      "programId": "رقم البرنامج",
+      "supervisorId": "رقم المشرف",
+      "supervisorIdPlaceholder": "اختياري",
+      "status": "الحالة",
+      "active": "نشط",
+      "inactive": "غير نشط",
+      "privacy": "الخصوصية",
+      "private": "خاص",
+      "public": "عام"
+    },
+    "addBankDialog": {
+      "title": "إنشاء بنك أسئلة جديد",
+      "description": "إضافة بنك أسئلة جديد إلى {courseName}",
+      "supervisor": "المشرف",
+      "selectSupervisor": "اختر المشرف",
+      "createBank": "إنشاء البنك"
+    },
+    "editBankDialog": {
+      "title": "تعديل بنك الأسئلة",
+      "description": "تحديث إعدادات البنك",
+      "status": "حالة البنك",
+      "active": "نشط",
+      "inactive": "غير نشط",
+      "supervisor": "المشرف",
+      "selectSupervisor": "اختر المشرف",
+      "noSupervisor": "لا يوجد مشرف"
+    },
+    "deleteDialog": {
+      "title": "حذف المقرر",
+      "description": "هل أنت متأكد أنك تريد حذف {courseName}؟ لا يمكن التراجع عن هذا الإجراء.",
+      "warning": "تحذير: سيتم حذف {banks} بنوك و {questions} أسئلة.",
+      "deleteCourse": "حذف المقرر"
+    },
+    "common": {
+      "back": "العودة",
+      "cancel": "إلغاء",
+      "saveChanges": "حفظ التغييرات",
+      "updating": "جاري التحديث...",
+      "deleting": "جاري الحذف..."
+    },
+    "errors": {
+      "loadFailed": "فشل في تحميل تفاصيل المقرر",
+      "missingData": "بيانات مفقودة",
+      "missingCourse": "رقم المقرر مفقود",
+      "deleteBankFailed": "فشل حذف البنك",
+      "updateBankFailed": "فشل تحديث البنك",
+      "updateCourseFailed": "فشل التحديث",
+      "deleteCourseFailed": "فشل الحذف",
+      "createBankFailed": "فشل إنشاء البنك"
+    },
+    "messages": {
+      "bankDeleted": "تم حذف البنك بنجاح",
+      "bankUpdated": "تم تحديث البنك بنجاح",
+      "courseUpdated": "تم تحديث المقرر بنجاح",
+      "courseDeleted": "تم حذف المقرر بنجاح",
+      "bankCreated": "تم إنشاء البنك بنجاح"
+    }
+  },
+  "usersManagement": {
+    "title": "إدارة المستخدمين",
+    "totalUsers": "مستخدم",
+    "actions": {
+      "createUser": "إنشاء مستخدم"
+    },
+    "stats": {
+      "totalUsers": "إجمالي المستخدمين",
+      "activeUsers": "المستخدمين النشطين",
+      "maleUsers": "المستخدمين الذكور",
+      "femaleUsers": "المستخدمين الإناث"
+    },
+    "usesrsFilters": {
+      "states": {
+        "all": "جميع الحالات",
+        "active": "نشط فقط",
+        "inActive": "غير نشط فقط"
+      },
+      "sort": {
+        "recent": "الأحدث",
+        "older": "الأقدم",
+        "fullNameA": "الاسم (أ-ي)",
+        "fullNameD": "الاسم (ي-أ)"
+      }
+    },
+    "usersTable": {
+      "title": "المستخدمين",
+      "description": "قائمة جميع المستخدمين المسجلين",
+      "searchPlaceholder": "بحث في المستخدمين...",
+      "filterByStatus": "تصفية حسب الحالة",
+      "filterByGender": "تصفية حسب الجنس",
+      "allStatus": "جميع الحالات",
+      "allGender": "جميع الأجناس",
+      "usersSelected": "مستخدم محدد",
+      "deleteSelected": "حذف المحدد",
+      "headers": {
+        "name": "الاسم الكامل",
+        "username": "اسم المستخدم",
+        "contact": "معلومات الاتصال",
+        "gender": "الجنس",
+        "status": "الحالة",
+        "created": "تاريخ الإنشاء",
+        "actions": "الإجراءات",
+        "email": "البريد الإلكتروني",
+        "address": "العنوان",
+        "phoneNumber": "رقم الهاتف"
+      },
+      "actions": {
+        "view": "عرض",
+        "edit": "تعديل",
+        "delete": "حذف"
+      },
+      "emptyState": {
+        "title": "لا يوجد مستخدمين",
+        "description": "لا يوجد مستخدمين مسجلين حتى الآن.",
+        "noResults": "لا توجد نتائج مطابقة",
+        "noResultsDescription": "حاول تعديل معايير البحث أو التصفية",
+        "createFirstUser": "إنشاء أول مستخدم"
+      }
+    },
+    "createDialog": {
+      "title": "إنشاء مستخدم جديد",
+      "description": "املأ التفاصيل لإنشاء حساب مستخدم جديد",
+      "arabicNameSection": "الاسم بالعربية",
+      "englishNameSection": "الاسم بالإنجليزية",
+      "nameAr": "الاسم الأول بالعربية",
+      "nameArPlaceholder": "أدخل الاسم الأول بالعربية",
+      "fatherNameAr": "اسم الأب بالعربية",
+      "fatherNameArPlaceholder": "أدخل اسم الأب بالعربية",
+      "surnameAr": "اللقب بالعربية",
+      "surnameArPlaceholder": "أدخل اللقب بالعربية",
+      "nameEn": "الاسم الأول بالإنجليزية",
+      "nameEnPlaceholder": "أدخل الاسم الأول بالإنجليزية",
+      "fatherNameEn": "اسم الأب بالإنجليزية",
+      "fatherNameEnPlaceholder": "أدخل اسم الأب بالإنجليزية",
+      "surnameEn": "اللقب بالإنجليزية",
+      "surnameEnPlaceholder": "أدخل اللقب بالإنجليزية",
+      "userName": "اسم المستخدم",
+      "userNamePlaceholder": "أدخل اسم المستخدم",
+      "password": "كلمة المرور",
+      "passwordPlaceholder": "أدخل كلمة المرور",
+      "gender": "الجنس",
+      "genderPlaceholder": "اختر الجنس",
+      "email": "البريد الإلكتروني",
+      "emailPlaceholder": "أدخل البريد الإلكتروني",
+      "mobile": "رقم الهاتف",
+      "mobilePlaceholder": "أدخل رقم الهاتف",
+      "address": "العنوان",
+      "addressPlaceholder": "أدخل العنوان",
+      "createButton": "إنشاء مستخدم"
+    },
+    "form": {
+      "validation": {
+        "requiredFields": "يرجى ملء جميع الحقول المطلوبة",
+        "invalidEmail": "يرجى إدخال بريد إلكتروني صالح"
+      }
+    },
+    "errors": {
+      "loadFailed": "فشل في تحميل المستخدمين",
+      "createFailed": "فشل في إنشاء المستخدم"
+    },
+    "messages": {
+      "createSuccess": "تم إنشاء المستخدم بنجاح"
+    },
+    "common": {
+      "active": "نشط",
+      "inactive": "غير نشط",
+      "male": "ذكر",
+      "female": "أنثى",
+      "cancel": "إلغاء",
+      "creating": "جاري الإنشاء...",
+      "saveChanges": "حفظ التغييرات"
+    }
+  }
+}
