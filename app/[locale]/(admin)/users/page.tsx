@@ -661,7 +661,7 @@ export default function UsersManagementPage() {
                 </div>
               </div>
             </div>
-            <StatsChart />
+            <StatsChart users={users} />
           </div>
 
           {/* Main Content */}

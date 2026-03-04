@@ -27,10 +27,10 @@ const StatsChart: React.FC<StatsChartProps> = ({ users }) => {
   const t = useTranslations("usersManagement");
 
   // حساب البيانات
-  const totalUsers = users?.length || 100;
-  const activeUsers = users?.filter((u) => u.isActive).length || 40;
-  const maleUsers = users?.filter((u) => u.gender === 0).length || 70;
-  const femaleUsers = users?.filter((u) => u.gender === 1).length || 30;
+  const totalUsers = users?.length || 0;
+  const activeUsers = users?.filter((u) => u.isActive).length || 0;
+  const maleUsers = users?.filter((u) => u.gender === 0).length || 0;
+  const femaleUsers = users?.filter((u) => u.gender === 1).length || 0;
   const inactiveUsers = totalUsers - activeUsers;
 
   // تجهيز بيانات الرسم البياني للجنس
