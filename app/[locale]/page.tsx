@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { loginUser } from "@/store/auth";
@@ -15,7 +15,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
-
+  const passwordInputRef = useRef<HTMLInputElement>(null);
   const valid = username.length > 0 && password.length > 0;
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -113,7 +113,7 @@ const Login = () => {
               <h2 className="text-2xl font-bold text-blue-900 font-arabic">
                 تسجيل الدخول
               </h2>
-              <p className="text-sm text-sec  font-arabic mt-2">
+              <p className="text-md text-gray-600  font-arabic mt-2">
                 الرجاء إدخال بياناتك للمتابعة
               </p>
             </div>
@@ -155,6 +155,7 @@ const Login = () => {
                   <Lock size={20} />
                 </div>
                 <input
+                  ref={passwordInputRef}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   type={showPassword ? "text" : "password"}
@@ -171,7 +172,22 @@ const Login = () => {
                 />
                 <button
                   type="button"
-                  onClick={() => setShowPassword(!showPassword)}
+                  onClick={() => {
+                    setShowPassword(!showPassword);
+                    // // تأخير بسيط جداً حتى يتم تغيير الـ type ثم نركز
+                    // setTimeout(() => {
+                    //   passwordInputRef.current?.focus();
+                    // }, 0);
+                    setTimeout(() => {
+                      const input = passwordInputRef.current;
+                      if (input) {
+                        input.focus();
+                        // وضع المؤشر في نهاية النص
+                        const len = input.value.length;
+                        input.setSelectionRange(len, len);
+                      }
+                    }, 0);
+                  }}
                   className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400 hover:text-blue-600 transition-colors focus:outline-none cursor-pointer"
                 >
                   {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}

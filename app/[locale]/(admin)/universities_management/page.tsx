@@ -44,6 +44,8 @@ import {
   Hash,
   FileText,
   Edit,
+  GraduationCap,
+  University,
 } from "lucide-react";
 import {
   Dialog,
@@ -322,7 +324,7 @@ export default function UniversitiesPage() {
             variant="outline"
             size="sm"
             onClick={() => toast.dismiss()}
-            className="border-border-light dark:border-gray-700 text-text-secondary dark:text-gray-300 hover:bg-bg-alt dark:hover:bg-gray-700 hover:border-border dark:hover:border-gray-600 transition-colors min-w-20"
+            className="border-border-light dark:border-gray-700 text-text-secondary dark:text-gray-300 close-hover transition-colors min-w-20"
           >
             {t("common.cancel")}
           </Button>
@@ -465,7 +467,12 @@ export default function UniversitiesPage() {
             <div className="flex w-full justify-center  md:justify-start ">
               <div className="w-full flex flex-col md:flex-row items-center md:justify-between  gap-4">
                 <div>
-                  <MainTitle>{t("title")}</MainTitle>
+                  <MainTitle className="flex items-center gap-3">
+                    <div className="p-2.5 rounded-xl bg-linear-to-br from-prim to-sec shadow-md">
+                      <University className="h-6 w-6 text-white" />
+                    </div>
+                    {t("title")}
+                  </MainTitle>
                   <TextMuted className="mt-2 flex items-center gap-2 text-gray-500 dark:text-gray-300">
                     <Building className="h-4 w-4" />
                     {t("subtitle")}
@@ -915,7 +922,10 @@ export default function UniversitiesPage() {
           {/* Create/Edit University Dialog */}
 
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-            <DialogContent className="sm:max-w-[525px] rounded-2xl bg-card-bg dark:bg-gray-800 border-border dark:border-gray-700">
+            <DialogContent
+              showCloseButton={false}
+              className="sm:max-w-[525px] rounded-2xl bg-card-bg dark:bg-gray-800 border-border dark:border-gray-700"
+            >
               <DialogHeader className="flex flex-col space-y-2">
                 <DialogTitle className="text-xl font-semibold text-text-secondary dark:text-blue-300 flex items-center gap-3">
                   {isEditMode ? (
@@ -1154,7 +1164,7 @@ export default function UniversitiesPage() {
                   variant="outline"
                   onClick={() => setIsDialogOpen(false)}
                   disabled={loading}
-                  className="rounded-lg border-border-light dark:border-gray-700 text-gray-700 dark:text-gray-300  close-hover"
+                  className="rounded-lg border-border-light dark:border-gray-700 text-gray-700 dark:text-gray-300 close-hover"
                 >
                   <X className="h-4 w-4 ml-2" />
                   {t("common.cancel")}

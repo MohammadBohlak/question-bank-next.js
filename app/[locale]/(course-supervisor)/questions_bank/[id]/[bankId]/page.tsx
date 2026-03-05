@@ -686,7 +686,7 @@ export default function BankDetailsPage() {
                   <Search className="absolute z-1 right-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                   <Input
                     placeholder={t("chaptersTab.searchPlaceholder")}
-                    className="pr-10 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-border-light dark:border-gray-700 transition-all rounded-xl"
+                    className="pr-10 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-border-light dark:border-gray-700 transition-all rounded-xl "
                     value={chapterSearch}
                     onChange={(e) => setChapterSearch(e.target.value)}
                   />
@@ -717,17 +717,17 @@ export default function BankDetailsPage() {
                                              border-border-light dark:border-gray-700 hover:shadow-xl transition-all duration-300"
                     >
                       {/* linear Border on Hover */}
-                      <div className="absolute inset-0 bg-linear-to-r from-blue-600/10 to-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                      {/* <div className="absolute inset-0 bg-linear-to-r from-sec/5 to-sec/10 opacity-0 group-hover:opacity-80 transition-opacity"></div> */}
 
-                      <div className="relative p-6">
+                      <div className="relative p-6 hover:bg-prim/10 dark:hover:bg-sec/10 transition-colors duration-300">
                         {/* Header */}
                         <div
                           className="flex items-start justify-between cursor-pointer"
                           onClick={() => toggleChapter(chapter.id)}
                         >
                           <div className="flex items-start gap-4 flex-1">
-                            <div className="p-3 bg-linear-to-br from-blue-500/10 to-purple-500/10 rounded-xl">
-                              <BookOpen className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                            <div className="p-2 bg-sec rounded-xl">
+                              <BookOpen className="h-6 w-6  text-white" />
                             </div>
                             <div className="flex-1">
                               <div className="flex items-center gap-3 mb-1">
@@ -749,9 +749,12 @@ export default function BankDetailsPage() {
                           </div>
 
                           <div className="flex items-center gap-3">
-                            <div className="flex items-center gap-2 px-3 py-1.5 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
-                              <FileText className="h-4 w-4 text-blue-600 dark:text-blue-400" />
-                              <span className="font-medium text-blue-600 dark:text-blue-400">
+                            <div className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 dark:bg-blue-900/20 rounded-xl">
+                              <FileText
+                                className="h-4 w-4 text-sec"
+                                strokeWidth={2.2}
+                              />
+                              <span className=" text-sec font-bold">
                                 {chapter.questions.length}
                               </span>
                             </div>
@@ -760,7 +763,7 @@ export default function BankDetailsPage() {
                               <Button
                                 size="sm"
                                 variant="ghost"
-                                className="h-8 w-8 p-0 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg"
+                                className="transition-colors duration-300 h-8 w-8 p-0 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg"
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   handleEditChapter(chapter);
@@ -777,7 +780,7 @@ export default function BankDetailsPage() {
                               <Button
                                 size="sm"
                                 variant="ghost"
-                                className="h-8 w-8 p-0 text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg"
+                                className="transition-colors duration-300 h-8 w-8 p-0 text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg"
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   setSelectedChapter(chapter);
@@ -844,8 +847,11 @@ export default function BankDetailsPage() {
                             {/* Question Levels */}
                             {chapter.questionsLevels.length > 0 && (
                               <div className="mb-6">
-                                <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-3 flex items-center gap-2">
-                                  <BarChart className="h-4 w-4 text-blue-500" />
+                                <h4 className="text-md font-medium text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                                  <BarChart
+                                    className="h-4 w-4 text-sec"
+                                    strokeWidth={2.5}
+                                  />
                                   {t("chaptersTab.questionLevels")}
                                 </h4>
                                 <div className="flex flex-wrap gap-2">
@@ -871,8 +877,11 @@ export default function BankDetailsPage() {
                             {/* Question Types */}
                             {chapter.questionsTypes.length > 0 && (
                               <div className="mb-6">
-                                <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-3 flex items-center gap-2">
-                                  <Layers className="h-4 w-4 text-purple-500" />
+                                <h4 className="text-md font-medium text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                                  <Layers
+                                    className="h-4 w-4 text-sec"
+                                    strokeWidth={2.5}
+                                  />
                                   {t("chaptersTab.questionTypes")}
                                 </h4>
                                 <div className="flex flex-wrap gap-2">
@@ -898,8 +907,11 @@ export default function BankDetailsPage() {
                             {/* Questions in this chapter */}
                             <div>
                               <div className="flex items-center justify-between mb-4">
-                                <h4 className="text-sm font-medium text-gray-900 dark:text-white flex items-center gap-2">
-                                  <FileText className="h-4 w-4 text-blue-500" />
+                                <h4 className="text-md font-medium text-gray-900 dark:text-white flex items-center gap-2">
+                                  <FileText
+                                    className="h-4 w-4 text-sec"
+                                    strokeWidth={2.5}
+                                  />
                                   {t("chaptersTab.chapterQuestions")}
                                 </h4>
                                 <AddQuestion
@@ -923,24 +935,30 @@ export default function BankDetailsPage() {
                                       key={question.id}
                                       className="group relative overflow-hidden rounded-xl bg-linear-to-r from-gray-50 to-white dark:from-gray-900/50 dark:to-gray-800/50 border border-border-light dark:border-gray-700 hover:shadow-lg transition-all duration-300"
                                     >
-                                      <div className="absolute right-0 top-0 w-1 h-full bg-linear-to-b from-blue-500 to-purple-500"></div>
+                                      <div className="absolute right-0 top-0 w-1 h-full bg-linear-to-b from-prim to-sec"></div>
 
                                       <div className="p-4">
                                         <div className="flex items-start justify-between gap-4">
                                           <div className="flex-1">
                                             <div className="flex items-center gap-2 mb-2">
                                               <Badge
-                                                className={`${getQuestionTypeColor(question.questionType.code)} px-2 py-0.5 flex items-center gap-1`}
+                                                className={`${getQuestionTypeColor(question.questionType.code)} px-2 py-1 font-bold flex items-center gap-1`}
                                               >
-                                                <TypeIcon className="h-3 w-3" />
+                                                <TypeIcon
+                                                  strokeWidth={2.2}
+                                                  className="h-3 w-3"
+                                                />
                                                 {getQuestionTypeDisplayName(
                                                   question.questionType.code,
                                                 )}
                                               </Badge>
                                               <Badge
-                                                className={`${difficultyInfo.color} px-2 py-0.5 flex items-center gap-1`}
+                                                className={`${difficultyInfo.color} px-2 py-1 font-bold flex items-center gap-1`}
                                               >
-                                                <DifficultyIcon className="h-3 w-3" />
+                                                <DifficultyIcon
+                                                  strokeWidth={2.2}
+                                                  className="h-3 w-3"
+                                                />
                                                 {difficultyInfo.label}
                                               </Badge>
                                               {!question.confirmed && (
@@ -948,7 +966,10 @@ export default function BankDetailsPage() {
                                                   variant="outline"
                                                   className="border-border-light dark:border-gray-700 text-gray-600 dark:text-gray-300"
                                                 >
-                                                  <EyeOff className="h-3 w-3 ml-1" />
+                                                  <EyeOff
+                                                    strokeWidth={2.2}
+                                                    className="h-3 w-3 ml-1"
+                                                  />
                                                   {t("chaptersTab.unconfirmed")}
                                                 </Badge>
                                               )}
@@ -1066,24 +1087,28 @@ export default function BankDetailsPage() {
               ) : (
                 <div className="text-center py-16 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-border-light dark:border-gray-700">
                   <div className="p-4 bg-linear-to-br from-blue-500/10 to-purple-500/10 rounded-full w-20 h-20 mx-auto mb-4 flex items-center justify-center">
-                    <FolderTree className="h-10 w-10 text-blue-600 dark:text-blue-400" />
+                    <FolderTree className="h-10 w-10 text-sec" />
                   </div>
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                     {chapterSearch
                       ? t("chaptersTab.noSearchResults")
-                      : "No Chapters"}
+                      : locale == "en"
+                        ? "No Chapters"
+                        : "لا يوجد فصول"}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-6">
                     {chapterSearch
                       ? t("chaptersTab.tryAdjustingSearch")
-                      : "Add First Chapter"}
+                      : locale == "en"
+                        ? "Add First Chapter"
+                        : "قم بإضافة أول فصل"}
                   </p>
                   {!chapterSearch && (
                     <Button
                       onClick={() => setIsAddChapterDialogOpen(true)}
-                      className="bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all rounded-xl px-6"
+                      className="mx-auto flex items-center gap-1 bg-btn hover:opacity-80 hover:-translate-y-1  text-white shadow-xl transition-all rounded-xl px-6"
                     >
-                      <Plus className="h-4 w-4 ml-2" />
+                      <Plus className="h-4 w-4" />
                       {t("chaptersTab.addChapter")}
                     </Button>
                   )}
@@ -1099,7 +1124,7 @@ export default function BankDetailsPage() {
                 <Search className="absolute z-1 right-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                 <Input
                   placeholder={t("questionsTab.searchPlaceholder")}
-                  className="pr-10 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-border-light dark:border-gray-700 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 dark:focus:ring-blue-400/20 transition-all rounded-xl"
+                  className="pr-10 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-border-light dark:border-gray-700"
                   value={questionSearch}
                   onChange={(e) => setQuestionSearch(e.target.value)}
                 />
@@ -1279,7 +1304,7 @@ export default function BankDetailsPage() {
               ) : (
                 <div className="text-center py-16 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-border-light dark:border-gray-700">
                   <div className="p-4 bg-linear-to-br from-blue-500/10 to-purple-500/10 rounded-full w-20 h-20 mx-auto mb-4 flex items-center justify-center">
-                    <FileText className="h-10 w-10 text-blue-600 dark:text-blue-400" />
+                    <FileText className="h-10 w-10 text-sec" />
                   </div>
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                     {questionSearch
@@ -1422,124 +1447,12 @@ export default function BankDetailsPage() {
       )}
 
       {/* Add Chapter Dialog */}
-      {/* <Dialog
-        open={isAddChapterDialogOpen}
-        onOpenChange={setIsAddChapterDialogOpen}
-      >
-        <DialogContent
-          className="sm:max-w-[500px] bg-white dark:bg-gray-900 border border-border-light dark:border-gray-700 rounded-2xl"
-          dir="rtl"
-        >
-          <DialogHeader>
-            <DialogTitle className="text-2xl font-bold bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              {t("addChapterDialog.title")}
-            </DialogTitle>
-            <DialogDescription className="text-gray-600 dark:text-gray-300">
-              {t("addChapterDialog.description")}
-            </DialogDescription>
-          </DialogHeader>
-
-          <div className="space-y-4 py-4">
-            <div className="space-y-2">
-              <Label
-                htmlFor="chapterTitle"
-                className="text-gray-700 dark:text-gray-200 font-medium"
-              >
-                {t("addChapterDialog.chapterTitle")}
-              </Label>
-              <Input
-                id="chapterTitle"
-                value={newChapter.title}
-                onChange={(e) =>
-                  setNewChapter({ ...newChapter, title: e.target.value })
-                }
-                placeholder={t("addChapterDialog.chapterTitlePlaceholder")}
-                className="border-border-light dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 dark:focus:ring-blue-400/20 transition-all rounded-xl"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label
-                htmlFor="chapterDescription"
-                className="text-gray-700 dark:text-gray-200 font-medium"
-              >
-                {t("addChapterDialog.chapterDescription")}
-              </Label>
-              <Textarea
-                id="chapterDescription"
-                value={newChapter.description}
-                onChange={(e) =>
-                  setNewChapter({ ...newChapter, description: e.target.value })
-                }
-                placeholder={t(
-                  "addChapterDialog.chapterDescriptionPlaceholder",
-                )}
-                rows={3}
-                className="border-border-light dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 dark:focus:ring-blue-400/20 transition-all rounded-xl"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label
-                htmlFor="chapterOrder"
-                className="text-gray-700 dark:text-gray-200 font-medium"
-              >
-                {t("addChapterDialog.chapterOrder")}
-              </Label>
-              <Input
-                id="chapterOrder"
-                type="number"
-                value={newChapter.order}
-                onChange={(e) =>
-                  setNewChapter({
-                    ...newChapter,
-                    order: parseInt(e.target.value) || 0,
-                  })
-                }
-                placeholder={t("addChapterDialog.chapterOrderPlaceholder")}
-                className="border-border-light dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 dark:focus:ring-blue-400/20 transition-all rounded-xl"
-              />
-            </div>
-          </div>
-
-          <DialogFooter>
-            <Button
-              variant="outline"
-              onClick={() => setIsAddChapterDialogOpen(false)}
-              className="border-border-light dark:border-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-600 transition-all rounded-xl px-6"
-              disabled={actionLoading === "addChapter"}
-            >
-              {t("addChapterDialog.cancel")}
-            </Button>
-            <Button
-              onClick={handleAddChapter}
-              disabled={
-                !newChapter.title.trim() || actionLoading === "addChapter"
-              }
-              className="bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all rounded-xl px-6 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {actionLoading === "addChapter" ? (
-                <>
-                  <Loader2 className="h-4 w-4 ml-2 animate-spin" />
-                  {t("addChapterDialog.creating")}
-                </>
-              ) : (
-                <>
-                  <Plus className="h-4 w-4 ml-2" />
-                  {t("addChapterDialog.createChapter")}
-                </>
-              )}
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog> */}
-
-      {/* Add Chapter Dialog */}
       <Dialog
         open={isAddChapterDialogOpen}
         onOpenChange={setIsAddChapterDialogOpen}
       >
         <DialogContent
+          showCloseButton={false}
           className="sm:max-w-[500px] bg-white dark:bg-gray-900 border border-border-light dark:border-gray-700 rounded-2xl shadow-2xl overflow-hidden"
           dir={dir}
         >
@@ -1664,135 +1577,12 @@ export default function BankDetailsPage() {
       </Dialog>
 
       {/* Edit Chapter Dialog */}
-      {/* <Dialog
-        open={isEditChapterDialogOpen}
-        onOpenChange={setIsEditChapterDialogOpen}
-      >
-        <DialogContent
-          className="sm:max-w-[500px] bg-white dark:bg-gray-900 border border-border-light dark:border-gray-700 rounded-2xl"
-          dir="rtl"
-        >
-          <DialogHeader>
-            <DialogTitle className="text-2xl font-bold bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              {t("editChapterDialog.title")}
-            </DialogTitle>
-            <DialogDescription className="text-gray-600 dark:text-gray-300">
-              {t("editChapterDialog.description", {
-                title: selectedChapter?.title || "",
-              })}
-            </DialogDescription>
-          </DialogHeader>
-
-          {selectedChapter && (
-            <div className="space-y-4 py-4">
-              <div className="space-y-2">
-                <Label
-                  htmlFor="editChapterTitle"
-                  className="text-gray-700 dark:text-gray-200 font-medium"
-                >
-                  {t("addChapterDialog.chapterTitle")}
-                </Label>
-                <Input
-                  id="editChapterTitle"
-                  value={editChapterForm.title}
-                  onChange={(e) =>
-                    setEditChapterForm({
-                      ...editChapterForm,
-                      title: e.target.value,
-                    })
-                  }
-                  placeholder={t("addChapterDialog.chapterTitlePlaceholder")}
-                  className="border-border-light dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 dark:focus:ring-blue-400/20 transition-all rounded-xl"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label
-                  htmlFor="editChapterDescription"
-                  className="text-gray-700 dark:text-gray-200 font-medium"
-                >
-                  {t("addChapterDialog.chapterDescription")}
-                </Label>
-                <Textarea
-                  id="editChapterDescription"
-                  value={editChapterForm.description || ""}
-                  onChange={(e) =>
-                    setEditChapterForm({
-                      ...editChapterForm,
-                      description: e.target.value,
-                    })
-                  }
-                  placeholder={t(
-                    "addChapterDialog.chapterDescriptionPlaceholder",
-                  )}
-                  rows={3}
-                  className="border-border-light dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 dark:focus:ring-blue-400/20 transition-all rounded-xl"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label
-                  htmlFor="editChapterOrder"
-                  className="text-gray-700 dark:text-gray-200 font-medium"
-                >
-                  {t("addChapterDialog.chapterOrder")}
-                </Label>
-                <Input
-                  id="editChapterOrder"
-                  type="number"
-                  value={editChapterForm.order}
-                  onChange={(e) =>
-                    setEditChapterForm({
-                      ...editChapterForm,
-                      order: parseInt(e.target.value) || 0,
-                    })
-                  }
-                  placeholder={t("addChapterDialog.chapterOrderPlaceholder")}
-                  className="border-border-light dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 dark:focus:ring-blue-400/20 transition-all rounded-xl"
-                />
-              </div>
-            </div>
-          )}
-
-          <DialogFooter>
-            <Button
-              variant="outline"
-              onClick={() => setIsEditChapterDialogOpen(false)}
-              className="border-border-light dark:border-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-600 transition-all rounded-xl px-6"
-              disabled={actionLoading === "updateChapter"}
-            >
-              {t("editChapterDialog.cancel")}
-            </Button>
-            <Button
-              onClick={handleUpdateChapter}
-              disabled={
-                !editChapterForm.title.trim() ||
-                actionLoading === "updateChapter"
-              }
-              className="bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all rounded-xl px-6 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {actionLoading === "updateChapter" ? (
-                <>
-                  <Loader2 className="h-4 w-4 ml-2 animate-spin" />
-                  {t("editChapterDialog.updating")}
-                </>
-              ) : (
-                <>
-                  <Save className="h-4 w-4 ml-2" />
-                  {t("editChapterDialog.updateChapter")}
-                </>
-              )}
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog> */}
-
-      {/* Edit Chapter Dialog */}
       <Dialog
         open={isEditChapterDialogOpen}
         onOpenChange={setIsEditChapterDialogOpen}
       >
         <DialogContent
+          showCloseButton={false}
           className="sm:max-w-[500px] bg-white dark:bg-gray-900 border border-border-light dark:border-gray-700 rounded-2xl shadow-2xl"
           //   dir="rtl"
         >
@@ -1930,7 +1720,10 @@ export default function BankDetailsPage() {
         open={isDeleteChapterDialogOpen}
         onOpenChange={setIsDeleteChapterDialogOpen}
       >
-        <DialogContent className="sm:max-w-[425px] bg-white dark:bg-gray-900 border border-border-light dark:border-gray-700 rounded-2xl">
+        <DialogContent
+          showCloseButton={false}
+          className="sm:max-w-[425px] bg-white dark:bg-gray-900 border border-border-light dark:border-gray-700 rounded-2xl"
+        >
           <DialogHeader>
             <DialogTitle className="rtl:text-right ltr:text-left text-2xl font-bold text-red-600 dark:text-red-400">
               {t("deleteChapterDialog.title")}

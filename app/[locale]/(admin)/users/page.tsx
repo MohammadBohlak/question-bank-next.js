@@ -884,29 +884,35 @@ export default function UsersManagementPage() {
                               <DropdownMenuTrigger asChild>
                                 <Button
                                   size="sm"
-                                  variant="ghost"
-                                  className="h-8 w-8 p-0"
+                                  variant="none"
+                                  className="h-8 w-8 p-0 hover:bg-sec hover:text-white"
                                 >
                                   <MoreVertical className="h-4 w-4" />
                                 </Button>
                               </DropdownMenuTrigger>
-                              <DropdownMenuContent align="end" className="w-48">
-                                <DropdownMenuItem className="cursor-pointer text-blue-600 dark:text-blue-400">
-                                  <Eye className="h-4 w-4 mr-2" />
+                              <DropdownMenuContent
+                                align="start"
+                                className="w-48"
+                              >
+                                <DropdownMenuItem
+                                  className="cursor-pointer text-blue-600 dark:text-blue-400
+                                hover:text-white hover:bg-blue-600 dark:hover:bg-blue-400"
+                                >
+                                  <Eye className="h-4 w-4 text-inherit" />
                                   {t("usersTable.actions.view")}
                                 </DropdownMenuItem>
                                 <DropdownMenuItem
-                                  className="cursor-pointer text-green-600 dark:text-green-400"
+                                  className="cursor-pointer hover:text-white text-green-600 dark:text-green-400 hover:bg-green-600 dark:hover:bg-green-400"
                                   onClick={() => handleEditClick(user)}
                                 >
-                                  <Edit className="h-4 w-4 mr-2" />
+                                  <Edit className="h-4 w-4 text-inherit" />
                                   {t("usersTable.actions.edit")}
                                 </DropdownMenuItem>
                                 <DropdownMenuItem
-                                  className="cursor-pointer text-red-600 dark:text-red-400"
+                                  className="cursor-pointer hover:text-white text-red-600 dark:text-red-400 hover:bg-red-600 dark:hover:bg-red-400"
                                   onClick={() => confirmDelete(user.id)}
                                 >
-                                  <Trash2 className="h-4 w-4 mr-2" />
+                                  <Trash2 className="h-4 w-4 text-inherit" />
                                   {t("usersTable.actions.delete")}
                                 </DropdownMenuItem>
                               </DropdownMenuContent>

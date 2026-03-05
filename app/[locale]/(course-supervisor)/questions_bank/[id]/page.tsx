@@ -68,6 +68,7 @@ import {
   Save,
   FileQuestionMark,
   Landmark,
+  ChartNoAxesCombined,
 } from "lucide-react";
 import { toast } from "sonner";
 import { useSelector, useDispatch } from "react-redux";
@@ -1078,8 +1079,11 @@ export default function CourseDetailsPage() {
 
           <TabsContent value="analytics" className="space-y-6">
             <Card className="border pt-0 border-border-light dark:border-gray-800 bg-white dark:bg-gray-900">
-              <CardHeader className="pt-4 pb-4 bg-btn !bg-gradient-to-br rounded-tl-xl rounded-tr-xl">
-                <CardTitle className="text-white font-arabic">
+              <CardHeader className="pt-4 pb-4 bg-btn bg-linear-to-br rounded-tl-xl rounded-tr-xl">
+                <CardTitle className="text-lg text-white font-arabic flex items-center gap-3">
+                  <div className="p-2 rounded-md bg-sec text-white">
+                    <ChartNoAxesCombined className="w-5 h-5" />
+                  </div>
                   {t("analyticsSection.title")}
                 </CardTitle>
                 <CardDescription className="text-gray-100 font-arabic">
@@ -1232,7 +1236,10 @@ export default function CourseDetailsPage() {
         open={isEditBankDialogOpen}
         onOpenChange={setIsEditBankDialogOpen}
       >
-        <DialogContent className="sm:max-w-[450px] bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
+        <DialogContent
+          showCloseButton={false}
+          className="sm:max-w-[450px] bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800"
+        >
           <DialogHeader className="rtl:text-right ltr:text-left">
             <DialogTitle className="text-prim dark:text-white font-arabic">
               {t("editBankDialog.title")}
@@ -1289,12 +1296,15 @@ export default function CourseDetailsPage() {
       </Dialog>
 
       <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
-        <DialogContent className="sm:max-w-[425px] bg-white dark:bg-gray-900 border border-rose-300 dark:border-rose-700">
+        <DialogContent
+          showCloseButton={false}
+          className="sm:max-w-[425px] bg-white dark:bg-gray-900 border border-rose-300 dark:border-rose-700"
+        >
           <DialogHeader>
-            <DialogTitle className="text-gray-900 dark:text-white font-arabic">
+            <DialogTitle className="text-start text-gray-900 dark:text-white font-arabic">
               {t("deleteBankDialog.title")}
             </DialogTitle>
-            <DialogDescription className="text-gray-600 dark:text-gray-400 font-arabic">
+            <DialogDescription className="text-start text-gray-600 dark:text-gray-400 font-arabic">
               {t("deleteBankDialog.description", {
                 code: selectedBank?.code || "",
               })}
@@ -1312,7 +1322,7 @@ export default function CourseDetailsPage() {
             <Button
               variant="outline"
               onClick={() => setIsDeleteDialogOpen(false)}
-              className="border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 font-arabic"
+              className="border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 close-hover font-arabic"
             >
               {t("deleteBankDialog.cancel")}
             </Button>

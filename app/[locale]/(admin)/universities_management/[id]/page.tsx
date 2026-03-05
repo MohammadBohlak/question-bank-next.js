@@ -1053,7 +1053,10 @@ export default function UniversityDetailsPage() {
 
       {/* Delete Dialog */}
       <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
-        <DialogContent className="sm:max-w-md rounded-2xl border-0 shadow-2xl bg-white dark:bg-gray-800">
+        <DialogContent
+          showCloseButton={false}
+          className="sm:max-w-md rounded-2xl border-0 shadow-2xl bg-white dark:bg-gray-800"
+        >
           <DialogHeader>
             <div className="mx-auto w-16 h-16 rounded-full bg-linear-to-br from-red-100 to-red-200 dark:from-red-900/30 dark:to-red-800/30 flex items-center justify-center mb-6">
               <Trash2 className="h-8 w-8 text-red-600 dark:text-red-400" />
@@ -1072,7 +1075,7 @@ export default function UniversityDetailsPage() {
               variant="outline"
               onClick={() => setIsDeleteDialogOpen(false)}
               disabled={isUpdating}
-              className="flex-1 rounded-xl border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+              className="flex-1 rounded-xl border-gray-300 close-hover"
             >
               {t("common.cancel")}
             </Button>
@@ -1094,7 +1097,10 @@ export default function UniversityDetailsPage() {
         open={isAddProgramDialogOpen}
         onOpenChange={setIsAddProgramDialogOpen}
       >
-        <DialogContent className="sm:max-w-[550px] rounded-2xl border-0 shadow-2xl bg-white dark:bg-gray-800">
+        <DialogContent
+          showCloseButton={false}
+          className="sm:max-w-[550px] rounded-2xl border-0 shadow-2xl bg-white dark:bg-gray-800"
+        >
           <DialogHeader className="flex flex-row">
             <div className="px-2 pt-3  rounded-lg bg-btn">
               <Plus className="h-6 w-6 text-white" />
@@ -1253,7 +1259,7 @@ export default function UniversityDetailsPage() {
               variant="outline"
               onClick={() => setIsAddProgramDialogOpen(false)}
               disabled={isUpdating}
-              className="flex-1 rounded-xl border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+              className="flex-1 rounded-xl border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 close-hover"
             >
               {t("common.cancel")}
             </Button>

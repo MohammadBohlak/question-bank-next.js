@@ -315,7 +315,10 @@ const UniversityUsers = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-4xl max-h-[90vh] p-0 gap-0 overflow-hidden bg-white dark:bg-gray-800 rounded-2xl border-0 shadow-2xl">
+      <DialogContent
+        showCloseButton={false}
+        className="sm:max-w-4xl max-h-[90vh] p-0 gap-0 overflow-hidden bg-white dark:bg-gray-800 rounded-2xl border-0 shadow-2xl"
+      >
         {/* Header */}
         <DialogHeader className="p-6 border-b border-gray-200 dark:border-gray-800">
           <div className="flex items-center justify-between">

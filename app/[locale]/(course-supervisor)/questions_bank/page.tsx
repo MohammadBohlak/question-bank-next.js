@@ -51,6 +51,8 @@ import {
   ArrowLeft,
   ArrowRight,
   BookMarked,
+  Library,
+  Book,
 } from "lucide-react";
 import {
   Dialog,
@@ -258,18 +260,23 @@ export default function CoursesPage() {
           <Background>
             <div className="w-full flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div>
-                <MainTitle>{t("title")}</MainTitle>
-                <TextMuted>{t("description")}</TextMuted>
+                <MainTitle className="flex items-center gap-3">
+                  <div className="p-2 bg-btn rounded-lg">
+                    <Book className="w-6 h-6 text-white" strokeWidth={2.5} />
+                  </div>
+                  {t("title")}
+                </MainTitle>
+                <TextMuted className="mt-1">{t("description")}</TextMuted>
               </div>
               <Button
                 onClick={() => setIsAddDialogOpen(true)}
-                className="bg-btn hover:opacity-80 text-text-light font-arabic"
+                className="bg-btn hover:opacity-80 text-text-light font-arabic gap-1"
                 disabled={loading}
               >
                 {loading ? (
-                  <Loader2 className="h-4 w-4 ml-2 animate-spin" />
+                  <Loader2 className="h-4 w-4 animate-spin" />
                 ) : (
-                  <Plus className="h-4 w-4 ml-2" />
+                  <Plus className="h-4 w-4" />
                 )}
                 {t("addNewCourse")}
               </Button>
@@ -456,6 +463,14 @@ export default function CoursesPage() {
             </div>
           </div>
         </Background>
+
+        {/* Results Count */}
+        {!loading && filteredCourses.length > 0 && (
+          <div className="my-8 text-start text-lg text-prim dark:text-gray-400 font-arabic">
+            {t("showing")} {filteredCourses.length} {t("of")} {courses.length}{" "}
+            {t("courses")}
+          </div>
+        )}
         {/* Courses Grid - Show spinner if loading, show no courses only after loading is complete */}
         {loading ? (
           <div className="flex items-center justify-center py-16">
@@ -660,19 +675,14 @@ export default function CoursesPage() {
             ))}
           </div>
         )}
-
-        {/* Results Count */}
-        {!loading && filteredCourses.length > 0 && (
-          <div className="mt-8 text-center text-sm text-prim dark:text-gray-400 font-arabic">
-            {t("showing")} {filteredCourses.length} {t("of")} {courses.length}{" "}
-            {t("courses")}
-          </div>
-        )}
       </div>
 
       {/* Add Course Dialog */}
       <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
-        <DialogContent className="sm:max-w-[550px] bg-card-bg dark:bg-gray-800 border border-border-light dark:border-gray-700">
+        <DialogContent
+          showCloseButton={false}
+          className="sm:max-w-[550px] bg-card-bg dark:bg-gray-800 border border-border-light dark:border-gray-700"
+        >
           <DialogHeader className="flex flex-col space-y-2">
             <DialogTitle className="text-dark dark:text-white font-arabic flex items-center gap-3">
               <div className="p-2 rounded-lg bg-btn">
@@ -827,7 +837,10 @@ export default function CoursesPage() {
       </Dialog>
 
       <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
-        <DialogContent className="sm:max-w-[550px] bg-card-bg dark:bg-gray-800 border border-border-light dark:border-gray-700">
+        <DialogContent
+          showCloseButton={false}
+          className="sm:max-w-[550px] bg-card-bg dark:bg-gray-800 border border-border-light dark:border-gray-700"
+        >
           <DialogHeader className="flex flex-col space-y-2">
             <DialogTitle className="text-dark dark:text-white font-arabic flex items-center gap-3">
               <div className="p-2 rounded-lg bg-btn">
@@ -1020,13 +1033,20 @@ export default function CoursesPage() {
       </Dialog>
       {/* Delete Confirmation Dialog */}
       <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
-        <DialogContent className="sm:max-w-[425px] bg-card-bg dark:bg-gray-800 border border-error dark:border-red-700">
+        <DialogContent
+          showCloseButton={false}
+          className="sm:max-w-[425px] bg-card-bg dark:bg-gray-800 border border-error dark:border-red-700"
+        >
           <DialogHeader>
             <DialogTitle className="text-dark dark:text-white font-arabic">
               {t("deleteCourse")}
             </DialogTitle>
-            <DialogDescription className="text-text-secondary dark:text-gray-300 font-arabic">
-              {t("deleteConfirmation", { name: selectedCourse?.nameAr || "" })}
+            <DialogDescription>
+              <TextMuted>
+                {t("deleteConfirmation", {
+                  name: selectedCourse?.nameAr || "",
+                })}
+              </TextMuted>
             </DialogDescription>
           </DialogHeader>
           <div className="flex items-center gap-2 p-3 bg-error/10 dark:bg-red-900/30 rounded-lg">
@@ -1041,7 +1061,7 @@ export default function CoursesPage() {
             <Button
               variant="outline"
               onClick={() => setIsDeleteDialogOpen(false)}
-              className="border-border-light dark:border-gray-700 text-dark dark:text-gray-300 hover:bg-bg dark:hover:bg-gray-700 font-arabic"
+              className="border-border-light dark:border-gray-700 text-dark dark:text-gray-300 close-hover font-arabic"
               disabled={loading}
             >
               {t("cancel")}

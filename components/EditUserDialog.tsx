@@ -8,7 +8,18 @@ import { AppDispatch } from "@/store/store";
 import { updateUser } from "@/store/user";
 import { toast } from "sonner";
 import { Input } from "./ui/input";
-import { Edit } from "lucide-react";
+import {
+  AtSign,
+  Edit,
+  Lock,
+  Mail,
+  MapPin,
+  Phone,
+  User,
+  UserCheck,
+  UserRound,
+  Users,
+} from "lucide-react";
 import { useTranslations } from "next-intl";
 import {
   Dialog,
@@ -27,6 +38,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useParams } from "next/navigation";
+import TextMuted from "./custom/texts/TextMuted";
 interface EditUserDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -70,7 +83,7 @@ const EditUserDialog = ({
     }),
     [],
   );
-
+  const { locale } = useParams();
   const dispatch = useDispatch<AppDispatch>();
   const t = useTranslations("usersManagement");
   console.log(user);
@@ -134,73 +147,129 @@ const EditUserDialog = ({
   };
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[650px] rounded-2xl border-0 shadow-2xl bg-white dark:bg-gray-800">
+      <DialogContent
+        showCloseButton={false}
+        dir={locale == "ar" ? "rtl" : "ltr"}
+        className="max-h-[90%] overflow-auto custom-scrollbar sm:max-w-[650px] rounded-2xl border-0 shadow-2xl bg-white dark:bg-gray-800"
+      >
         <DialogHeader>
-          <DialogTitle className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-linear-to-br from-green-100 to-green-200 dark:from-green-900/30 dark:to-green-800/30">
-              <Edit className="h-5 w-5 text-green-600 dark:text-green-400" />
+          <DialogTitle
+            className={`
+          text-xl font-bold text-gray-900 dark:text-white 
+          flex items-center gap-3
+          ${locale === "ar" ? "" : ""}
+        `}
+          >
+            <div className="text-start p-2 rounded-lg bg-btn">
+              <Edit className="h-5 w-5 text-white" strokeWidth={2.5} />
             </div>
-            Edit User
+            {locale === "ar" ? "تعديل المستخدم" : "Edit User"}
           </DialogTitle>
-          <DialogDescription className="text-gray-600 dark:text-gray-400">
-            Update user information. Leave password empty to keep current
-            password.
+
+          <DialogDescription>
+            <TextMuted>
+              {locale === "ar"
+                ? "قم بتحديث معلومات المستخدم. اترك حقل كلمة المرور فارغاً للاحتفاظ بالقيمة الحالية."
+                : "Update user information. Leave password empty to keep current password."}
+            </TextMuted>
           </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-6 py-2">
           {/* Arabic Name Section */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300">
-              {t("createDialog.arabicNameSection")}
+            <h3
+              className={`
+            text-lg font-semibold text-gray-700 dark:text-gray-300
+            ${locale === "ar" ? "text-right" : "text-left"}
+          `}
+            >
+              {locale === "ar" ? "الاسم باللغة العربية" : "Arabic Name Section"}
             </h3>
-            <div className="grid grid-cols-3 gap-4">
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="space-y-3">
                 <Label
                   htmlFor="edit-nameAr"
-                  className="text-sm font-semibold text-gray-700 dark:text-gray-300"
+                  className={`
+                  text-sm font-semibold text-gray-700 dark:text-gray-300
+                flex items-center gap-2
+                
+              `}
                 >
-                  {t("createDialog.nameAr")} *
+                  <User className="h-4 w-4 text-sec" strokeWidth={2.5} />
+                  {locale === "ar" ? "الاسم *" : "Name *"}
                 </Label>
                 <Input
                   id="edit-nameAr"
                   name="nameAr"
                   value={formData.nameAr}
                   onChange={handleInputChange}
-                  placeholder={t("createDialog.nameArPlaceholder")}
-                  className="rounded-xl border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 dark:focus:ring-blue-500/20"
+                  placeholder={
+                    locale === "ar" ? "أدخل الاسم" : "Enter first name"
+                  }
+                  className={`
+                rounded-xl border-gray-300 dark:border-gray-700
+                bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white
+                
+                ${locale === "ar" ? "text-right" : "text-left"}
+              `}
                 />
               </div>
+
               <div className="space-y-3">
                 <Label
                   htmlFor="edit-fatherNameAr"
-                  className="text-sm font-semibold text-gray-700 dark:text-gray-300"
+                  className={`
+                text-sm font-semibold text-gray-700 dark:text-gray-300
+                flex items-center gap-2
+                
+              `}
                 >
-                  {t("createDialog.fatherNameAr")}
+                  <Users className="h-4 w-4 text-sec" strokeWidth={2.5} />
+                  {locale === "ar" ? "اسم الأب" : "Father's Name"}
                 </Label>
                 <Input
                   id="edit-fatherNameAr"
                   name="fatherNameAr"
                   value={formData.fatherNameAr}
                   onChange={handleInputChange}
-                  placeholder={t("createDialog.fatherNameArPlaceholder")}
-                  className="rounded-xl border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 dark:focus:ring-blue-500/20"
+                  placeholder={
+                    locale === "ar" ? "أدخل اسم الأب" : "Enter father's name"
+                  }
+                  className={`
+                rounded-xl border-gray-300 dark:border-gray-700
+                bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white
+                
+                ${locale === "ar" ? "text-right" : "text-left"}
+              `}
                 />
               </div>
+
               <div className="space-y-3">
                 <Label
                   htmlFor="edit-surnameAr"
-                  className="text-sm font-semibold text-gray-700 dark:text-gray-300"
+                  className={`
+                text-sm font-semibold text-gray-700 dark:text-gray-300
+                flex items-center gap-2
+                
+              `}
                 >
-                  {t("createDialog.surnameAr")}
+                  <UserRound className="h-4 w-4 text-sec" strokeWidth={2.5} />
+                  {locale === "ar" ? "اللقب / الكنية" : "Surname / Family Name"}
                 </Label>
                 <Input
                   id="edit-surnameAr"
                   name="surnameAr"
                   value={formData.surnameAr}
                   onChange={handleInputChange}
-                  placeholder={t("createDialog.surnameArPlaceholder")}
-                  className="rounded-xl border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 dark:focus:ring-blue-500/20"
+                  placeholder={locale === "ar" ? "أدخل اللقب" : "Enter surname"}
+                  className={`
+                rounded-xl border-gray-300 dark:border-gray-700
+                bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white
+                
+                ${locale === "ar" ? "text-right" : "text-left"}
+              `}
                 />
               </div>
             </div>
@@ -208,85 +277,148 @@ const EditUserDialog = ({
 
           {/* English Name Section */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300">
-              {t("createDialog.englishNameSection")}
+            <h3
+              className={`
+            text-lg font-semibold text-gray-700 dark:text-gray-300
+            ${locale === "ar" ? "text-right" : "text-left"}
+          `}
+            >
+              {locale === "ar"
+                ? "الاسم باللغة الإنجليزية"
+                : "English Name Section"}
             </h3>
-            <div className="grid grid-cols-3 gap-4">
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="space-y-3">
                 <Label
                   htmlFor="edit-nameEn"
-                  className="text-sm font-semibold text-gray-700 dark:text-gray-300"
+                  className={`
+                text-sm font-semibold text-gray-700 dark:text-gray-300
+                flex items-center gap-2
+                
+              `}
                 >
-                  {t("createDialog.nameEn")} *
+                  <User className="h-4 w-4 text-sec" strokeWidth={2.5} />
+                  {locale === "ar" ? "الاسم *" : "Name *"}
                 </Label>
                 <Input
                   id="edit-nameEn"
                   name="nameEn"
                   value={formData.nameEn}
                   onChange={handleInputChange}
-                  placeholder={t("createDialog.nameEnPlaceholder")}
-                  className="rounded-xl border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 dark:focus:ring-blue-500/20"
+                  placeholder={
+                    locale === "ar" ? "أدخل الاسم" : "Enter first name"
+                  }
+                  className={`
+                rounded-xl border-gray-300 dark:border-gray-700
+                bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white
+                
+                ${locale === "ar" ? "text-right" : "text-left"}
+              `}
                 />
               </div>
+
               <div className="space-y-3">
                 <Label
                   htmlFor="edit-fatherNameEn"
-                  className="text-sm font-semibold text-gray-700 dark:text-gray-300"
+                  className={`
+                text-sm font-semibold text-gray-700 dark:text-gray-300
+                flex items-center gap-2
+                
+              `}
                 >
-                  {t("createDialog.fatherNameEn")}
+                  <Users className="h-4 w-4 text-sec" strokeWidth={2.5} />
+                  {locale === "ar" ? "اسم الأب" : "Father's Name"}
                 </Label>
                 <Input
                   id="edit-fatherNameEn"
                   name="fatherNameEn"
                   value={formData.fatherNameEn}
                   onChange={handleInputChange}
-                  placeholder={t("createDialog.fatherNameEnPlaceholder")}
-                  className="rounded-xl border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 dark:focus:ring-blue-500/20"
+                  placeholder={
+                    locale === "ar" ? "أدخل اسم الأب" : "Enter father's name"
+                  }
+                  className={`
+                rounded-xl border-gray-300 dark:border-gray-700
+                bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white
+                
+                ${locale === "ar" ? "text-right" : "text-left"}
+              `}
                 />
               </div>
+
               <div className="space-y-3">
                 <Label
                   htmlFor="edit-surnameEn"
-                  className="text-sm font-semibold text-gray-700 dark:text-gray-300"
+                  className={`
+                text-sm font-semibold text-gray-700 dark:text-gray-300
+                flex items-center gap-2
+                
+              `}
                 >
-                  {t("createDialog.surnameEn")}
+                  <UserRound className="h-4 w-4 text-sec" strokeWidth={2.5} />
+                  {locale === "ar" ? "اللقب / الكنية" : "Surname / Family Name"}
                 </Label>
                 <Input
                   id="edit-surnameEn"
                   name="surnameEn"
                   value={formData.surnameEn}
                   onChange={handleInputChange}
-                  placeholder={t("createDialog.surnameEnPlaceholder")}
-                  className="rounded-xl border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 dark:focus:ring-blue-500/20"
+                  placeholder={locale === "ar" ? "أدخل اللقب" : "Enter surname"}
+                  className={`
+                rounded-xl border-gray-300 dark:border-gray-700
+                bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white
+                
+                ${locale === "ar" ? "text-right" : "text-left"}
+              `}
                 />
               </div>
             </div>
           </div>
 
           {/* Account Info */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-3">
               <Label
                 htmlFor="edit-userName"
-                className="text-sm font-semibold text-gray-700 dark:text-gray-300"
+                className={`
+              text-sm font-semibold text-gray-700 dark:text-gray-300
+              flex items-center gap-2
+              
+            `}
               >
-                {t("createDialog.userName")} *
+                <AtSign className="h-4 w-4 text-sec" strokeWidth={2.5} />
+                {locale === "ar" ? "اسم المستخدم *" : "Username *"}
               </Label>
               <Input
                 id="edit-userName"
                 name="userName"
                 value={formData.userName}
                 onChange={handleInputChange}
-                placeholder={t("createDialog.userNamePlaceholder")}
-                className="rounded-xl border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 dark:focus:ring-blue-500/20"
+                placeholder={
+                  locale === "ar" ? "أدخل اسم المستخدم" : "Enter username"
+                }
+                className={`
+              rounded-xl border-gray-300 dark:border-gray-700
+              bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white
+              focus:border-blue-500 dark:focus:border-blue-500
+              focus:ring-2 focus:ring-blue-500/20 dark:focus:ring-blue-500/20
+              ${locale === "ar" ? "text-right" : "text-left"}
+            `}
               />
             </div>
+
             <div className="space-y-3">
               <Label
                 htmlFor="edit-password"
-                className="text-sm font-semibold text-gray-700 dark:text-gray-300"
+                className={`
+              text-sm font-semibold text-gray-700 dark:text-gray-300
+              flex items-center gap-2
+              
+            `}
               >
-                {t("createDialog.password")}
+                <Lock className="h-4 w-4 text-sec" strokeWidth={2.5} />
+                {locale === "ar" ? "كلمة المرور" : "Password"}
               </Label>
               <Input
                 id="edit-password"
@@ -294,20 +426,35 @@ const EditUserDialog = ({
                 type="password"
                 value={formData.password}
                 onChange={handleInputChange}
-                placeholder="Leave blank to keep current password"
-                className="rounded-xl border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 dark:focus:ring-blue-500/20"
+                placeholder={
+                  locale === "ar"
+                    ? "اترك فارغاً للاحتفاظ بالكلمة الحالية"
+                    : "Leave blank to keep current password"
+                }
+                className={`
+              rounded-xl border-gray-300 dark:border-gray-700
+              bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white
+              focus:border-blue-500 dark:focus:border-blue-500
+              focus:ring-2 focus:ring-blue-500/20 dark:focus:ring-blue-500/20
+              ${locale === "ar" ? "text-right" : "text-left"}
+            `}
               />
             </div>
           </div>
 
           {/* Contact Info */}
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="space-y-3">
               <Label
                 htmlFor="edit-gender"
-                className="text-sm font-semibold text-gray-700 dark:text-gray-300"
+                className={`
+              text-sm font-semibold text-gray-700 dark:text-gray-300
+              flex items-center gap-2
+              
+            `}
               >
-                {t("createDialog.gender")}
+                <UserCheck className="h-4 w-4 text-sec" strokeWidth={2.5} />
+                {locale === "ar" ? "الجنس" : "Gender"}
               </Label>
               <Select
                 value={formData.gender.toString()}
@@ -315,21 +462,33 @@ const EditUserDialog = ({
               >
                 <SelectTrigger className="rounded-xl border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
                   <SelectValue
-                    placeholder={t("createDialog.genderPlaceholder")}
+                    placeholder={
+                      locale === "ar" ? "اختر الجنس" : "Select gender"
+                    }
                   />
                 </SelectTrigger>
                 <SelectContent className="rounded-xl bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700">
-                  <SelectItem value="0">{t("common.male")}</SelectItem>
-                  <SelectItem value="1">{t("common.female")}</SelectItem>
+                  <SelectItem value="0">
+                    {locale === "ar" ? "ذكر" : "Male"}
+                  </SelectItem>
+                  <SelectItem value="1">
+                    {locale === "ar" ? "أنثى" : "Female"}
+                  </SelectItem>
                 </SelectContent>
               </Select>
             </div>
+
             <div className="space-y-3">
               <Label
                 htmlFor="edit-email"
-                className="text-sm font-semibold text-gray-700 dark:text-gray-300"
+                className={`
+              text-sm font-semibold text-gray-700 dark:text-gray-300
+              flex items-center gap-2
+              
+            `}
               >
-                {t("createDialog.email")} *
+                <Mail className="h-4 w-4 text-sec" strokeWidth={2.5} />
+                {locale === "ar" ? "البريد الإلكتروني *" : "Email *"}
               </Label>
               <Input
                 id="edit-email"
@@ -337,24 +496,46 @@ const EditUserDialog = ({
                 type="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                placeholder={t("createDialog.emailPlaceholder")}
-                className="rounded-xl border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 dark:focus:ring-blue-500/20"
+                placeholder={
+                  locale === "ar" ? "أدخل البريد الإلكتروني" : "Enter email"
+                }
+                className={`
+              rounded-xl border-gray-300 dark:border-gray-700
+              bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white
+              focus:border-blue-500 dark:focus:border-blue-500
+              focus:ring-2 focus:ring-blue-500/20 dark:focus:ring-blue-500/20
+              ${locale === "ar" ? "text-right" : "text-left"}
+            `}
               />
             </div>
+
             <div className="space-y-3">
               <Label
                 htmlFor="edit-mobile"
-                className="text-sm font-semibold text-gray-700 dark:text-gray-300"
+                className={`
+              text-sm font-semibold text-gray-700 dark:text-gray-300
+              flex items-center gap-2
+              
+            `}
               >
-                {t("createDialog.mobile")}
+                <Phone className="h-4 w-4 text-sec" strokeWidth={2.5} />
+                {locale === "ar" ? "رقم الجوال" : "Mobile Number"}
               </Label>
               <Input
                 id="edit-mobile"
                 name="mobile"
                 value={formData.mobile}
                 onChange={handleInputChange}
-                placeholder={t("createDialog.mobilePlaceholder")}
-                className="rounded-xl border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 dark:focus:ring-blue-500/20"
+                placeholder={
+                  locale === "ar" ? "أدخل رقم الجوال" : "Enter mobile number"
+                }
+                className={`
+              rounded-xl border-gray-300 dark:border-gray-700
+              bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white
+              focus:border-blue-500 dark:focus:border-blue-500
+              focus:ring-2 focus:ring-blue-500/20 dark:focus:ring-blue-500/20
+              ${locale === "ar" ? "text-right" : "text-left"}
+            `}
               />
             </div>
           </div>
@@ -363,17 +544,28 @@ const EditUserDialog = ({
           <div className="space-y-3">
             <Label
               htmlFor="edit-address"
-              className="text-sm font-semibold text-gray-700 dark:text-gray-300"
+              className={`
+            text-sm font-semibold text-gray-700 dark:text-gray-300
+            flex items-center gap-2
+            
+          `}
             >
-              {t("createDialog.address")}
+              <MapPin className="h-4 w-4 text-sec" strokeWidth={2.5} />
+              {locale === "ar" ? "العنوان" : "Address"}
             </Label>
             <Input
               id="edit-address"
               name="address"
               value={formData.address}
               onChange={handleInputChange}
-              placeholder={t("createDialog.addressPlaceholder")}
-              className="rounded-xl border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:border-blue-500 dark:focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 dark:focus:ring-blue-500/20"
+              placeholder={locale === "ar" ? "أدخل العنوان" : "Enter address"}
+              className={`
+            rounded-xl border-gray-300 dark:border-gray-700
+            bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white
+            focus:border-blue-500 dark:focus:border-blue-500
+            focus:ring-2 focus:ring-blue-500/20 dark:focus:ring-blue-500/20
+            ${locale === "ar" ? "text-right" : "text-left"}
+          `}
             />
           </div>
         </div>
@@ -386,16 +578,22 @@ const EditUserDialog = ({
               resetForm();
             }}
             disabled={isUpdating}
-            className="flex-1 rounded-xl border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+            className="flex-1 rounded-xl border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 close-hover"
           >
-            {t("common.cancel")}
+            {locale === "ar" ? "إلغاء" : "Cancel"}
           </Button>
           <Button
             onClick={handleUpdateUser}
             disabled={isUpdating}
-            className="flex-1 rounded-xl bg-linear-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white shadow-lg"
+            className="flex-1 rounded-xl bg-btn hover:opacity-80 text-white shadow-lg"
           >
-            {isUpdating ? "Updating..." : "Update User"}
+            {isUpdating
+              ? locale === "ar"
+                ? "جاري التحديث..."
+                : "Updating..."
+              : locale === "ar"
+                ? "تحديث المستخدم"
+                : "Update User"}
           </Button>
         </DialogFooter>
       </DialogContent>

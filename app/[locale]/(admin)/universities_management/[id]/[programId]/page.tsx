@@ -481,7 +481,7 @@ export default function ProgramDetailsPage() {
           </Background>
 
           {/* Stats Cards */}
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
             <Card className="rounded-2xl border border-border-light shadow-lg bg-linear-to-br from-white to-blue-50 dark:from-gray-800 dark:to-gray-900/50">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
@@ -1031,7 +1031,10 @@ export default function ProgramDetailsPage() {
       </div>
       {/* Delete Dialog */}
       <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
-        <DialogContent className="sm:max-w-md rounded-2xl border border-border-light shadow-2xl bg-white dark:bg-gray-800">
+        <DialogContent
+          showCloseButton={false}
+          className="sm:max-w-md rounded-2xl border border-border-light shadow-2xl bg-white dark:bg-gray-800"
+        >
           <DialogHeader>
             <div className="mx-auto w-16 h-16 rounded-full bg-linear-to-br from-red-100 to-red-200 dark:from-red-900/30 dark:to-red-800/30 flex items-center justify-center mb-6">
               <Trash2 className="h-8 w-8 text-red-600 dark:text-red-400" />
@@ -1048,7 +1051,7 @@ export default function ProgramDetailsPage() {
               variant="outline"
               onClick={() => setIsDeleteDialogOpen(false)}
               disabled={isUpdating}
-              className="flex-1 rounded-xl border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+              className="flex-1 rounded-xl border-gray-300 dark:border-gray-700 text-gray-700 close-hover"
             >
               {t("common.cancel")}
             </Button>
@@ -1064,7 +1067,10 @@ export default function ProgramDetailsPage() {
       </Dialog>
       {/* Edit Program Dialog */}
       <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
-        <DialogContent className="max-h-[90%] overflow-auto custom-scrollbar sm:max-w-[550px] rounded-2xl border border-border-light shadow-2xl bg-white dark:bg-gray-800">
+        <DialogContent
+          showCloseButton={false}
+          className="max-h-[90%] overflow-auto custom-scrollbar sm:max-w-[550px] rounded-2xl border border-border-light shadow-2xl bg-white dark:bg-gray-800"
+        >
           <DialogHeader className="flex flex-col space-y-2">
             <DialogTitle className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
               <div className="p-2 rounded-lg bg-btn">
@@ -1213,7 +1219,7 @@ export default function ProgramDetailsPage() {
               variant="outline"
               onClick={() => setIsEditDialogOpen(false)}
               disabled={isUpdating}
-              className="flex-1 rounded-xl border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+              className="flex-1 rounded-xl border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 close-hover"
             >
               {t("common.cancel")}
             </Button>
@@ -1233,7 +1239,10 @@ export default function ProgramDetailsPage() {
         open={isAddCourseDialogOpen}
         onOpenChange={setIsAddCourseDialogOpen}
       >
-        <DialogContent className="sm:max-w-[550px] rounded-2xl border border-border-light shadow-2xl bg-white dark:bg-gray-800">
+        <DialogContent
+          showCloseButton={false}
+          className="sm:max-w-[550px] rounded-2xl border border-border-light shadow-2xl bg-white dark:bg-gray-800"
+        >
           <DialogHeader className="flex flex-col space-y-2">
             <DialogTitle className="text-xl font-bold text-prim dark:text-sec flex items-center gap-3">
               <div className="p-2 rounded-lg bg-btn">
@@ -1366,7 +1375,7 @@ export default function ProgramDetailsPage() {
               variant="outline"
               onClick={() => setIsAddCourseDialogOpen(false)}
               disabled={isUpdating}
-              className="flex-1 rounded-xl border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+              className="flex-1 rounded-xl border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 close-hover"
             >
               {t("common.cancel")}
             </Button>
@@ -1413,7 +1422,7 @@ function ProgramDetailsSkeleton() {
           </div>
 
           {/* Stats Cards Skeleton */}
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
             {Array.from({ length: 3 }).map((_, i) => (
               <Skeleton
                 key={i}

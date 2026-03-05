@@ -155,7 +155,10 @@ const CreateUserDialog = ({
   };
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="h-[90%] overflow-auto custom-scrollbar sm:max-w-[650px] rounded-2xl border-0 shadow-2xl bg-white dark:bg-gray-800">
+      <DialogContent
+        showCloseButton={false}
+        className="h-[90%] overflow-auto custom-scrollbar sm:max-w-[650px] rounded-2xl border-0 shadow-2xl bg-white dark:bg-gray-800"
+      >
         <DialogHeader className="flex flex-col space-y-2">
           <DialogTitle className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
             <div className="p-2 rounded-lg bg-btn">
@@ -420,14 +423,14 @@ const CreateUserDialog = ({
               onOpenChange(false);
             }}
             disabled={isCreating}
-            className="flex-1 rounded-xl border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+            className="flex-1 rounded-xl border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 close-hover"
           >
             {t("common.cancel")}
           </Button>
           <Button
             onClick={handleCreateUser}
             disabled={isCreating}
-            className="flex-1 rounded-xl bg-btn text-white shadow-lg"
+            className="flex-1 rounded-xl bg-btn hover:opacity-80 text-white shadow-lg"
           >
             {isCreating ? t("common.creating") : t("createDialog.createButton")}
           </Button>

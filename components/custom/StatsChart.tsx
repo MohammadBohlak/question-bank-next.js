@@ -1,5 +1,6 @@
 "use client";
 
+import { useParams } from "next/navigation";
 import React from "react";
 import {
   PieChart,
@@ -9,7 +10,6 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-import { useTranslations } from "next-intl";
 
 // تعريف الألوان لتكون متوافقة مع التصميم السابق
 const COLORS = {
@@ -20,33 +20,40 @@ const COLORS = {
 };
 
 interface StatsChartProps {
-  users: any[] | undefined; // استبدل any بنوع User الخاص بك إذا كان متوفراً
+  users: any[] | undefined;
 }
 
 const StatsChart: React.FC<StatsChartProps> = ({ users }) => {
-  const t = useTranslations("usersManagement");
-
   // حساب البيانات
   const totalUsers = users?.length || 0;
   const activeUsers = users?.filter((u) => u.isActive).length || 0;
   const maleUsers = users?.filter((u) => u.gender === 0).length || 0;
   const femaleUsers = users?.filter((u) => u.gender === 1).length || 0;
   const inactiveUsers = totalUsers - activeUsers;
+  const { locale } = useParams();
+  // نصوص حسب اللغة
+  const isArabic = locale === "ar";
+
+  const texts = {
+    titleGender: isArabic ? "توزيع الجنس" : "Gender Distribution",
+    titleStatus: isArabic ? "حالة النشاط" : "Activity Status",
+    maleUsers: isArabic ? "المستخدمين الذكور" : "Male Users",
+    femaleUsers: isArabic ? "المستخدمات الإناث" : "Female Users",
+    activeUsers: isArabic ? "المستخدمين النشطين" : "Active Users",
+    inactiveUsers: isArabic ? "غير نشط" : "Inactive",
+    totalUsers: isArabic ? "إجمالي المستخدمين" : "Total Users",
+  };
 
   // تجهيز بيانات الرسم البياني للجنس
   const genderData = [
-    { name: t("stats.maleUsers"), value: maleUsers, color: COLORS.male },
-    { name: t("stats.femaleUsers"), value: femaleUsers, color: COLORS.female },
+    { name: texts.maleUsers, value: maleUsers, color: COLORS.male },
+    { name: texts.femaleUsers, value: femaleUsers, color: COLORS.female },
   ];
 
   // تجهيز بيانات الرسم البياني للنشاط
   const statusData = [
-    { name: t("stats.activeUsers"), value: activeUsers, color: COLORS.active },
-    {
-      name: t("stats.inactiveUsers") || "Inactive",
-      value: inactiveUsers,
-      color: COLORS.inactive,
-    },
+    { name: texts.activeUsers, value: activeUsers, color: COLORS.active },
+    { name: texts.inactiveUsers, value: inactiveUsers, color: COLORS.inactive },
   ];
 
   // مكون مخصص لعرض التفاصيل عند التحويم (Tooltip)
@@ -94,7 +101,7 @@ const StatsChart: React.FC<StatsChartProps> = ({ users }) => {
                 <p className="text-2xl font-bold text-gray-900 dark:text-white">
                   {totalUsers}
                 </p>
-                <p className="text-xs text-gray-500">{t("stats.totalUsers")}</p>
+                <p className="text-xs text-gray-500">{texts.totalUsers}</p>
               </div>
             </div>
           </div>
@@ -102,7 +109,7 @@ const StatsChart: React.FC<StatsChartProps> = ({ users }) => {
           {/* Legend & Details Area */}
           <div className="w-full space-y-4">
             <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2">
-              توزيع الجنس
+              {texts.titleGender}
             </h3>
 
             {/* Male Stat */}
@@ -113,7 +120,7 @@ const StatsChart: React.FC<StatsChartProps> = ({ users }) => {
                   style={{ backgroundColor: COLORS.male }}
                 ></span>
                 <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
-                  {t("stats.maleUsers")}
+                  {texts.maleUsers}
                 </span>
               </div>
               <span className="font-bold text-gray-900 dark:text-white">
@@ -129,7 +136,7 @@ const StatsChart: React.FC<StatsChartProps> = ({ users }) => {
                   style={{ backgroundColor: COLORS.female }}
                 ></span>
                 <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
-                  {t("stats.femaleUsers")}
+                  {texts.femaleUsers}
                 </span>
               </div>
               <span className="font-bold text-gray-900 dark:text-white">
@@ -171,7 +178,7 @@ const StatsChart: React.FC<StatsChartProps> = ({ users }) => {
                 <p className="text-2xl font-bold text-gray-900 dark:text-white">
                   {totalUsers}
                 </p>
-                <p className="text-xs text-gray-500">{t("stats.totalUsers")}</p>
+                <p className="text-xs text-gray-500">{texts.totalUsers}</p>
               </div>
             </div>
           </div>
@@ -179,7 +186,7 @@ const StatsChart: React.FC<StatsChartProps> = ({ users }) => {
           {/* Legend & Details Area */}
           <div className="w-full space-y-4">
             <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2">
-              حالة النشاط
+              {texts.titleStatus}
             </h3>
 
             {/* Active Stat */}
@@ -190,7 +197,7 @@ const StatsChart: React.FC<StatsChartProps> = ({ users }) => {
                   style={{ backgroundColor: COLORS.active }}
                 ></span>
                 <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
-                  {t("stats.activeUsers")}
+                  {texts.activeUsers}
                 </span>
               </div>
               <span className="font-bold text-gray-900 dark:text-white">
@@ -206,7 +213,7 @@ const StatsChart: React.FC<StatsChartProps> = ({ users }) => {
                   style={{ backgroundColor: COLORS.inactive }}
                 ></span>
                 <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
-                  غير نشط
+                  {texts.inactiveUsers}
                 </span>
               </div>
               <span className="font-bold text-gray-900 dark:text-white">

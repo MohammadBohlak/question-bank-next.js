@@ -314,7 +314,10 @@ const ProgramUsers = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-4xl max-h-[90vh] custom-scrollbar p-0 gap-0 overflow-hidden bg-white dark:bg-gray-800 rounded-2xl border-0 shadow-2xl">
+      <DialogContent
+        showCloseButton={false}
+        className="sm:max-w-4xl max-h-[90vh] custom-scrollbar p-0 gap-0 overflow-hidden bg-white dark:bg-gray-800 rounded-2xl border-0 shadow-2xl"
+      >
         {/* Header */}
         <DialogHeader className="p-6 border-b border-gray-200 dark:border-gray-800">
           <div className="flex items-center justify-between">
@@ -473,7 +476,7 @@ const ProgramUsers = ({
         </DialogHeader>
 
         {/* Content - Users List or Search Results */}
-        <div className="p-6 max-h-[calc(90vh-320px)] overflow-y-auto">
+        <div className="p-6 max-h-[calc(90vh-320px)] overflow-y-auto custom-scrollbar">
           {/* No search yet - Show current program users */}
           {!hasSearched && activeFields.length === 0 && (
             <>
@@ -499,7 +502,7 @@ const ProgramUsers = ({
               ) : (
                 <div className="text-center py-16">
                   <div className="w-20 h-20 rounded-full bg-linear-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center mx-auto mb-6">
-                    <Users className="h-10 w-10 text-gray-400 dark:text-gray-500" />
+                    <Users className="h-10 w-10 text-sec" />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
                     لا يوجد مستخدمين

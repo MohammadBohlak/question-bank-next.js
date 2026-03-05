@@ -180,12 +180,15 @@ const QuestionEditDialog: React.FC<QuestionEditDialogProps> = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-[700px] max-h-[85vh] overflow-y-auto custom-scrollbar border border-border-light dark:border-gray-700 bg-card-bg dark:bg-gray-800 shadow-xl rounded-2xl">
+      <DialogContent
+        showCloseButton={false}
+        className="sm:max-w-[700px] max-h-[85vh] overflow-y-auto custom-scrollbar border border-border-light dark:border-gray-700 bg-card-bg dark:bg-gray-800 shadow-xl rounded-2xl"
+      >
         {/* Header: Clean & Centered */}
         <DialogHeader className="border-b border-gray-100 dark:border-gray-700 pb-6">
-          <div className="flex items-center  gap-4">
-            <div className="p-2.5 rounded-full bg-sec">
-              <Edit className="w-5 h-5" />
+          <div className="flex items-center gap-4">
+            <div className="p-2.5 rounded-lg bg-btn">
+              <Edit className="w-5 h-5 text-white" />
             </div>
             <div className="rtl:text-right ltr:text-left">
               <DialogTitle>
