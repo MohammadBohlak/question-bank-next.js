@@ -179,8 +179,8 @@ const Sidebar = () => {
     <>
       <button
         className={cn(
-          "absolute right-0 ",
-          "bg-prim dark:bg-sec rounded-l-full p-1 text-white z-10",
+          "absolute rtl:right-0 ltr:left-0 ",
+          "bg-prim dark:bg-sec rtl:rounded-l-full ltr:rounded-r-full p-1 text-white z-10",
         )}
         onClick={() => {
           setCollapsed((p) => !p);
