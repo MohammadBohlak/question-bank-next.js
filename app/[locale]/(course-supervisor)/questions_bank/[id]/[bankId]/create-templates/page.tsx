@@ -62,8 +62,8 @@ import { getCourseBankDetails } from "@/store/supervisor";
 import { createTemplate } from "@/store/question";
 import { useTranslations } from "next-intl";
 import Background from "@/components/custom/Background";
-import MainTitle from "@/components/custom/texts/MainTitle";
-import TextMuted from "@/components/custom/texts/TextMuted";
+import MainTitle from "@/components/custom/common/texts/MainTitle";
+import TextMuted from "@/components/custom/common/texts/TextMuted";
 import { cn } from "@/lib/utils";
 interface Question {
   id: number;
@@ -811,7 +811,7 @@ export default function ExamTemplatePage() {
     <div className="min-h-screen bg-linear-to-br from-gray-50 via-white to-gray-100 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 p-4 md:p-6 overflow-x-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <Background className="relative">
+        <Background isHeader className="relative">
           <div className="w-full">
             <div className="flex flex-col space-y-4 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center gap-3">

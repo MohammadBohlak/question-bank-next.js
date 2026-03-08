@@ -21,13 +21,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+
 import {
   Search,
   Filter,
@@ -76,6 +70,8 @@ import { useParams } from "next/navigation";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import StatsCourses from "@/components/custom/questionsBankComponents/stats/StatsCourses";
 import CustomSelect from "@/components/custom/common/CustomSelect";
+import HeaderQB from "@/components/custom/sectionsPages/questionsBank/HeaderQB";
+import AddCourseDialogQB from "@/components/custom/sectionsPages/questionsBank/dialogs/AddCourseDialog";
 
 interface Course {
   id: number;
@@ -183,29 +179,6 @@ export default function CoursesPage() {
       }
     });
 
-  const handleAddCourse = async () => {
-    setLoading(true);
-    try {
-      await dispatch(createPrivateCourse(newCourse));
-      await dispatch(getCourses());
-      setIsAddDialogOpen(false);
-      setNewCourse({
-        nameAr: "",
-        nameEn: "",
-        code: "",
-        descriptionAr: "",
-        descriptionEn: "",
-      });
-      toast.success("تم إضافة المقرر بنجاح");
-    } catch (error: unknown) {
-      toast.error(
-        error instanceof Error ? error.message : "فشل في إضافة المقرر",
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
-
   const handleEditCourse = (course: Course) => {
     setSelectedCourse(course);
     setEditCourse({
@@ -259,35 +232,7 @@ export default function CoursesPage() {
   return (
     <div className="min-h-screen bg-bg dark:bg-gray-900" dir="rtl">
       <div className="w-full max-w-7xl mx-auto px-4 py-8">
-        {/* Header */}
-        <div className="mb-8">
-          <Background isHeader>
-            <div className="w-full flex flex-col md:flex-row md:items-center justify-between gap-6">
-              <div>
-                <MainTitle className="flex items-center gap-3">
-                  <div className="p-2 bg-btn rounded-lg">
-                    <Book className="w-6 h-6 text-white" strokeWidth={2.5} />
-                  </div>
-                  {t("title")}
-                </MainTitle>
-                <TextMuted className="mt-1">{t("description")}</TextMuted>
-              </div>
-              <Button
-                onClick={() => setIsAddDialogOpen(true)}
-                className="bg-btn hover:opacity-80 text-text-light font-arabic gap-1"
-                disabled={loading}
-              >
-                {loading ? (
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                ) : (
-                  <Plus className="h-4 w-4" />
-                )}
-                {t("addNewCourse")}
-              </Button>
-            </div>
-          </Background>
-        </div>
-
+        <HeaderQB t={t} setIsAddDialogOpen={setIsAddDialogOpen} />
         <StatsCourses />
         {/* Filters and Search */}
         <Background>
@@ -572,165 +517,11 @@ export default function CoursesPage() {
         )}
       </div>
 
-      {/* Add Course Dialog */}
-      <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
-        <DialogContent
-          showCloseButton={false}
-          className="sm:max-w-[550px] bg-card-bg dark:bg-gray-800 border border-border-light dark:border-gray-700"
-        >
-          <DialogHeader className="flex flex-col space-y-2">
-            <DialogTitle className="text-dark dark:text-white font-arabic flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-btn">
-                <Plus className="h-5 w-5 text-white" />
-              </div>
-              {t("addNewCourse")}
-            </DialogTitle>
-            <DialogDescription className="text-text-secondary dark:text-gray-300 font-arabic">
-              <TextMuted>{t("addCourseDescription")}</TextMuted>
-            </DialogDescription>
-          </DialogHeader>
-
-          <div className="space-y-5 py-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label
-                  htmlFor="newNameAr"
-                  className="text-dark dark:text-gray-300 font-arabic flex items-center gap-2"
-                >
-                  <FileText className="h-4 w-4 text-sec" strokeWidth={2.5} />
-                  {t("addCourseARName")}
-                </Label>
-                <Input
-                  id="newNameAr"
-                  value={newCourse.nameAr}
-                  onChange={(e) =>
-                    setNewCourse({ ...newCourse, nameAr: e.target.value })
-                  }
-                  placeholder={t("addCourseARName")}
-                  className="font-arabic text-right border border-border-light dark:border-gray-700 dark:bg-gray-900 dark:text-white"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label
-                  htmlFor="newNameEn"
-                  className="text-dark dark:text-gray-300 font-arabic flex items-center gap-2"
-                >
-                  <Globe className="h-4 w-4 text-sec" strokeWidth={2.5} />
-                  {t("addCourseENName")}
-                </Label>
-                <Input
-                  id="newNameEn"
-                  value={newCourse.nameEn}
-                  onChange={(e) =>
-                    setNewCourse({ ...newCourse, nameEn: e.target.value })
-                  }
-                  placeholder={t("addCourseENName")}
-                  className="border border-border-light dark:border-gray-700 dark:bg-gray-900 dark:text-white"
-                />
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <Label
-                htmlFor="newCode"
-                className="text-dark dark:text-gray-300 font-arabic flex items-center gap-2"
-              >
-                <Hash className="h-4 w-4 text-sec" strokeWidth={2.5} />
-                {t("addCourseCode")}
-              </Label>
-              <Input
-                id="newCode"
-                value={newCourse.code}
-                onChange={(e) =>
-                  setNewCourse({ ...newCourse, code: e.target.value })
-                }
-                placeholder={t("addCourseCode")}
-                className="font-mono border border-border-light dark:border-gray-700 dark:bg-gray-900 dark:text-white"
-              />
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label
-                  htmlFor="newDescAr"
-                  className="text-dark dark:text-gray-300 font-arabic flex items-center gap-2"
-                >
-                  <FileText className="h-4 w-4 text-sec" strokeWidth={2.5} />
-                  {t("addCourseARDescription")}
-                </Label>
-                <Textarea
-                  id="newDescAr"
-                  value={newCourse.descriptionAr}
-                  onChange={(e) =>
-                    setNewCourse({
-                      ...newCourse,
-                      descriptionAr: e.target.value,
-                    })
-                  }
-                  placeholder={t("addCourseARDescription")}
-                  className="min-h-20 font-arabic text-right border border-border-light dark:border-gray-700 dark:bg-gray-900 dark:text-white"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label
-                  htmlFor="newDescEn"
-                  className="text-dark dark:text-gray-300 font-arabic flex items-center gap-2"
-                >
-                  <Globe className="h-4 w-4 text-sec" strokeWidth={2.5} />
-                  {t("addCourseENDescription")}
-                </Label>
-                <Textarea
-                  id="newDescEn"
-                  value={newCourse.descriptionEn}
-                  onChange={(e) =>
-                    setNewCourse({
-                      ...newCourse,
-                      descriptionEn: e.target.value,
-                    })
-                  }
-                  placeholder={t("addCourseENDescription")}
-                  className="min-h-20 border border-border-light dark:border-gray-700 dark:bg-gray-900 dark:text-white"
-                />
-              </div>
-            </div>
-          </div>
-
-          <DialogFooter className="gap-3">
-            <Button
-              variant="outline"
-              onClick={() => setIsAddDialogOpen(false)}
-              className="border-border-light dark:border-gray-700 text-dark dark:text-gray-300 close-hover font-arabic"
-              disabled={loading}
-            >
-              <X className="h-4 w-4 ml-2" />
-              {t("cancel")}
-            </Button>
-            <Button
-              onClick={handleAddCourse}
-              disabled={
-                !newCourse.nameAr.trim() ||
-                !newCourse.nameEn.trim() ||
-                !newCourse.code.trim() ||
-                loading
-              }
-              className="bg-btn hover:opacity-80 text-white font-arabic"
-            >
-              {loading ? (
-                <>
-                  <Loader2 className="h-4 w-4 ml-2 animate-spin" />
-                  جاري المعالجة...
-                </>
-              ) : (
-                <>
-                  <Plus className="h-4 w-4 ml-2" />
-                  {t("addCourse")}
-                </>
-              )}
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-
+      <AddCourseDialogQB
+        isAddDialogOpen={isAddDialogOpen}
+        setIsAddDialogOpen={setIsAddDialogOpen}
+        t={t}
+      />
       <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
         <DialogContent
           showCloseButton={false}

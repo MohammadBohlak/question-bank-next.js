@@ -36,7 +36,7 @@ import { AppDispatch } from "@/store/store";
 import { updateQuestion, getUnconfirmedQuestions } from "@/store/question";
 import { Question } from "@/app/[locale]/(course-supervisor)/question_recheck/page";
 import { useParams } from "next/navigation";
-import TextMuted from "./custom/texts/TextMuted";
+import TextMuted from "./custom/common/texts/TextMuted";
 
 // Define types matching the API
 export interface QuestionOption {

@@ -58,8 +58,8 @@ import { getBankTemplates, deleteTemplate } from "@/store/question";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import Background from "@/components/custom/Background";
-import MainTitle from "@/components/custom/texts/MainTitle";
-import TextMuted from "@/components/custom/texts/TextMuted";
+import MainTitle from "@/components/custom/common/texts/MainTitle";
+import TextMuted from "@/components/custom/common/texts/TextMuted";
 
 interface Template {
   id: number;
@@ -330,7 +330,7 @@ export default function BankTemplatesPage() {
       <div className="max-w-7xl mx-auto px-4 py-6">
         <div className="mb-8">
           {/* Header */}
-          <Background className="relative">
+          <Background isHeader className="relative">
             <div className="w-full flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="flex items-center gap-3">
                 <Button

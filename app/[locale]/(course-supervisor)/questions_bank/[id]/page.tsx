@@ -76,8 +76,9 @@ import { RootState, AppDispatch } from "@/store/store";
 import { deleteBank } from "@/store/admin";
 import { useTranslations } from "next-intl";
 import Background from "@/components/custom/Background";
-import MainTitle from "@/components/custom/texts/MainTitle";
-import TextMuted from "@/components/custom/texts/TextMuted";
+import MainTitle from "@/components/custom/common/texts/MainTitle";
+import TextMuted from "@/components/custom/common/texts/TextMuted";
+import StatsCourseSupervisor from "@/components/custom/questionsBankComponents/stats/StatsCourseSupervisor";
 
 // Define interfaces based on your Redux slice
 interface QuestionLevel {
@@ -291,7 +292,7 @@ export default function CourseDetailsPage() {
       <div className="max-w-7xl mx-auto px-4 py-6">
         {/* Header */}
         <div className="mb-8">
-          <Background>
+          <Background isHeader>
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="flex items-center gap-3">
                 <Button
@@ -315,148 +316,11 @@ export default function CourseDetailsPage() {
           </Background>
 
           {/* Quick Stats */}
-          {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            <Card className="border border-border-light dark:border-gray-800 bg-white dark:bg-gray-900 hover:shadow-lg transition-all duration-200">
-              <CardContent className="pt-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="text-2xl font-bold text-gray-900 dark:text-white">
-                      {course.courseBanksCount}
-                    </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400 font-arabic">
-                      {t("courseBanks")}
-                    </div>
-                  </div>
-                  <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-                    <BookOpen className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border border-border-light dark:border-gray-800 bg-white dark:bg-gray-900 hover:shadow-lg transition-all duration-200">
-              <CardContent className="pt-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="text-2xl font-bold text-gray-900 dark:text-white">
-                      {totalQuestions}
-                    </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400 font-arabic">
-                      {t("totalQuestions")}
-                    </div>
-                  </div>
-                  <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-                    <FileText className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border border-border-light dark:border-gray-800 bg-white dark:bg-gray-900 hover:shadow-lg transition-all duration-200">
-              <CardContent className="pt-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="text-2xl font-bold text-gray-900 dark:text-white">
-                      {totalChapters}
-                    </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400 font-arabic">
-                      {t("totalChapters")}
-                    </div>
-                  </div>
-                  <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-                    <Layers className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border border-border-light dark:border-gray-800 bg-white dark:bg-gray-900 hover:shadow-lg transition-all duration-200">
-              <CardContent className="pt-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="text-2xl font-bold text-gray-900 dark:text-white">
-                      {activeBanksCount}
-                    </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400 font-arabic">
-                      {t("activeBanks")}
-                    </div>
-                  </div>
-                  <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-                    <CheckCircle className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div> */}
-          <div className="w-full mb-8">
-            <div className="bg-white dark:bg-gray-800/50 rounded-xl border border-border-light dark:border-gray-700 overflow-hidden shadow-sm">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y divide-border-light dark:divide-gray-700 md:divide-y-0 md:divide-x">
-                {/* Course Banks */}
-                <div className="p-6 hover:bg-blue-50/50 dark:hover:bg-blue-900/10 transition-colors duration-200">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="w-2.5 h-2.5 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]"></span>
-                    <span className="text-md font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400">
-                      {t("courseBanks")}
-                    </span>
-                  </div>
-                  <div className="flex items-baseline gap-2">
-                    <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
-                      {course.courseBanksCount}
-                    </h3>
-                    <BookOpen className="w-4 h-4 text-gray-300 dark:text-gray-600" />
-                  </div>
-                </div>
-
-                {/* Total Questions */}
-                <div className="p-6 hover:bg-purple-50/50 dark:hover:bg-purple-900/10 transition-colors duration-200">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="w-2.5 h-2.5 rounded-full bg-purple-500 shadow-[0_0_10px_rgba(168,85,247,0.5)]"></span>
-                    <span className="text-md font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400">
-                      {t("totalQuestions")}
-                    </span>
-                  </div>
-                  <div className="flex items-baseline gap-2">
-                    <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
-                      {totalQuestions}
-                    </h3>
-                    <FileText className="w-4 h-4 text-gray-300 dark:text-gray-600" />
-                  </div>
-                </div>
-
-                {/* Total Chapters */}
-                <div className="p-6 hover:bg-amber-50/50 dark:hover:bg-amber-900/10 transition-colors duration-200">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.5)]"></span>
-                    <span className="text-md font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400">
-                      {t("totalChapters")}
-                    </span>
-                  </div>
-                  <div className="flex items-baseline gap-2">
-                    <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
-                      {totalChapters}
-                    </h3>
-                    <Layers className="w-4 h-4 text-gray-300 dark:text-gray-600" />
-                  </div>
-                </div>
-
-                {/* Active Banks */}
-                <div className="p-6 hover:bg-emerald-50/50 dark:hover:bg-emerald-900/10 transition-colors duration-200">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]"></span>
-                    <span className="text-md font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400">
-                      {t("activeBanks")}
-                    </span>
-                  </div>
-                  <div className="flex items-baseline gap-2">
-                    <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
-                      {activeBanksCount}
-                    </h3>
-                    <CheckCircle className="w-4 h-4 text-gray-300 dark:text-gray-600" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <StatsCourseSupervisor
+            totalQuestions={totalQuestions}
+            totalChapters={totalChapters}
+            activeBanksCount={activeBanksCount}
+          />
         </div>
 
         {/* Main Content */}

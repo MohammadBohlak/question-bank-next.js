@@ -76,11 +76,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import MainTitle from "@/components/custom/texts/MainTitle";
-import TextMuted from "@/components/custom/texts/TextMuted";
+import MainTitle from "@/components/custom/common/texts/MainTitle";
+import TextMuted from "@/components/custom/common/texts/TextMuted";
 import Background from "@/components/custom/Background";
+import StatsProgram from "@/components/custom/universitiesManagementComponents/stats/StatsProgram";
 
-interface ProgramFormData {
+export interface ProgramFormData {
   id: number;
   nameAr: string;
   nameEn: string;
@@ -91,7 +92,7 @@ interface ProgramFormData {
   universityId: number;
 }
 
-interface CourseFormData {
+export interface CourseFormData {
   id?: number;
   nameAr: string;
   nameEn: string;
@@ -401,7 +402,7 @@ export default function ProgramDetailsPage() {
         {/* Header Section */}
 
         <div className="mb-8">
-          <Background className="relative">
+          <Background isHeader className="relative">
             <div className="w-full flex flex-col sm:flex-row justify-between items-center sm:items-center gap-6">
               <div className="flex items-ce nter gap-4">
                 <Button
@@ -480,62 +481,7 @@ export default function ProgramDetailsPage() {
             </div>
           </Background>
 
-          {/* Stats Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-            <Card className="rounded-2xl border border-border-light shadow-lg bg-linear-to-br from-white to-blue-50 dark:from-gray-800 dark:to-gray-900/50">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
-                      {program.coursesCount || 0}
-                    </div>
-                    <div className="text-sm font-medium text-gray-600 dark:text-gray-400">
-                      {t("stats.courses")}
-                    </div>
-                  </div>
-                  <div className="p-3 rounded-xl bg-linear-to-br from-blue-100 to-blue-200 dark:from-blue-900/40 dark:to-blue-800/40">
-                    <BookMarked className="h-6 w-6 text-blue-600 dark:text-blue-400" />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="rounded-2xl border border-border-light shadow-lg bg-linear-to-br from-white to-green-50 dark:from-gray-800 dark:to-gray-900/50">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
-                      {courses.filter((c) => c.isActive).length}
-                    </div>
-                    <div className="text-sm font-medium text-gray-600 dark:text-gray-400">
-                      {t("stats.activeCourses")}
-                    </div>
-                  </div>
-                  <div className="p-3 rounded-xl bg-linear-to-br from-green-100 to-green-200 dark:from-green-900/40 dark:to-green-800/40">
-                    <CheckCircle className="h-6 w-6 text-green-600 dark:text-green-400" />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="rounded-2xl border border-border-light shadow-lg bg-linear-to-br from-white to-purple-50 dark:from-gray-800 dark:to-gray-900/50">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
-                      {program.coursesBanksCount || 0}
-                    </div>
-                    <div className="text-sm font-medium text-gray-600 dark:text-gray-400">
-                      {t("stats.courseBanks")}
-                    </div>
-                  </div>
-                  <div className="p-3 rounded-xl bg-linear-to-br from-purple-100 to-purple-200 dark:from-purple-900/40 dark:to-purple-800/40">
-                    <FileText className="h-6 w-6 text-purple-600 dark:text-purple-400" />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+          <StatsProgram courses={courses} program={program} />
         </div>
 
         {/* Main Content */}

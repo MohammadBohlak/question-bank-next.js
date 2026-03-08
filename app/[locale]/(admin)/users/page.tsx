@@ -47,7 +47,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useParams } from "next/navigation";
-import MainTitle from "@/components/custom/texts/MainTitle";
+import MainTitle from "@/components/custom/common/texts/MainTitle";
 import StatsChart from "@/components/custom/StatsChart";
 
 // استيراد المكونات الجديدة المطلوبة
@@ -59,9 +59,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import TextMuted from "@/components/custom/texts/TextMuted";
+import TextMuted from "@/components/custom/common/texts/TextMuted";
 import { cn } from "@/lib/utils";
 import Background from "@/components/custom/Background";
+import StatsUsers from "@/components/custom/universitiesManagementComponents/stats/StatsUsers";
 
 interface AllUsers {
   id: number;
@@ -473,7 +474,7 @@ export default function UsersManagementPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {/* Header */}
           <div className="mb-8">
-            <Background className="">
+            <Background isHeader className="">
               <div className="w-full flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
                 <div className="flex items-center gap-4">
                   <Button
@@ -505,163 +506,8 @@ export default function UsersManagementPage() {
             </Background>
 
             {/* Stats Cards */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-              {[
-                {
-                  value: users?.length || 0,
-                  label: t("stats.totalUsers"),
-                  icon: Users,
-                  colors: {
-                    bg: "from-white to-blue-50 dark:from-gray-800 dark:to-gray-900/50",
-                    iconBox:
-                      "from-blue-100 to-blue-200 dark:from-blue-900/40 dark:to-blue-800/40",
-                    iconText: "text-blue-600 dark:text-blue-400",
-                    border:
-                      "border-r-blue-500 dark:border-r-blue-400 ltr:border-l-blue-500 dark:ltr:border-l-blue-400 ltr:border-r-border-light dark:ltr:border-r-border-light",
-                  },
-                },
-                {
-                  value: users?.filter((u) => u.isActive).length || 0,
-                  label: t("stats.activeUsers"),
-                  icon: UserIcon,
-                  colors: {
-                    bg: "from-white to-green-50 dark:from-gray-800 dark:to-gray-900/50",
-                    iconBox:
-                      "from-green-100 to-green-200 dark:from-green-900/40 dark:to-green-800/40",
-                    iconText: "text-green-600 dark:text-green-400",
-                    border:
-                      "border-r-green-500 dark:border-r-green-400 ltr:border-l-green-500 dark:ltr:border-l-green-400 ltr:border-r-border-light dark:ltr:border-r-border-light",
-                  },
-                },
-                {
-                  value: users?.filter((u) => u.gender === 0).length || 0,
-                  label: t("stats.maleUsers"),
-                  icon: UserIcon,
-                  colors: {
-                    bg: "from-white to-purple-50 dark:from-gray-800 dark:to-gray-900/50",
-                    iconBox:
-                      "from-purple-100 to-purple-200 dark:from-purple-900/40 dark:to-purple-800/40",
-                    iconText: "text-purple-600 dark:text-purple-400",
-                    border:
-                      "border-r-purple-500 dark:border-r-purple-400 ltr:border-l-purple-500 dark:ltr:border-l-purple-400 ltr:border-r-border-light dark:ltr:border-r-border-light",
-                  },
-                },
-                {
-                  value: users?.filter((u) => u.gender === 1).length || 0,
-                  label: t("stats.femaleUsers"),
-                  icon: UserIcon,
-                  colors: {
-                    bg: "from-white to-pink-50 dark:from-gray-800 dark:to-gray-900/50",
-                    iconBox:
-                      "from-pink-100 to-pink-200 dark:from-pink-900/40 dark:to-pink-800/40",
-                    iconText: "text-pink-600 dark:text-pink-400",
-                    border:
-                      "border-r-pink-500 dark:border-r-pink-400 ltr:border-l-pink-500 dark:ltr:border-l-pink-400 ltr:border-r-border-light dark:ltr:border-r-border-light",
-                  },
-                },
-              ].map((item, idx) => (
-                <Card
-                  key={idx}
-                  className={`
-        rounded-2xl border border-border-light shadow-lg bg-linear-to-br 
-        rtl:border-r-4 ltr:border-l-4 ${item.colors.border}
-        ${item.colors.bg}
-      `}
-                >
-                  <CardContent className="p-6">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
-                          {item.value}
-                        </div>
-                        <div className="text-sm font-medium text-gray-600 dark:text-gray-400">
-                          {item.label}
-                        </div>
-                      </div>
-                      <div
-                        className={`p-3 rounded-xl bg-linear-to-br ${item.colors.iconBox}`}
-                      >
-                        <item.icon
-                          className={`h-6 w-6 ${item.colors.iconText}`}
-                        />
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
 
-            {/* Compact Data List Style - Responsive Grid */}
-            <div className="w-full mb-8">
-              <div className="bg-white dark:bg-gray-800/50 rounded-xl border border-border-light dark:border-gray-700 overflow-hidden">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y divide-border-light dark:divide-gray-700 md:divide-y-0 md:divide-x">
-                  {/* Total Users */}
-                  <div className="p-6 hover:bg-gray-50 dark:hover:bg-gray-700/20 transition-colors duration-200">
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="w-2.5 h-2.5 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]"></span>
-                      <span className="text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400">
-                        {t("stats.totalUsers")}
-                      </span>
-                    </div>
-                    <div className="flex items-baseline gap-2">
-                      <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
-                        {users?.length || 0}
-                      </h3>
-                      <Users className="w-4 h-4 text-gray-300 dark:text-gray-600" />
-                    </div>
-                  </div>
-
-                  {/* Active Users */}
-                  <div className="p-6 hover:bg-gray-50 dark:hover:bg-gray-700/20 transition-colors duration-200">
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="w-2.5 h-2.5 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]"></span>
-                      <span className="text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400">
-                        {t("stats.activeUsers")}
-                      </span>
-                    </div>
-                    <div className="flex items-baseline gap-2">
-                      <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
-                        {users?.filter((u) => u.isActive).length || 0}
-                      </h3>
-                      <UserIcon className="w-4 h-4 text-gray-300 dark:text-gray-600" />
-                    </div>
-                  </div>
-
-                  {/* Male Users */}
-                  <div className="p-6 hover:bg-gray-50 dark:hover:bg-gray-700/20 transition-colors duration-200">
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="w-2.5 h-2.5 rounded-full bg-purple-500 shadow-[0_0_10px_rgba(168,85,247,0.5)]"></span>
-                      <span className="text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400">
-                        {t("stats.maleUsers")}
-                      </span>
-                    </div>
-                    <div className="flex items-baseline gap-2">
-                      <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
-                        {users?.filter((u) => u.gender === 0).length || 0}
-                      </h3>
-                      <UserIcon className="w-4 h-4 text-gray-300 dark:text-gray-600" />
-                    </div>
-                  </div>
-
-                  {/* Female Users */}
-                  <div className="p-6 hover:bg-gray-50 dark:hover:bg-gray-700/20 transition-colors duration-200">
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="w-2.5 h-2.5 rounded-full bg-pink-500 shadow-[0_0_10px_rgba(236,72,153,0.5)]"></span>
-                      <span className="text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400">
-                        {t("stats.femaleUsers")}
-                      </span>
-                    </div>
-                    <div className="flex items-baseline gap-2">
-                      <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
-                        {users?.filter((u) => u.gender === 1).length || 0}
-                      </h3>
-                      <UserIcon className="w-4 h-4 text-gray-300 dark:text-gray-600" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <StatsChart users={users} />
+            <StatsUsers users={users} />
           </div>
 
           {/* Main Content */}

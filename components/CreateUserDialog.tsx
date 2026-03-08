@@ -34,7 +34,7 @@ import {
   Phone,
   MapPin,
 } from "lucide-react";
-import TextMuted from "./custom/texts/TextMuted";
+import TextMuted from "./custom/common/texts/TextMuted";
 interface CreateUserFormData {
   nameAr: string;
   fatherNameAr: string;

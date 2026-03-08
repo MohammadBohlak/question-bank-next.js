@@ -56,9 +56,10 @@ import { createChapter, updateChapter, deleteChapter } from "@/store/chapter";
 import { deleteQuestion } from "@/store/question";
 import AddQuestion from "@/components/AddQuestion";
 import { useTranslations } from "next-intl";
-import MainTitle from "@/components/custom/texts/MainTitle";
+import MainTitle from "@/components/custom/common/texts/MainTitle";
 import Background from "@/components/custom/Background";
-import TextMuted from "@/components/custom/texts/TextMuted";
+import TextMuted from "@/components/custom/common/texts/TextMuted";
+import StatsBank from "@/components/custom/questionsBankComponents/stats/StatsBank";
 
 interface QuestionOption {
   id: number;
@@ -506,7 +507,7 @@ export default function BankDetailsPage() {
       {/* Header with linear */}
       <div className="relative overflow-hidden">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <Background>
+          <Background isHeader>
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
                 <Button
@@ -541,110 +542,8 @@ export default function BankDetailsPage() {
               </div>
             </div>
           </Background>
-          {/* Quick Stats with Glassmorphism */}
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            <div className="group relative overflow-hidden rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-border-light dark:border-gray-700 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="absolute inset-0 bg-linear-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="text-2xl font-bold bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                    {bank?.questionsCount || 0}
-                  </div>
-                  <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
-                    <FileText className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-                  </div>
-                </div>
-                <div className="text-sm text-gray-600 dark:text-gray-300 font-medium">
-                  {t("stats.totalQuestions")}
-                </div>
-              </div>
-            </div>
 
-            <div className="group relative overflow-hidden rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-border-light dark:border-gray-700 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="absolute inset-0 bg-linear-to-br from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="text-2xl font-bold bg-linear-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-                    {bank?.chaptersCount || 0}
-                  </div>
-                  <div className="p-2 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
-                    <Layers className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
-                  </div>
-                </div>
-                <div className="text-sm text-gray-600 dark:text-gray-300 font-medium">
-                  {t("stats.chapters")}
-                </div>
-              </div>
-            </div>
-
-            <div className="group relative overflow-hidden rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-border-light dark:border-gray-700 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="absolute inset-0 bg-linear-to-br from-green-500/5 to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="text-2xl font-bold bg-linear-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
-                    {stats.confirmed}
-                  </div>
-                  <div className="p-2 bg-green-50 dark:bg-green-900/20 rounded-xl">
-                    <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400" />
-                  </div>
-                </div>
-                <div className="text-sm text-gray-600 dark:text-gray-300 font-medium">
-                  {t("stats.confirmed")}
-                </div>
-              </div>
-            </div>
-
-            <div className="group relative overflow-hidden rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-border-light dark:border-gray-700 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="absolute inset-0 bg-linear-to-br from-emerald-500/5 to-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="text-2xl font-bold bg-linear-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">
-                    {stats.easy}
-                  </div>
-                  <div className="p-2 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl">
-                    <CheckCircle2 className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
-                  </div>
-                </div>
-                <div className="text-sm text-gray-600 dark:text-gray-300 font-medium">
-                  {t("stats.easy")}
-                </div>
-              </div>
-            </div>
-
-            <div className="group relative overflow-hidden rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-border-light dark:border-gray-700 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="absolute inset-0 bg-linear-to-br from-blue-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="text-2xl font-bold bg-linear-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                    {stats.medium}
-                  </div>
-                  <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
-                    <BarChart className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-                  </div>
-                </div>
-                <div className="text-sm text-gray-600 dark:text-gray-300 font-medium">
-                  {t("stats.medium")}
-                </div>
-              </div>
-            </div>
-
-            <div className="group relative overflow-hidden rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-border-light dark:border-gray-700 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="absolute inset-0 bg-linear-to-br from-amber-500/5 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="text-2xl font-bold bg-linear-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
-                    {stats.hard}
-                  </div>
-                  <div className="p-2 bg-amber-50 dark:bg-amber-900/20 rounded-xl">
-                    <AlertTriangle className="h-5 w-5 text-amber-600 dark:text-amber-400" />
-                  </div>
-                </div>
-                <div className="text-sm text-gray-600 dark:text-gray-300 font-medium">
-                  {t("stats.hard")}
-                </div>
-              </div>
-            </div>
-          </div>
+          <StatsBank bank={bank} stats={stats} />
         </div>
       </div>
 

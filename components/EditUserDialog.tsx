@@ -39,7 +39,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useParams } from "next/navigation";
-import TextMuted from "./custom/texts/TextMuted";
+import TextMuted from "./custom/common/texts/TextMuted";
 interface EditUserDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;

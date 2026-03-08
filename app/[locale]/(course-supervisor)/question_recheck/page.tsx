@@ -43,8 +43,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useTranslations } from "next-intl";
-import MainTitle from "@/components/custom/texts/MainTitle";
-import TextMuted from "@/components/custom/texts/TextMuted";
+import MainTitle from "@/components/custom/common/texts/MainTitle";
+import TextMuted from "@/components/custom/common/texts/TextMuted";
 import Background from "@/components/custom/Background";
 
 export interface Question {

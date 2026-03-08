@@ -34,7 +34,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import TextMuted from "./custom/texts/TextMuted";
+import TextMuted from "./custom/common/texts/TextMuted";
 
 interface UniversityUser {
   id: number;

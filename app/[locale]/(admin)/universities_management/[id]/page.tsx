@@ -64,11 +64,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useTranslations } from "next-intl";
-import TextMuted from "@/components/custom/texts/TextMuted";
+import TextMuted from "@/components/custom/common/texts/TextMuted";
 import Sidebar from "@/components/Sidebar";
 import Background from "@/components/custom/Background";
-import MainTitle from "@/components/custom/texts/MainTitle";
+import MainTitle from "@/components/custom/common/texts/MainTitle";
 import { cn } from "@/lib/utils";
+import StatsUniversity from "@/components/custom/universitiesManagementComponents/stats/StatsUniversity";
 
 interface ProgramFormData {
   nameAr: string;
@@ -255,7 +256,7 @@ export default function UniversityDetailsPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header Section */}
         <div className="mb-8">
-          <Background className="relative">
+          <Background isHeader className="relative">
             <div className=" w-full flex flex-col  sm:flex-row justify-between items-center sm:items-center gap-6">
               <div className="flex items-center gap-4">
                 <Link
@@ -297,227 +298,14 @@ export default function UniversityDetailsPage() {
               </div>
             </div>
           </Background>
-          {/* Stats Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-            {/* Card 1: Blue */}
-            <Card className="rounded-2xl border border-border-light shadow-lg bg-linear-to-br from-white to-blue-50 dark:from-gray-800 dark:to-gray-900/50 rtl:border-r-4 ltr:border-l-4 rtl:border-blue-500 ltr:border-l-blue-500">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
-                      {university.programsCount || 0}
-                    </div>
-                    <div className="text-sm font-medium text-gray-600 dark:text-gray-400">
-                      {t("stats.programs")}
-                    </div>
-                  </div>
-                  <div className="p-3 rounded-xl bg-linear-to-br from-blue-100 to-blue-200 dark:from-blue-900/40 dark:to-blue-800/40">
-                    <BookOpen className="h-6 w-6 text-blue-600 dark:text-blue-400" />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
 
-            {/* Card 2: Green */}
-            <Card className="rounded-2xl border border-border-light shadow-lg bg-linear-to-br from-white to-green-50 dark:from-gray-800 dark:to-gray-900/50 rtl:border-r-4 ltr:border-l-4 rtl:border-green-500 ltr:border-l-green-500">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
-                      {university.programs?.filter((p) => p.isActive).length ||
-                        0}
-                    </div>
-                    <div className="text-sm font-medium text-gray-600 dark:text-gray-400">
-                      {t("stats.activePrograms")}
-                    </div>
-                  </div>
-                  <div className="p-3 rounded-xl bg-linear-to-br from-green-100 to-green-200 dark:from-green-900/40 dark:to-green-800/40">
-                    <CheckCircle className="h-6 w-6 text-green-600 dark:text-green-400" />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Card 3: Purple */}
-            <Card className="rounded-2xl border border-border-light shadow-lg bg-linear-to-br from-white to-purple-50 dark:from-gray-800 dark:to-gray-900/50 rtl:border-r-4 ltr:border-l-4 rtl:border-purple-500 ltr:border-l-purple-500">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
-                      {university.programs?.reduce(
-                        (sum: number, p) => sum + (p.coursesCount || 0),
-                        0,
-                      )}
-                    </div>
-                    <div className="text-sm font-medium text-gray-600 dark:text-gray-400">
-                      {t("stats.totalCourses")}
-                    </div>
-                  </div>
-                  <div className="p-3 rounded-xl bg-linear-to-br from-purple-100 to-purple-200 dark:from-purple-900/40 dark:to-purple-800/40">
-                    <GraduationCap className="h-6 w-6 text-purple-600 dark:text-purple-400" />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Card 4: Orange */}
-            <Card className="rounded-2xl border border-border-light shadow-lg bg-linear-to-br from-white to-orange-50 dark:from-gray-800 dark:to-gray-900/50 rtl:border-r-4 ltr:border-l-4 rtl:border-orange-500 ltr:border-l-orange-500">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
-                      {university.programs?.reduce(
-                        (sum, p) => sum + (p.coursesBanksCount || 0),
-                        0,
-                      )}
-                    </div>
-                    <div className="text-sm font-medium text-gray-600 dark:text-gray-400">
-                      {t("stats.courseBanks")}
-                    </div>
-                  </div>
-                  <div className="p-3 rounded-xl bg-linear-to-br from-orange-100 to-orange-200 dark:from-orange-900/40 dark:to-orange-800/40">
-                    <FileText className="h-6 w-6 text-orange-600 dark:text-orange-400" />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+          <StatsUniversity university={university} />
         </div>
 
         {/* Main Content */}
         <div className="grid grid-cols-1 lg:grid-cols-1 gap-8">
           {/* University Info & Programs */}
           <div className="lg:col-span-2 space-y-8">
-            {/* University Details Card */}
-            {/* <Card className="rounded-2xl border border-border-light shadow-lg bg-white dark:bg-gray-800">
-                  <CardHeader className="pb-6 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-                    <div>
-                      <CardTitle className="text-xl font-bold flex items-center gap-3 text-gray-900 dark:text-white">
-                        <div className="p-2 rounded-lg bg-linear-to-br from-blue-100 to-blue-200 dark:from-blue-900/40 dark:to-blue-800/40">
-                          <Building className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-                        </div>
-                        {t("universityInfo.title")}
-                      </CardTitle>
-                      <Badge
-                        className={`gap-1.5 px-4 py-1.5 text-sm font-medium rounded-full ${
-                          university.isActive
-                            ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 border-green-500 dark:border-green-800"
-                            : "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 border-red-500 dark:border-red-800 "
-                        }`}
-                        variant="outline"
-                      >
-                        {university.isActive ? (
-                          <>
-                            <CheckCircle className="h-3.5 w-3.5" />
-                            {t("common.active")}
-                          </>
-                        ) : (
-                          <>
-                            <XCircle className="h-3.5 w-3.5" />
-                            {t("common.inactive")}
-                          </>
-                        )}
-                      </Badge>
-                      <CardDescription className="text-gray-600 dark:text-gray-400 mt-2">
-                        {t("universityInfo.description")}
-                      </CardDescription>
-                    </div>
-
-                    <Button
-                      variant="outline"
-                      onClick={() => setIsOpen(true)}
-                      className="gap-2 rounded-xl border-blue-500 dark:border-blue-700 text-blue-700 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 whitespace-nowrap"
-                    >
-                      <Users className="h-4 w-4" />
-                      عرض المستخدمين
-                    </Button>
-                  </CardHeader>
-
-                  <CardContent>
-                    <div className="grid grid-cols-1 md:grid-cols-4  gap-8">
-                      <div className="space-y-3">
-                        <Label className="text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
-                          <Hash className="h-4 w-4" />
-                          {t("universityInfo.fields.universityCode")}
-                        </Label>
-                        <div className="flex items-center gap-3">
-                          <code className="font-mono text-xl font-bold px-4 py-2 rounded-lg bg-linear-to-r from-gray-100 to-blue-100 dark:from-gray-900 dark:to-blue-900/30 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700">
-                            {university.code}
-                          </code>
-                          <Badge
-                            variant="outline"
-                            className="gap-1.5 px-3 py-1 border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20"
-                          >
-                            <Shield className="h-3.5 w-3.5" />
-                            {university.isPublic
-                              ? t("common.public")
-                              : t("common.private")}
-                          </Badge>
-                        </div>
-                      </div>
-
-                      <div className="space-y-3">
-                        <Label className="text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
-                          <MapPin className="h-4 w-4" />
-                          {t("universityInfo.fields.location")}
-                        </Label>
-                        <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-linear-to-r from-gray-50 to-blue-50 dark:from-gray-900/50 dark:to-blue-900/20 border border-gray-200 dark:border-gray-700">
-                          <div className="p-2 rounded-lg bg-white dark:bg-gray-800 shadow-sm">
-                            <MapPin className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-                          </div>
-                          <div>
-                            <div className="font-semibold text-gray-900 dark:text-white">
-                              {university.city}, {university.country}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="space-y-3">
-                        <Label className="text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
-                          <Globe className="h-4 w-4" />
-                          {t("universityInfo.fields.universityType")}
-                        </Label>
-                        <Badge
-                          className={`gap-2 px-4 py-2 text-base ${
-                            university.isPublic
-                              ? "bg-linear-to-r from-blue-500 to-blue-600 text-white"
-                              : "bg-linear-to-r from-gray-700 to-gray-800 text-white"
-                          }`}
-                        >
-                          {university.isPublic
-                            ? t("universityInfo.publicUniversity")
-                            : t("universityInfo.privateUniversity")}
-                        </Badge>
-                      </div>
-
-                      <div className="space-y-3">
-                        <Label className="text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
-                          <User className="h-4 w-4" />
-                          {t("universityInfo.fields.admin")}
-                        </Label>
-                        <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-linear-to-r from-gray-50 to-purple-50 dark:from-gray-900/50 dark:to-purple-900/20 border border-gray-200 dark:border-gray-700">
-                          <div className="p-2 rounded-lg bg-white dark:bg-gray-800 shadow-sm">
-                            <User className="h-5 w-5 text-purple-600 dark:text-purple-400" />
-                          </div>
-                          <div>
-                            <div className="font-semibold text-gray-900 dark:text-white">
-                              {university.admin || t("universityInfo.noAdmin")}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <UniversityUsers
-                        isOpen={isOpen}
-                        onClose={onClose}
-                        universityId={parseInt(id!)}
-                        universityName={university.nameAr}
-                        users={uniUsers || []}
-                        onUserAssigned={loadUniversityDetails}
-                      />
-                    </div>
-                  </CardContent>
-                </Card> */}
             {/* University Details Card */}
             <Card className="relative rounded-3xl border-2 border-transparent bg-white dark:bg-gray-800 shadow-lg overflow-hidden group pt-0">
               {/* Decorative Background Elements */}

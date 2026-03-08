@@ -80,9 +80,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import MainTitle from "@/components/custom/texts/MainTitle";
-import TextMuted from "@/components/custom/texts/TextMuted";
+import MainTitle from "@/components/custom/common/texts/MainTitle";
+import TextMuted from "@/components/custom/common/texts/TextMuted";
 import Background from "@/components/custom/Background";
+// import StatsCourse from "@/components/custom/questionsBankComponents/StatsCourse";
+import StatsCourse from "@/components/custom/universitiesManagementComponents/stats/StatsCourse";
 
 interface CourseBank {
   id: number;
@@ -460,7 +462,7 @@ export default function CourseDetailsPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header Section */}
         <div className="mb-8">
-          <Background className="relative">
+          <Background isHeader className="relative">
             <div className="w-full flex flex-col items-center sm:flex-row justify-between  sm:items-center gap-6">
               <div className="flex items-center gap-4">
                 <Button
@@ -539,79 +541,7 @@ export default function CourseDetailsPage() {
             </div>
           </Background>
           {/* Stats Cards */}
-          {/* <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-            <Card className="rounded-2xl border border-border-light shadow-lg bg-linear-to-br from-white to-blue-50 dark:from-gray-800 dark:to-gray-900/50">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
-                      {course.courseBanksCount}
-                    </div>
-                    <div className="text-sm font-medium text-gray-600 dark:text-gray-400">
-                      {t("stats.banks")}
-                    </div>
-                  </div>
-                  <div className="p-3 rounded-xl bg-linear-to-br from-blue-100 to-blue-200 dark:from-blue-900/40 dark:to-blue-800/40">
-                    <BookMarked className="h-6 w-6 text-blue-600 dark:text-blue-400" />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
 
-            <Card className="rounded-2xl border border-border-light shadow-lg bg-linear-to-br from-white to-green-50 dark:from-gray-800 dark:to-gray-900/50">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
-                      {totalQuestions}
-                    </div>
-                    <div className="text-sm font-medium text-gray-600 dark:text-gray-400">
-                      {t("stats.questions")}
-                    </div>
-                  </div>
-                  <div className="p-3 rounded-xl bg-linear-to-br from-green-100 to-green-200 dark:from-green-900/40 dark:to-green-800/40">
-                    <FileText className="h-6 w-6 text-green-600 dark:text-green-400" />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="rounded-2xl border border-border-light shadow-lg bg-linear-to-br from-white to-purple-50 dark:from-gray-800 dark:to-gray-900/50">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
-                      {totalChapters}
-                    </div>
-                    <div className="text-sm font-medium text-gray-600 dark:text-gray-400">
-                      {t("stats.chapters")}
-                    </div>
-                  </div>
-                  <div className="p-3 rounded-xl bg-linear-to-br from-purple-100 to-purple-200 dark:from-purple-900/40 dark:to-purple-800/40">
-                    <Layers className="h-6 w-6 text-purple-600 dark:text-purple-400" />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="rounded-2xl border border-border-light w-fit shadow-lg bg-linear-to-br from-white to-amber-50 dark:from-gray-800 dark:to-gray-900/50">
-              <CardContent className="p-6">
-                <div className="flex items-center  justify-between">
-                  <div>
-                    <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1 truncate">
-                      {course.program}
-                    </div>
-                    <div className="text-sm font-medium text-gray-600 dark:text-gray-400">
-                      {t("stats.program")}
-                    </div>
-                  </div>
-                  <div className="p-3 rounded-xl bg-linear-to-br from-amber-100 to-amber-200 dark:from-amber-900/40 dark:to-amber-800/40">
-                    <GraduationCap className="h-6 w-6 text-amber-600 dark:text-amber-400" />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div> */}
           {/* Stats Cards - Compact Data List Style */}
           <div className="w-full mb-8">
             <div className="bg-white dark:bg-gray-800/50 rounded-xl border border-border-light dark:border-gray-700 overflow-hidden shadow-lg">
@@ -682,6 +612,11 @@ export default function CourseDetailsPage() {
               </div>
             </div>
           </div>
+          <StatsCourse
+            course={course}
+            totalQuestions={totalQuestions}
+            totalChapters={totalChapters}
+          />
         </div>
 
         {/* Main Content */}

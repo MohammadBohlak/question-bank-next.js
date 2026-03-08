@@ -62,10 +62,12 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
-import MainTitle from "@/components/custom/texts/MainTitle";
-import TextMuted from "@/components/custom/texts/TextMuted";
+import MainTitle from "@/components/custom/common/texts/MainTitle";
+import TextMuted from "@/components/custom/common/texts/TextMuted";
 import Sidebar from "@/components/Sidebar";
 import Background from "@/components/custom/Background";
+import StatsUniversities from "@/components/custom/universitiesManagementComponents/stats/StatsUniversities";
+import CustomSelect from "@/components/custom/common/CustomSelect";
 interface UniversityFormData {
   id: number;
   nameAr: string;
@@ -515,110 +517,8 @@ export default function UniversitiesPage() {
           </Background>
 
           {/* Stats Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
-            {[
-              {
-                key: "total",
-                value: stats.total,
-                icon: Building,
-                colorVar: "primary",
-              },
-              {
-                key: "active",
-                value: stats.active,
-                icon: Shield,
-                colorVar: "success",
-              },
-              {
-                key: "inactive",
-                value: stats.inactive,
-                icon: Shield,
-                colorVar: "error",
-              },
-              {
-                key: "public",
-                value: stats.public,
-                icon: Users,
-                colorVar: "secondary",
-              },
-              {
-                key: "private",
-                value: stats.private,
-                icon: Globe,
-                colorVar: "dark",
-              },
-            ].map((item) => {
-              // تعريف الكلاسات كنصوص كاملة لضمان عمل Tailwind Purge
-              const colorMap = {
-                primary: {
-                  text: "text-primary dark:text-blue-300",
-                  bg: "bg-primary/20 dark:bg-blue-900/30",
-                  icon: "text-primary dark:text-blue-400",
-                  border:
-                    "border-r-primary dark:border-r-blue-400 ltr:border-r-0 rtl:border-r-0 ltr:border-l-primary dark:ltr:border-l-blue-400 rtl:border-r-primary dark:rtl:border-r-blue-400",
-                },
-                success: {
-                  text: "text-success dark:text-green-400",
-                  bg: "bg-success/20 dark:bg-green-900/30",
-                  icon: "text-success dark:text-green-400",
-                  border:
-                    "border-r-success dark:border-r-green-400 ltr:border-r-0 rtl:border-r-0 ltr:border-l-success dark:ltr:border-l-green-400 rtl:border-r-success dark:rtl:border-r-green-400",
-                },
-                error: {
-                  text: "text-error dark:text-red-400",
-                  bg: "bg-error/20 dark:bg-red-900/30",
-                  icon: "text-error dark:text-red-400",
-                  border:
-                    "border-r-error dark:border-r-red-400 ltr:border-r-0 rtl:border-r-0 ltr:border-l-error dark:ltr:border-l-red-400 rtl:border-r-error dark:rtl:border-r-red-400",
-                },
-                secondary: {
-                  text: "text-secondary dark:text-blue-400",
-                  bg: "bg-secondary/20 dark:bg-blue-900/30",
-                  icon: "text-secondary dark:text-blue-400",
-                  border:
-                    "border-r-secondary dark:border-r-blue-400 ltr:border-r-0 rtl:border-r-0 ltr:border-l-secondary dark:ltr:border-l-blue-400 rtl:border-r-secondary dark:rtl:border-r-blue-400",
-                },
-                dark: {
-                  text: "text-dark dark:text-gray-200",
-                  bg: "bg-dark/20 dark:bg-gray-700",
-                  icon: "text-dark dark:text-gray-300",
-                  border:
-                    "border-r-dark dark:border-r-gray-300 ltr:border-r-0 rtl:border-r-0 ltr:border-l-dark dark:ltr:border-l-gray-300 rtl:border-r-dark dark:rtl:border-r-gray-300",
-                },
-              };
 
-              const currentColors =
-                colorMap[item.colorVar as keyof typeof colorMap];
-
-              return (
-                <div
-                  key={item.key}
-                  className={`
-          rounded-xl p-5 shadow-sm bg-card-bg dark:bg-gray-800
-          border border-border-light dark:border-gray-700
-          border-r-4 rtl:border-r-4 ltr:border-r-0 ltr:border-l-4
-          ${currentColors.border}
-        `}
-                >
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <div
-                        className={`text-2xl font-bold ${currentColors.text}`}
-                      >
-                        {item.value}
-                      </div>
-                      <div className="text-sm text-text dark:text-gray-300">
-                        {t(`stats.${item.key}`)}
-                      </div>
-                    </div>
-                    <div className={`p-2 rounded-lg ${currentColors.bg}`}>
-                      <item.icon className={`h-5 w-5 ${currentColors.icon}`} />
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          <StatsUniversities stats={stats} />
           {/* Filters and Controls */}
           <Background>
             <div className="w-full ">
@@ -642,63 +542,32 @@ export default function UniversitiesPage() {
                 <div className="flex flex-wrap gap-3">
                   <div className="flex flex-col space-y-2">
                     <TextMuted>نوع الجامعة</TextMuted>
-                    <Select value={typeFilter} onValueChange={setTypeFilter}>
-                      <SelectTrigger className="w-[140px] rounded-xl">
-                        <SelectValue placeholder={t("filters.type")} />
-                      </SelectTrigger>
-                      <SelectContent className="bg-card-bg  dark:bg-gray-800 border-border-light dark:border-gray-700">
-                        <SelectItem
-                          value="all"
-                          // className="text-text dark:text-gray-300 focus:bg-bg-alt dark:focus:bg-gray-700"
-                        >
-                          {t("filters.allTypes")}
-                        </SelectItem>
-                        <SelectItem
-                          value="public"
-                          // className="text-text dark:text-gray-300 focus:bg-bg-alt dark:focus:bg-gray-700"
-                        >
-                          {t("filters.public")}
-                        </SelectItem>
-                        <SelectItem
-                          value="private"
-                          // className="text-text dark:text-gray-300 focus:bg-bg-alt dark:focus:bg-gray-700"
-                        >
-                          {t("filters.private")}
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
+
+                    <CustomSelect
+                      value={typeFilter}
+                      onChange={setTypeFilter}
+                      options={[
+                        { value: "all", label: t("filters.allTypes") },
+                        { value: "public", label: t("filters.public") },
+                        { value: "private", label: t("filters.private") },
+                      ]}
+                      placeholder={t("filters.type")}
+                      className="rounded-xl" // للحفاظ على التصميم الدائري
+                    />
                   </div>
                   <div className="flex flex-col space-y-2">
                     <TextMuted>الحالة </TextMuted>
-
-                    <Select
+                    <CustomSelect
                       value={statusFilter}
-                      onValueChange={setStatusFilter}
-                    >
-                      <SelectTrigger className="w-[140px] h-11 rounded-xl">
-                        <SelectValue placeholder={t("filters.status")} />
-                      </SelectTrigger>
-                      <SelectContent className="bg-card-bg dark:bg-gray-800 border-border-light dark:border-gray-700">
-                        <SelectItem
-                          value="all"
-                          // className="text-text dark:text-gray-300 focus:bg-bg-alt dark:focus:bg-gray-700"
-                        >
-                          {t("filters.allStatuses")}
-                        </SelectItem>
-                        <SelectItem
-                          value="active"
-                          // className="text-text dark:text-gray-300 focus:bg-bg-alt dark:focus:bg-gray-700"
-                        >
-                          {t("filters.active")}
-                        </SelectItem>
-                        <SelectItem
-                          value="inactive"
-                          // className="text-text dark:text-gray-300 focus:bg-bg-alt dark:focus:bg-gray-700"
-                        >
-                          {t("filters.inactive")}
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
+                      onChange={setStatusFilter}
+                      options={[
+                        { value: "all", label: t("filters.allStatuses") },
+                        { value: "active", label: t("filters.active") },
+                        { value: "inactive", label: t("filters.inactive") },
+                      ]}
+                      placeholder={t("filters.status")}
+                      className="w-[140px] h-11 rounded-xl"
+                    />
                   </div>
                   <div className="flex items-end">
                     <div> </div>
