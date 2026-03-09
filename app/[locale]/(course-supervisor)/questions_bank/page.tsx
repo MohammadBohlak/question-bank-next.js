@@ -1,14 +1,8 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "@/store/store";
-import {
-  getCourses,
-  createPrivateCourse,
-  updatePrivateCourse,
-  deletePrivateCourse,
-} from "@/store/supervisor";
+import { getCourses } from "@/store/supervisor";
 import {
   Card,
   CardContent,
@@ -22,13 +16,6 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import {
   Search,
   Filter,
   BookOpen,
@@ -37,35 +24,16 @@ import {
   Plus,
   Edit,
   Trash2,
-  Eye,
   GraduationCap,
   Building,
   Loader2,
-  X,
-  FileText,
   Hash,
-  Save,
-  Power,
   CheckCircle,
   XCircle,
   ArrowLeft,
   ArrowRight,
-  BookMarked,
-  Library,
   Book,
-  ChevronDown,
 } from "lucide-react";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Switch } from "@/components/ui/switch";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
@@ -73,9 +41,11 @@ import MainTitle from "@/components/custom/common/texts/MainTitle";
 import TextMuted from "@/components/custom/common/texts/TextMuted";
 import Background from "@/components/custom/Background";
 import { useParams } from "next/navigation";
-import * as Collapsible from "@radix-ui/react-collapsible";
 import StatsCourses from "@/components/custom/questionsBankComponents/stats/StatsCourses";
 import CustomSelect from "@/components/custom/common/CustomSelect";
+import AddCourseDialogQB from "@/components/custom/common/questionsBank/dialogs/AddCourseDialogQB";
+import EditCourseDialogQB from "@/components/custom/common/questionsBank/dialogs/EditCourseDialogQB";
+import CourseDeleteDialogQB from "@/components/custom/common/questionsBank/dialogs/CourseDeleteDialogQB";
 
 interface Course {
   id: number;
@@ -115,13 +85,6 @@ export default function CoursesPage() {
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [loading, setLoading] = useState(true); // Changed from false to true
   const [isLoading, setIsLoading] = useState(true); // Changed from false to true
-  const [newCourse, setNewCourse] = useState({
-    nameAr: "",
-    nameEn: "",
-    code: "",
-    descriptionAr: "",
-    descriptionEn: "",
-  });
   const [editCourse, setEditCourse] = useState({
     id: 0,
     nameAr: "",
@@ -183,63 +146,15 @@ export default function CoursesPage() {
       }
     });
 
-  const handleAddCourse = async () => {
-    setLoading(true);
-    try {
-      await dispatch(createPrivateCourse(newCourse));
-      await dispatch(getCourses());
-      setIsAddDialogOpen(false);
-      setNewCourse({
-        nameAr: "",
-        nameEn: "",
-        code: "",
-        descriptionAr: "",
-        descriptionEn: "",
-      });
-      toast.success("تم إضافة المقرر بنجاح");
-    } catch (error: unknown) {
-      toast.error(
-        error instanceof Error ? error.message : "فشل في إضافة المقرر",
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
-
   const handleEditCourse = (course: Course) => {
     setSelectedCourse(course);
-    setEditCourse({
-      id: course.id,
-      nameAr: course.nameAr,
-      nameEn: course.nameEn,
-      code: course.code,
-      descriptionAr: course.descriptionAr,
-      descriptionEn: course.descriptionEn,
-      isActive: course.isActive,
-    });
+    setEditCourse({ ...course });
     setIsEditDialogOpen(true);
   };
 
   const handleDeleteCourse = (course: Course) => {
     setSelectedCourse(course);
     setIsDeleteDialogOpen(true);
-  };
-
-  const confirmDelete = async () => {
-    setLoading(true);
-    try {
-      const res = await dispatch(
-        deletePrivateCourse(selectedCourse!.id),
-      ).unwrap();
-      toast.success(res.message);
-      await dispatch(getCourses());
-      setIsDeleteDialogOpen(false);
-      setSelectedCourse(null);
-    } catch (error: unknown) {
-      toast.error(error instanceof Error ? error.message : "فشل في حذف المقرر");
-    } finally {
-      setLoading(false);
-    }
   };
 
   // Show spinner while loading
@@ -378,7 +293,7 @@ export default function CoursesPage() {
           </div>
         ) : filteredCourses.length === 0 ? (
           <div className="text-center py-16 border border-dashed border-border-light-light dark:border-gray-700 rounded-xl bg-card-bg dark:bg-gray-800">
-            <BookOpen className="h-16 w-16 text-text-secondary/60 dark:text-gray-600 mx-auto mb-4" />
+            <BookOpen className="h-16 w-16 text-sec dark:text-gray-600 mx-auto mb-4" />
             <h3 className="text-lg font-semibold text-dark dark:text-white mb-2 font-arabic">
               {t("noCourses")}
             </h3>
@@ -389,10 +304,10 @@ export default function CoursesPage() {
             </p>
             <Button
               onClick={() => setIsAddDialogOpen(true)}
-              className="bg-primary hover:bg-dark dark:bg-blue-700 dark:hover:bg-blue-800 text-text-light font-arabic"
+              className="gap-1 bg-prim hover:bg-dark dark:bg-blue-700 dark:hover:bg-blue-800 text-text-light font-arabic"
               disabled={loading}
             >
-              <Plus className="h-4 w-4 ml-2" />
+              <Plus className="h-4 w-4" />
               {t("addNewCourse")}
             </Button>
           </div>
@@ -572,413 +487,25 @@ export default function CoursesPage() {
         )}
       </div>
 
-      {/* Add Course Dialog */}
-      <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
-        <DialogContent
-          showCloseButton={false}
-          className="sm:max-w-[550px] bg-card-bg dark:bg-gray-800 border border-border-light dark:border-gray-700"
-        >
-          <DialogHeader className="flex flex-col space-y-2">
-            <DialogTitle className="text-dark dark:text-white font-arabic flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-btn">
-                <Plus className="h-5 w-5 text-white" />
-              </div>
-              {t("addNewCourse")}
-            </DialogTitle>
-            <DialogDescription className="text-text-secondary dark:text-gray-300 font-arabic">
-              <TextMuted>{t("addCourseDescription")}</TextMuted>
-            </DialogDescription>
-          </DialogHeader>
+      <AddCourseDialogQB
+        t={t}
+        open={isAddDialogOpen}
+        setOpen={setIsAddDialogOpen}
+      />
 
-          <div className="space-y-5 py-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label
-                  htmlFor="newNameAr"
-                  className="text-dark dark:text-gray-300 font-arabic flex items-center gap-2"
-                >
-                  <FileText className="h-4 w-4 text-sec" strokeWidth={2.5} />
-                  {t("addCourseARName")}
-                </Label>
-                <Input
-                  id="newNameAr"
-                  value={newCourse.nameAr}
-                  onChange={(e) =>
-                    setNewCourse({ ...newCourse, nameAr: e.target.value })
-                  }
-                  placeholder={t("addCourseARName")}
-                  className="font-arabic text-right border border-border-light dark:border-gray-700 dark:bg-gray-900 dark:text-white"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label
-                  htmlFor="newNameEn"
-                  className="text-dark dark:text-gray-300 font-arabic flex items-center gap-2"
-                >
-                  <Globe className="h-4 w-4 text-sec" strokeWidth={2.5} />
-                  {t("addCourseENName")}
-                </Label>
-                <Input
-                  id="newNameEn"
-                  value={newCourse.nameEn}
-                  onChange={(e) =>
-                    setNewCourse({ ...newCourse, nameEn: e.target.value })
-                  }
-                  placeholder={t("addCourseENName")}
-                  className="border border-border-light dark:border-gray-700 dark:bg-gray-900 dark:text-white"
-                />
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <Label
-                htmlFor="newCode"
-                className="text-dark dark:text-gray-300 font-arabic flex items-center gap-2"
-              >
-                <Hash className="h-4 w-4 text-sec" strokeWidth={2.5} />
-                {t("addCourseCode")}
-              </Label>
-              <Input
-                id="newCode"
-                value={newCourse.code}
-                onChange={(e) =>
-                  setNewCourse({ ...newCourse, code: e.target.value })
-                }
-                placeholder={t("addCourseCode")}
-                className="font-mono border border-border-light dark:border-gray-700 dark:bg-gray-900 dark:text-white"
-              />
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label
-                  htmlFor="newDescAr"
-                  className="text-dark dark:text-gray-300 font-arabic flex items-center gap-2"
-                >
-                  <FileText className="h-4 w-4 text-sec" strokeWidth={2.5} />
-                  {t("addCourseARDescription")}
-                </Label>
-                <Textarea
-                  id="newDescAr"
-                  value={newCourse.descriptionAr}
-                  onChange={(e) =>
-                    setNewCourse({
-                      ...newCourse,
-                      descriptionAr: e.target.value,
-                    })
-                  }
-                  placeholder={t("addCourseARDescription")}
-                  className="min-h-20 font-arabic text-right border border-border-light dark:border-gray-700 dark:bg-gray-900 dark:text-white"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label
-                  htmlFor="newDescEn"
-                  className="text-dark dark:text-gray-300 font-arabic flex items-center gap-2"
-                >
-                  <Globe className="h-4 w-4 text-sec" strokeWidth={2.5} />
-                  {t("addCourseENDescription")}
-                </Label>
-                <Textarea
-                  id="newDescEn"
-                  value={newCourse.descriptionEn}
-                  onChange={(e) =>
-                    setNewCourse({
-                      ...newCourse,
-                      descriptionEn: e.target.value,
-                    })
-                  }
-                  placeholder={t("addCourseENDescription")}
-                  className="min-h-20 border border-border-light dark:border-gray-700 dark:bg-gray-900 dark:text-white"
-                />
-              </div>
-            </div>
-          </div>
-
-          <DialogFooter className="gap-3">
-            <Button
-              variant="outline"
-              onClick={() => setIsAddDialogOpen(false)}
-              className="border-border-light dark:border-gray-700 text-dark dark:text-gray-300 close-hover font-arabic"
-              disabled={loading}
-            >
-              <X className="h-4 w-4 ml-2" />
-              {t("cancel")}
-            </Button>
-            <Button
-              onClick={handleAddCourse}
-              disabled={
-                !newCourse.nameAr.trim() ||
-                !newCourse.nameEn.trim() ||
-                !newCourse.code.trim() ||
-                loading
-              }
-              className="bg-btn hover:opacity-80 text-white font-arabic"
-            >
-              {loading ? (
-                <>
-                  <Loader2 className="h-4 w-4 ml-2 animate-spin" />
-                  جاري المعالجة...
-                </>
-              ) : (
-                <>
-                  <Plus className="h-4 w-4 ml-2" />
-                  {t("addCourse")}
-                </>
-              )}
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-
-      <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
-        <DialogContent
-          showCloseButton={false}
-          className="sm:max-w-[550px] bg-card-bg dark:bg-gray-800 border border-border-light dark:border-gray-700"
-        >
-          <DialogHeader className="flex flex-col space-y-2">
-            <DialogTitle className="text-dark dark:text-white font-arabic flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-btn">
-                <Edit className="h-5 w-5 text-white" />
-              </div>
-              {t("editCourse")}
-            </DialogTitle>
-            <DialogDescription>
-              <TextMuted>{t("editCourseDescription")}</TextMuted>
-            </DialogDescription>
-          </DialogHeader>
-          {selectedCourse && (
-            <div className="space-y-5 py-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label
-                    htmlFor="editNameAr"
-                    className="text-dark dark:text-gray-300 font-arabic flex items-center gap-2"
-                  >
-                    <FileText className="h-4 w-4 text-sec" strokeWidth={2.5} />
-                    {t("addCourseARName")}
-                  </Label>
-                  <Input
-                    id="editNameAr"
-                    value={editCourse.nameAr}
-                    onChange={(e) =>
-                      setEditCourse({ ...editCourse, nameAr: e.target.value })
-                    }
-                    className="font-arabic text-right border border-border-light dark:border-gray-700 dark:bg-gray-900 dark:text-white"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label
-                    htmlFor="editNameEn"
-                    className="text-dark dark:text-gray-300 font-arabic flex items-center gap-2"
-                  >
-                    <Globe className="h-4 w-4 text-sec" strokeWidth={2.5} />
-                    {t("addCourseENName")}
-                  </Label>
-                  <Input
-                    id="editNameEn"
-                    value={editCourse.nameEn}
-                    onChange={(e) =>
-                      setEditCourse({ ...editCourse, nameEn: e.target.value })
-                    }
-                    className="border border-border-light dark:border-gray-700 dark:bg-gray-900 dark:text-white"
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <Label
-                  htmlFor="editCode"
-                  className="text-dark dark:text-gray-300 font-arabic flex items-center gap-2"
-                >
-                  <Hash className="h-4 w-4 text-sec" strokeWidth={2.5} />
-                  {t("addCourseCode")}
-                </Label>
-                <Input
-                  id="editCode"
-                  value={editCourse.code}
-                  onChange={(e) =>
-                    setEditCourse({ ...editCourse, code: e.target.value })
-                  }
-                  className="font-mono border border-border-light dark:border-gray-700 dark:bg-gray-900 dark:text-white"
-                />
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label
-                    htmlFor="editDescAr"
-                    className="text-dark dark:text-gray-300 font-arabic flex items-center gap-2"
-                  >
-                    <FileText className="h-4 w-4 text-sec" strokeWidth={2.5} />
-                    {t("addCourseARDescription")}
-                  </Label>
-                  <Textarea
-                    id="editDescAr"
-                    value={editCourse.descriptionAr}
-                    onChange={(e) =>
-                      setEditCourse({
-                        ...editCourse,
-                        descriptionAr: e.target.value,
-                      })
-                    }
-                    className="font-arabic text-right min-h-20 border border-border-light dark:border-gray-700 dark:bg-gray-900 dark:text-white"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label
-                    htmlFor="editDescEn"
-                    className="text-dark dark:text-gray-300 font-arabic flex items-center gap-2"
-                  >
-                    <Globe className="h-4 w-4 text-sec" strokeWidth={2.5} />
-                    {t("addCourseENDescription")}
-                  </Label>
-                  <Textarea
-                    id="editDescEn"
-                    value={editCourse.descriptionEn || ""}
-                    onChange={(e) =>
-                      setEditCourse({
-                        ...editCourse,
-                        descriptionEn: e.target.value,
-                      })
-                    }
-                    className="min-h-20 border border-border-light dark:border-gray-700 dark:bg-gray-900 dark:text-white"
-                  />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <Label
-                  htmlFor="course-status-switch"
-                  className="text-dark dark:text-gray-300 font-arabic flex items-center gap-2"
-                >
-                  <Power className="h-4 w-4 text-sec" strokeWidth={2.5} />
-                  {t("courseStatus")}
-                </Label>
-                <div className="flex items-center gap-3 p-4 rounded-xl bg-bg-alt dark:bg-gray-700/50 border border-border-light dark:border-gray-700">
-                  <Switch
-                    id="course-status-switch"
-                    checked={editCourse.isActive}
-                    onCheckedChange={(checked) =>
-                      setEditCourse({ ...editCourse, isActive: checked })
-                    }
-                    className="data-[state=checked]:bg-success data-[state=unchecked]:bg-border-light dark:data-[state=checked]:bg-green-700 dark:data-[state=unchecked]:bg-gray-600"
-                    dir="ltr"
-                    disabled={loading}
-                  />
-                  <span className="font-medium dark:text-gray-300">
-                    {editCourse.isActive ? t("active") : t("inactive")}
-                  </span>
-                </div>
-              </div>
-            </div>
-          )}
-
-          <DialogFooter className="gap-3">
-            <Button
-              variant="outline"
-              onClick={() => setIsEditDialogOpen(false)}
-              className="border-border-light dark:border-gray-700 text-dark dark:text-gray-300 close-hover font-arabic"
-              disabled={loading}
-            >
-              <X className="h-4 w-4 ml-2" />
-              {t("cancel")}
-            </Button>
-            <Button
-              onClick={async () => {
-                setLoading(true);
-                try {
-                  await dispatch(updatePrivateCourse(editCourse));
-                  await dispatch(getCourses());
-                  setIsEditDialogOpen(false);
-                  toast.success("تم تحديث المقرر بنجاح");
-                } catch (error: unknown) {
-                  toast.error(
-                    error instanceof Error
-                      ? error.message
-                      : "فشل في تحديث المقرر",
-                  );
-                } finally {
-                  setLoading(false);
-                }
-              }}
-              disabled={
-                !editCourse.nameAr.trim() ||
-                !editCourse.nameEn.trim() ||
-                !editCourse.code.trim() ||
-                loading
-              }
-              className="bg-btn hover:opacity-80 text-white font-arabic"
-            >
-              {loading ? (
-                <>
-                  <Loader2 className="h-4 w-4 ml-2 animate-spin" />
-                  جاري الحفظ...
-                </>
-              ) : (
-                <>
-                  <Save className="h-4 w-4 ml-2" />
-                  {t("saveChanges")}
-                </>
-              )}
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-      {/* Delete Confirmation Dialog */}
-      <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
-        <DialogContent
-          showCloseButton={false}
-          className="sm:max-w-[425px] bg-card-bg dark:bg-gray-800 border border-error dark:border-red-700"
-        >
-          <DialogHeader>
-            <DialogTitle className="text-dark dark:text-white font-arabic">
-              {t("deleteCourse")}
-            </DialogTitle>
-            <DialogDescription>
-              <TextMuted>
-                {t("deleteConfirmation", {
-                  name: selectedCourse?.nameAr || "",
-                })}
-              </TextMuted>
-            </DialogDescription>
-          </DialogHeader>
-          <div className="flex items-center gap-2 p-3 bg-error/10 dark:bg-red-900/30 rounded-lg">
-            <Trash2 className="h-4 w-4 text-error dark:text-red-400" />
-            <p className="text-sm text-error dark:text-red-400 font-arabic">
-              {t("deleteWarning", {
-                count: selectedCourse?.courseBanksCount || 0,
-              })}
-            </p>
-          </div>
-          <DialogFooter>
-            <Button
-              variant="outline"
-              onClick={() => setIsDeleteDialogOpen(false)}
-              className="border-border-light dark:border-gray-700 text-dark dark:text-gray-300 close-hover font-arabic"
-              disabled={loading}
-            >
-              {t("cancel")}
-            </Button>
-            <Button
-              variant="destructive"
-              onClick={confirmDelete}
-              className="bg-error hover:bg-error/80 dark:bg-red-700 dark:hover:bg-red-800 text-text-light font-arabic"
-              disabled={loading}
-            >
-              {loading ? (
-                <>
-                  <Loader2 className="h-4 w-4 ml-2 animate-spin" />
-                  جاري الحذف...
-                </>
-              ) : (
-                t("deleteCourse")
-              )}
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      <EditCourseDialogQB
+        t={t}
+        open={isEditDialogOpen}
+        setOpen={setIsEditDialogOpen}
+        selectedCourse={selectedCourse}
+      />
+      <CourseDeleteDialogQB
+        t={t}
+        open={isDeleteDialogOpen}
+        setOpen={setIsDeleteDialogOpen}
+        selectedCourse={selectedCourse}
+        setSelectedCourse={setSelectedCourse}
+      />
     </div>
   );
 }

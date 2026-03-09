@@ -29,15 +29,15 @@ interface NewCourseData {
 
 interface AddCourseDialogQBProps {
   t: (key: string) => string; // دالة الترجمة
-  isAddDialogOpen: boolean;
-  setIsAddDialogOpen: (open: boolean) => void;
+  open: boolean;
+  setOpen: (open: boolean) => void;
   handleAddCourse?: () => void; // جعلنها اختيارية لأن المنطق موجود داخل المكون
 }
 
 const AddCourseDialogQB: React.FC<AddCourseDialogQBProps> = ({
   t,
-  isAddDialogOpen,
-  setIsAddDialogOpen,
+  open,
+  setOpen,
   // handleAddCourse لم نستقبله هنا لأننا عرفنا الدالة بداخل المكون
 }) => {
   const [loading, setLoading] = useState(false);
@@ -55,7 +55,7 @@ const AddCourseDialogQB: React.FC<AddCourseDialogQBProps> = ({
     try {
       await dispatch(createPrivateCourse(newCourse));
       await dispatch(getCourses());
-      setIsAddDialogOpen(false);
+      setOpen(false);
       setNewCourse({
         nameAr: "",
         nameEn: "",
@@ -74,7 +74,7 @@ const AddCourseDialogQB: React.FC<AddCourseDialogQBProps> = ({
   };
 
   return (
-    <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent
         showCloseButton={false}
         className="sm:max-w-[550px] bg-card-bg dark:bg-gray-800 border border-border-light dark:border-gray-700"
@@ -199,7 +199,7 @@ const AddCourseDialogQB: React.FC<AddCourseDialogQBProps> = ({
         <DialogFooter className="gap-3">
           <Button
             variant="outline"
-            onClick={() => setIsAddDialogOpen(false)}
+            onClick={() => setOpen(false)}
             className="border-border-light dark:border-gray-700 text-dark dark:text-gray-300 close-hover font-arabic"
             disabled={loading}
           >
