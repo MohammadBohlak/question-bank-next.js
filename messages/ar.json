@@ -1,4 +1,13 @@
 {
+  "badges": {
+    "active": "نشط",
+    "inActive": "غير نشط"
+  },
+  "deleteDialog": {
+    "del": "حذف",
+    "cancel": "إلغاء",
+    "deleting": "جاري الحذف..."
+  },
   "sidebar": {
     "users": "إدارة المستخدمين",
     "adminDashboard": "لوحة تحكم المسؤول",
@@ -127,6 +136,7 @@
     "viewDetails": "عرض التفاصيل"
   },
   "courseDetails": {
+    "deleteConfirmation": "هل أنت متأكد من رغبتك في حذف {code}؟ هذا الإجراء لا يمكن التراجع عنه.",
     "title": "تفاصيل المقرر",
     "courseBanks": "بنوك المقرر",
     "totalQuestions": "إجمالي الأسئلة",
@@ -663,8 +673,12 @@
       "createButton": "إنشاء الجامعة"
     },
     "deleteConfirmation": {
-      "message": "هل أنت متأكد أنك تريد حذف هذا العنصر؟ لا يمكن التراجع عن هذا الإجراء."
-    }
+      "title": "تأكيد الحذف",
+      "message": "هل أنت متأكد من إجراء هذا الإجراء؟ لا يمكن التراجع عن هذا الإجراء."
+    },
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "deleting": "جاري الحذف..."
   },
   "UniversityCard": {
     "status": {
@@ -738,6 +752,9 @@
       "title": "حذف الجامعة",
       "description": "هل أنت متأكد أنك تريد حذف {universityName}؟ لا يمكن التراجع عن هذا الإجراء وسيتم حذف جميع البرامج والبيانات المرتبطة.",
       "deleteButton": "حذف الجامعة"
+    },
+    "deleteConfirmation": {
+      "message": "هل أنت متأكد أنك تريد حذف {universityName}؟ لا يمكن التراجع عن هذا الإجراء وسيتم حذف جميع البرامج والبيانات المرتبطة."
     },
     "universityInfo": {
       "title": "معلومات الجامعة",
@@ -1172,9 +1189,7 @@
       "loadFailed": "فشل في تحميل المستخدمين",
       "createFailed": "فشل في إنشاء المستخدم"
     },
-    "messages": {
-      "createSuccess": "تم إنشاء المستخدم بنجاح"
-    },
+
     "common": {
       "active": "نشط",
       "inactive": "غير نشط",
@@ -1183,6 +1198,22 @@
       "cancel": "إلغاء",
       "creating": "جاري الإنشاء...",
       "saveChanges": "حفظ التغييرات"
+    },
+
+    "deleteDialog": {
+      "title": "تأكيد الحذف",
+      "description": "هل أنت متأكد من حذف المستخدم \"{username}\"؟ لا يمكن التراجع عن هذا الإجراء.",
+      "warning": "سيتم حذف جميع البيانات المرتبطة بهذا المستخدم نهائياً.",
+      "bulkTitle": "تأكيد الحذف الجماعي",
+      "bulkDescription": "أنت على وشك حذف {count} مستخدمين. هل أنت متأكد؟",
+      "bulkWarning": "سيتم حذف جميع البيانات المرتبطة بهؤلاء المستخدمين نهائياً."
+    },
+    "messages": {
+      "userDeleted": "تم حذف المستخدم بنجاح",
+      "deleteUserFailed": "فشل في حذف المستخدم",
+      "bulkDeleteSuccess": "تم حذف {count} مستخدمين بنجاح",
+      "bulkDeleteError": "فشل حذف {count} مستخدمين.",
+      "createSuccess": "تم إنشاء المستخدم بنجاح"
     }
   }
 }

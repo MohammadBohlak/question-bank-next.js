@@ -1,4 +1,13 @@
 {
+  "badges": {
+    "active": "active",
+    "inActive": "In active"
+  },
+  "deleteDialog": {
+    "del": "Delete",
+    "cancel": "Cancel",
+    "deleting": "Deleting..."
+  },
   "sidebar": {
     "users": "Users Management",
     "adminDashboard": "Admin Dashboard",
@@ -664,8 +673,12 @@
       "createButton": "Create University"
     },
     "deleteConfirmation": {
-      "message": "Are you sure you want to delete this item? This action cannot be undone."
-    }
+      "title": "Confirm Deletion",
+      "message": "Are you sure you want to proceed? This action cannot be undone."
+    },
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "deleting": "Deleting..."
   },
   "UniversityCard": {
     "status": {
@@ -1156,9 +1169,6 @@
       "loadFailed": "Failed to load users",
       "createFailed": "Failed to create user"
     },
-    "messages": {
-      "createSuccess": "User created successfully"
-    },
     "common": {
       "active": "Active",
       "inactive": "Inactive",
@@ -1169,6 +1179,21 @@
       "cancel": "Cancel",
       "creating": "Creating...",
       "saveChanges": "Save Changes"
+    },
+    "deleteDialog": {
+      "title": "Confirm Deletion",
+      "description": "Are you sure you want to delete user \"{username}\"? This action cannot be undone.",
+      "warning": "All data associated with this user will be permanently deleted.",
+      "bulkTitle": "Confirm Bulk Deletion",
+      "bulkDescription": "You are about to delete {count} users. Are you sure?",
+      "bulkWarning": "All data associated with these users will be permanently deleted."
+    },
+    "messages": {
+      "userDeleted": "User deleted successfully",
+      "deleteUserFailed": "Failed to delete user",
+      "bulkDeleteSuccess": "{count} users deleted successfully",
+      "bulkDeleteError": "Failed to delete {count} users.",
+      "createSuccess": "User created successfully"
     }
   }
 }

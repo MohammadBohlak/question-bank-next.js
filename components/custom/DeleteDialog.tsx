@@ -10,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Loader2, Trash2 } from "lucide-react";
 import TextMuted from "@/components/custom/common/texts/TextMuted";
+import { useTranslations } from "next-intl";
 
 interface DeleteDialogProps {
   // التحكم في فتح وإغلاق الديالوج
@@ -18,33 +19,24 @@ interface DeleteDialogProps {
 
   // النصوص
   title?: string; // عنوان الديالوج (مثلاً: حذف المقرر)
-  itemName: string; // اسم العنصر الذي سيظهر في رسالة التأكيد
+  description?: string;
+  itemName?: string; // اسم العنصر الذي سيظهر في رسالة التأكيد
   warningMessage?: string; // رسالة تحذيرية اختيارية (مثل: سيتم حذف 5 بنوك)
 
   // الأحداث
   onConfirm: () => void | Promise<void>; // دالة الحذف
-
-  // الترجمة (اختياري: يمكنك تمرير دالة الترجمة أو الاعتماد على النصوص الممررة)
-  t?: (key: string, params?: Record<string, any>) => string;
 }
 
 const DeleteDialog: React.FC<DeleteDialogProps> = ({
   open,
   setOpen,
   title,
-  itemName,
+  description,
   warningMessage,
   onConfirm,
-  t = (key, params) => {
-    // ترجمة افتراضية بسيطة في حال لم يتم تمرير دالة t
-    if (key === "cancel") return "إلغاء";
-    if (key === "delete") return "حذف";
-    if (key === "deleting") return "جاري الحذف...";
-    return key;
-  },
 }) => {
   const [loading, setLoading] = useState(false);
-
+  const t = useTranslations("deleteDialog");
   const handleConfirm = async () => {
     try {
       setLoading(true);
@@ -67,10 +59,7 @@ const DeleteDialog: React.FC<DeleteDialogProps> = ({
             {title ? title : ""}
           </DialogTitle>
           <DialogDescription>
-            <TextMuted>
-              {/* استخدام دالة الترجمة مع تمرير المتغيرات إذا وجدت، أو نص افتراضي */}
-              {t("deleteConfirmation", { name: itemName })}
-            </TextMuted>
+            <TextMuted>{description}</TextMuted>
           </DialogDescription>
         </DialogHeader>
 
@@ -105,7 +94,7 @@ const DeleteDialog: React.FC<DeleteDialogProps> = ({
                 {t("deleting")}
               </>
             ) : (
-              t("delete") || "حذف"
+              t("del") || "حذف"
             )}
           </Button>
         </DialogFooter>

@@ -70,8 +70,6 @@ import Background from "@/components/custom/Background";
 import MainTitle from "@/components/custom/common/texts/MainTitle";
 import { cn } from "@/lib/utils";
 import StatsUniversity from "@/components/custom/universitiesManagementComponents/stats/StatsUniversity";
-import { UniversityFormData } from "../page";
-import DropUniversityDialog from "@/components/custom/universitiesManagementComponents/dialogs/DropUniversityDialog";
 
 interface ProgramFormData {
   nameAr: string;
@@ -93,9 +91,8 @@ export default function UniversityDetailsPage() {
   const uniUsers = useSelector(
     (state: RootState) => state.admin.universityUsers,
   );
-  const [selectedUniversity, setSelectedUniversity] = useState<
-    typeof university | null
-  >(null);
+  const [selectedUniversity, setSelectedUniversity] = useState(null);
+
   const [loading, setLoading] = useState(true);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
   const [isAddProgramDialogOpen, setIsAddProgramDialogOpen] = useState(false);
@@ -191,6 +188,25 @@ export default function UniversityDetailsPage() {
     }
   };
 
+  const handleDeleteUniversity = async () => {
+    if (!university || !university.id) return;
+
+    setIsUpdating(true);
+    try {
+      const res = await dispatch(deleteUniversity(university.id)).unwrap();
+      toast.success(res.message);
+      setIsDeleteDialogOpen(false);
+      // Redirect to universities management page
+      window.location.href = `/${locale}/universities_management`;
+    } catch (error: unknown) {
+      toast.error(
+        error instanceof Error ? error.message : t("errors.deleteFailed"),
+      );
+    } finally {
+      setIsUpdating(false);
+    }
+  };
+
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return new Intl.DateTimeFormat(locale === "ar" ? "ar-EG" : "en-US", {
@@ -275,12 +291,7 @@ export default function UniversityDetailsPage() {
               <div className="flex  flex-wrap items-center gap-3">
                 <Button
                   className="cursor-pointer bg-red-500 border border-red-500 text-white hover:text-red-500 hover:bg-transparent hover:border-red-500"
-                  // onClick={() => setIsDeleteDialogOpen(true)}
-                  onClick={() => {
-                    // console.log(university);
-                    setSelectedUniversity(university); // تعيين الجامعة الحالية
-                    setIsDeleteDialogOpen(true);
-                  }}
+                  onClick={() => setIsDeleteDialogOpen(true)}
                   variant={"none"}
                 >
                   <Trash2 className="h-4 w-4 mr-2" />
@@ -831,13 +842,45 @@ export default function UniversityDetailsPage() {
       </div>
 
       {/* Delete Dialog */}
-      <DropUniversityDialog
-        open={isDeleteDialogOpen}
-        setOpen={setIsDeleteDialogOpen}
-        selectedUniversity={selectedUniversity}
-        setSelectedUniversity={setSelectedUniversity}
-        t={t}
-      />
+      <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
+        <DialogContent
+          showCloseButton={false}
+          className="sm:max-w-md rounded-2xl border-0 shadow-2xl bg-white dark:bg-gray-800"
+        >
+          <DialogHeader>
+            <div className="mx-auto w-16 h-16 rounded-full bg-linear-to-br from-red-100 to-red-200 dark:from-red-900/30 dark:to-red-800/30 flex items-center justify-center mb-6">
+              <Trash2 className="h-8 w-8 text-red-600 dark:text-red-400" />
+            </div>
+            <DialogTitle className="text-center text-xl font-bold text-gray-900 dark:text-white">
+              {t("deleteDialog.title")}
+            </DialogTitle>
+            <DialogDescription className="text-center text-gray-600 dark:text-gray-400">
+              {t("deleteDialog.description", {
+                universityName: university.nameAr,
+              })}
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="gap-3">
+            <Button
+              variant="outline"
+              onClick={() => setIsDeleteDialogOpen(false)}
+              disabled={isUpdating}
+              className="flex-1 rounded-xl border-gray-300 close-hover"
+            >
+              {t("common.cancel")}
+            </Button>
+            <Button
+              className="flex-1 rounded-xl bg-linear-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white shadow-lg"
+              onClick={handleDeleteUniversity}
+              disabled={isUpdating}
+            >
+              {isUpdating
+                ? t("common.deleting")
+                : t("deleteDialog.deleteButton")}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       {/* Add Program Dialog */}
       <Dialog

@@ -79,6 +79,8 @@ import Background from "@/components/custom/Background";
 import MainTitle from "@/components/custom/common/texts/MainTitle";
 import TextMuted from "@/components/custom/common/texts/TextMuted";
 import StatsCourseSupervisor from "@/components/custom/questionsBankComponents/stats/StatsCourseSupervisor";
+import CustomSelect from "@/components/custom/common/CustomSelect";
+import DeleteBankDialog from "@/components/custom/questionsBankComponents/dialogs/bankDialogs/DeleteBankDialog";
 
 // Define interfaces based on your Redux slice
 interface QuestionLevel {
@@ -370,7 +372,7 @@ export default function CourseDetailsPage() {
                   {/* Descriptions Section - Text Heavy */}
                   <div className="space-y-6">
                     <div className="space-y-3">
-                      <Label className="text-sm font-bold text-gray-700 dark:text-gray-300 flex items-center gap-2 border-b pb-2 border-gray-200 dark:border-gray-700">
+                      <Label className="text-md font-bold text-gray-700 dark:text-gray-300 flex items-center gap-2 border-b pb-2 border-gray-200 dark:border-gray-700">
                         <FileText
                           className="h-4 w-4 text-sec"
                           strokeWidth={2.5}
@@ -386,7 +388,7 @@ export default function CourseDetailsPage() {
                     </div>
 
                     <div className="space-y-3">
-                      <Label className="text-sm font-bold text-gray-700 dark:text-gray-300 flex items-center gap-2 border-b pb-2 border-gray-200 dark:border-gray-700">
+                      <Label className="text-md font-bold text-gray-700 dark:text-gray-300 flex items-center gap-2 border-b pb-2 border-gray-200 dark:border-gray-700">
                         <Globe className="h-4 w-4 text-sec" strokeWidth={2.5} />
                         {t("courseInfo.englishDescription")}
                       </Label>
@@ -402,7 +404,7 @@ export default function CourseDetailsPage() {
                   {/* Details Section - Grid of Data Pills */}
                   <div className="space-y-6">
                     <div>
-                      <h3 className="text-sm font-bold text-gray-700 dark:text-gray-300 mb-4 flex items-center gap-2 border-b pb-2 border-gray-200 dark:border-gray-700">
+                      <h3 className="text-md font-bold text-gray-700 dark:text-gray-300 mb-4 flex items-center gap-2 border-b pb-2 border-gray-200 dark:border-gray-700">
                         <Settings2
                           className="h-4 w-4 text-sec"
                           strokeWidth={2.5}
@@ -492,7 +494,7 @@ export default function CourseDetailsPage() {
 
                     {/* Supervisor Card - Highlighted */}
                     <div>
-                      <h3 className="text-sm font-bold text-gray-700 dark:text-gray-300 mb-4 flex items-center gap-2 border-b pb-2 border-gray-200 dark:border-gray-700">
+                      <h3 className="text-md font-bold text-gray-700 dark:text-gray-300 mb-4 flex items-center gap-2 border-b pb-2 border-gray-200 dark:border-gray-700">
                         <UserCog
                           className="h-4 w-4 text-sec"
                           strokeWidth={2.5}
@@ -509,7 +511,7 @@ export default function CourseDetailsPage() {
                           </div>
                           {course.supervisor && (
                             <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
-                              {t("courseInfo.supervisorRole")}
+                              {/* {t("courseInfo.supervisorRole")} */}
                             </div>
                           )}
                         </div>
@@ -572,42 +574,23 @@ export default function CourseDetailsPage() {
                       onChange={(e) => setCourseBankSearch(e.target.value)}
                     />
                   </div>
-                  <Select
+                  <CustomSelect
                     value={courseBankFilter}
-                    onValueChange={setCourseBankFilter}
-                  >
-                    <SelectTrigger
-                      dir={locale == "ar" ? "rtl" : "ltr"}
-                      className="w-full sm:w-[180px] bg-white dark:bg-gray-900 border-gray-300 dark:border-gray-700  dark:focus:ring-blue-500/20 font-arabic text-gray-900 dark:text-white"
-                    >
-                      <SelectValue
-                        placeholder={t("banksSection.statusFilter")}
-                      />
-                    </SelectTrigger>
-                    <SelectContent className="bg-white dark:bg-gray-900 border-gray-300 dark:border-gray-700">
-                      <SelectItem
-                        dir={locale == "ar" ? "rtl" : "ltr"}
-                        value="all"
-                        className="font-arabic"
-                      >
-                        {t("banksSection.allStatuses")}
-                      </SelectItem>
-                      <SelectItem
-                        dir={locale == "ar" ? "rtl" : "ltr"}
-                        value="active"
-                        className="font-arabic"
-                      >
-                        {t("banksSection.activeStatus")}
-                      </SelectItem>
-                      <SelectItem
-                        dir={locale == "ar" ? "rtl" : "ltr"}
-                        value="inactive"
-                        className="font-arabic"
-                      >
-                        {t("banksSection.inactiveStatus")}
-                      </SelectItem>
-                    </SelectContent>
-                  </Select>
+                    onChange={setCourseBankFilter}
+                    placeholder={t("banksSection.statusFilter")}
+                    options={[
+                      { value: "all", label: t("banksSection.allStatuses") },
+                      {
+                        value: "active",
+                        label: t("banksSection.activeStatus"),
+                      },
+                      {
+                        value: "inactive",
+                        label: t("banksSection.inactiveStatus"),
+                      },
+                    ]}
+                    className="w-full sm:w-[180px] bg-white dark:bg-gray-900 border-gray-300 dark:border-gray-700"
+                  />
                 </div>
 
                 {/* Banks Grid */}
@@ -1159,7 +1142,14 @@ export default function CourseDetailsPage() {
         </DialogContent>
       </Dialog>
 
-      <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
+      <DeleteBankDialog
+        open={isDeleteDialogOpen}
+        setOpen={setIsDeleteDialogOpen}
+        selectedBank={selectedBank}
+        setSelectedBank={setSelectedBank}
+        t={t}
+      />
+      {/* <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
         <DialogContent
           showCloseButton={false}
           className="sm:max-w-[425px] bg-white dark:bg-gray-900 border border-rose-300 dark:border-rose-700"
@@ -1199,7 +1189,7 @@ export default function CourseDetailsPage() {
             </Button>
           </DialogFooter>
         </DialogContent>
-      </Dialog>
+      </Dialog> */}
     </div>
   );
 }

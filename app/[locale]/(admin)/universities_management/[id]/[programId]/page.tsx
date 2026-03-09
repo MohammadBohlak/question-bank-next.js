@@ -80,6 +80,7 @@ import MainTitle from "@/components/custom/common/texts/MainTitle";
 import TextMuted from "@/components/custom/common/texts/TextMuted";
 import Background from "@/components/custom/Background";
 import StatsProgram from "@/components/custom/universitiesManagementComponents/stats/StatsProgram";
+import DeleteProgramDialog from "@/components/custom/universitiesManagementComponents/dialogs/DeleteProgramDialog";
 
 export interface ProgramFormData {
   id: number;
@@ -975,42 +976,13 @@ export default function ProgramDetailsPage() {
           </div>
         </div>
       </div>
-      {/* Delete Dialog */}
-      <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
-        <DialogContent
-          showCloseButton={false}
-          className="sm:max-w-md rounded-2xl border border-border-light shadow-2xl bg-white dark:bg-gray-800"
-        >
-          <DialogHeader>
-            <div className="mx-auto w-16 h-16 rounded-full bg-linear-to-br from-red-100 to-red-200 dark:from-red-900/30 dark:to-red-800/30 flex items-center justify-center mb-6">
-              <Trash2 className="h-8 w-8 text-red-600 dark:text-red-400" />
-            </div>
-            <DialogTitle className="text-center text-xl font-bold text-gray-900 dark:text-white">
-              {t("deleteDialog.title")}
-            </DialogTitle>
-            <DialogDescription className="text-center text-gray-600 dark:text-gray-400">
-              {t("deleteDialog.description", { programName: program.nameAr })}
-            </DialogDescription>
-          </DialogHeader>
-          <DialogFooter className="gap-3">
-            <Button
-              variant="outline"
-              onClick={() => setIsDeleteDialogOpen(false)}
-              disabled={isUpdating}
-              className="flex-1 rounded-xl border-gray-300 dark:border-gray-700 text-gray-700 close-hover"
-            >
-              {t("common.cancel")}
-            </Button>
-            <Button
-              className="flex-1 rounded-xl bg-linear-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white shadow-lg"
-              onClick={handleDeleteProgram}
-              disabled={isUpdating}
-            >
-              {isUpdating ? t("common.deleting") : t("common.delete")}
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      {/* Delete Program Dialog */}
+      <DeleteProgramDialog
+        open={isDeleteDialogOpen}
+        setOpen={setIsDeleteDialogOpen}
+        program={program}
+        t={t}
+      />
       {/* Edit Program Dialog */}
       <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
         <DialogContent

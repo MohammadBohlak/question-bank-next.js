@@ -68,8 +68,7 @@ import Sidebar from "@/components/Sidebar";
 import Background from "@/components/custom/Background";
 import StatsUniversities from "@/components/custom/universitiesManagementComponents/stats/StatsUniversities";
 import CustomSelect from "@/components/custom/common/CustomSelect";
-import DeleteUniversityDialog from "@/components/custom/universitiesManagementComponents/dialogs/DeleteUniversityDialog";
-export interface UniversityFormData {
+interface UniversityFormData {
   id: number;
   nameAr: string;
   nameEn: string;
@@ -308,9 +307,76 @@ export default function UniversitiesPage() {
     }));
   };
 
-  const openDeleteDialog = (university: { id: number; nameAr: string }) => {
-    setSelectedUniversity(university);
-    setIsDeleteDialogOpen(true);
+  const handleDelete = (id: number) => {
+    toast(
+      <div
+        className="flex flex-col gap-4 p-4 bg-card-bg dark:bg-gray-800 border border-border-light dark:border-gray-700 rounded-lg shadow-lg"
+        dir={locale == "en" ? "ltr" : "rtl"}
+      >
+        <div className="flex items-start gap-3">
+          <div className="p-2 bg-error/10 dark:bg-red-900/30 rounded-lg">
+            <Trash2 className="h-5 w-5 text-error dark:text-red-400" />
+          </div>
+          <div className="flex-1">
+            <h3 className="font-semibold text-dark dark:text-white mb-1">
+              تأكيد الحذف
+            </h3>
+            <p className="text-sm text-text-secondary dark:text-gray-300">
+              {t("deleteConfirmation.message")}
+            </p>
+          </div>
+        </div>
+
+        <div className="flex gap-2 justify-end">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => toast.dismiss()}
+            className="border-border-light dark:border-gray-700 text-text-secondary dark:text-gray-300 close-hover transition-colors min-w-20"
+          >
+            {t("common.cancel")}
+          </Button>
+          <Button
+            variant="destructive"
+            size="sm"
+            onClick={async () => {
+              try {
+                const res = await dispatch(deleteUniversity(id)).unwrap();
+                if (
+                  !res.success &&
+                  Array.isArray(res.errors) &&
+                  res.errors.length > 0
+                ) {
+                  toast.error(res.errors.join(" • "));
+                  toast.dismiss();
+                  return;
+                }
+                toast.success(res.message || t("messages.deleteSuccess"));
+                loadUniversities();
+                toast.dismiss();
+              } catch (error: unknown) {
+                toast.error(
+                  error instanceof Error ? error.message : "فشل الحذف",
+                );
+                toast.dismiss();
+              }
+            }}
+            className="bg-error dark:bg-red-700 hover:bg-error/90 dark:hover:bg-red-800 text-text-light dark:text-gray-100 min-w-20 shadow-sm hover:shadow-md transition-all duration-200"
+          >
+            {t("common.delete")}
+          </Button>
+        </div>
+      </div>,
+      {
+        duration: Infinity,
+        className: "!p-0 !bg-transparent !border-0 !shadow-none",
+        style: {
+          background: "transparent",
+          border: "none",
+          boxShadow: "none",
+        },
+      },
+    );
   };
 
   // Filter universities based on search and filters
@@ -405,7 +471,7 @@ export default function UniversitiesPage() {
       >
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <Background isHeader>
+          <Background>
             <div className="flex w-full justify-center  md:justify-start ">
               <div className="w-full flex flex-col md:flex-row items-center md:justify-between  gap-4">
                 <div>
@@ -610,12 +676,9 @@ export default function UniversitiesPage() {
                           size="icon"
                           variant="destructive"
                           className="h-8 w-8 shadow-md bg-card-bg dark:bg-gray-800 hover:bg-error/10 dark:hover:bg-red-900/30"
-                          onClick={() =>
-                            openDeleteDialog({
-                              id: university.id,
-                              nameAr: university.nameAr,
-                            })
-                          }
+                          onClick={() => {
+                            handleDelete(university.id);
+                          }}
                           disabled={loading}
                         >
                           <Trash2 className="h-3.5 w-3.5 text-error dark:text-red-400" />
@@ -690,12 +753,7 @@ export default function UniversitiesPage() {
                           <Button
                             size="sm"
                             variant="ghost"
-                            onClick={() =>
-                              openDeleteDialog({
-                                id: university.id,
-                                nameAr: university.nameAr,
-                              })
-                            }
+                            onClick={() => handleDelete(university.id)}
                             disabled={loading}
                             className="text-error dark:text-red-400 hover:bg-error/10 dark:hover:bg-red-900/30"
                           >
@@ -735,14 +793,6 @@ export default function UniversitiesPage() {
               )}
             </>
           )}
-
-          <DeleteUniversityDialog
-            open={isDeleteDialogOpen}
-            setOpen={setIsDeleteDialogOpen}
-            selectedUniversity={selectedUniversity}
-            setSelectedUniversity={setSelectedUniversity}
-            t={t}
-          />
 
           {/* Create/Edit University Dialog */}
 

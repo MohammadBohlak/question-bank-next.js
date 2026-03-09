@@ -6,7 +6,7 @@ import { deletePrivateCourse, getCourses } from "@/store/supervisor";
 import { AppDispatch } from "@/store/store";
 import { toast } from "sonner";
 
-interface CourseDeleteDialogQBProps {
+interface DeleteCourseDialogQBProps {
   selectedCourse: {
     id: number;
     nameAr: string;
@@ -18,7 +18,7 @@ interface CourseDeleteDialogQBProps {
   setSelectedCourse: (course: null) => void;
 }
 
-const CourseDeleteDialogQB: React.FC<CourseDeleteDialogQBProps> = ({
+const DeleteCourseDialogQB: React.FC<DeleteCourseDialogQBProps> = ({
   t,
   open,
   setOpen,
@@ -48,14 +48,15 @@ const CourseDeleteDialogQB: React.FC<CourseDeleteDialogQBProps> = ({
       open={open} // تم تعديل الاسم ليطابق Interface المكون السابق
       setOpen={setOpen} // تم تعديل الاسم
       title={t("deleteCourse")}
-      itemName={selectedCourse?.nameAr || ""}
       warningMessage={t("deleteWarning", {
         count: selectedCourse?.courseBanksCount || 0,
       })}
       onConfirm={confirmDelete}
-      t={t}
+      description={t("deleteConfirmation", {
+        name: selectedCourse?.nameAr || "",
+      })}
     />
   );
 };
 
-export default CourseDeleteDialogQB;
+export default DeleteCourseDialogQB;

@@ -43,9 +43,10 @@ import Background from "@/components/custom/Background";
 import { useParams } from "next/navigation";
 import StatsCourses from "@/components/custom/questionsBankComponents/stats/StatsCourses";
 import CustomSelect from "@/components/custom/common/CustomSelect";
-import AddCourseDialogQB from "@/components/custom/common/questionsBank/dialogs/AddCourseDialogQB";
-import EditCourseDialogQB from "@/components/custom/common/questionsBank/dialogs/EditCourseDialogQB";
-import CourseDeleteDialogQB from "@/components/custom/common/questionsBank/dialogs/CourseDeleteDialogQB";
+import AddCourseDialogQB from "@/components/custom/questionsBankComponents/dialogs/courseDialogs/AddCourseDialogQB";
+import EditCourseDialogQB from "@/components/custom/questionsBankComponents/dialogs/courseDialogs/EditCourseDialogQB";
+import DeleteCourseDialogQB from "@/components/custom/questionsBankComponents/dialogs/courseDialogs/DeleteCourseDialogQB";
+import StatusBadge from "@/components/custom/common/badges/StatusBadge";
 
 interface Course {
   id: number;
@@ -315,6 +316,7 @@ export default function CoursesPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {filteredCourses.map((course) => (
               <Card
+                dir={locale == "ar" ? "rtl" : "ltr"}
                 key={course.id}
                 className="relative border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:shadow-xl transition-all duration-300 group flex flex-col h-full overflow-hidden"
               >
@@ -322,8 +324,8 @@ export default function CoursesPage() {
                 <div
                   className={`absolute top-0 left-0 right-0 h-1 ${
                     course.isActive
-                      ? "bg-gradient-to-r from-green-400 to-emerald-500"
-                      : "bg-gradient-to-r from-gray-300 to-gray-400"
+                      ? "bg-gradient-to-r from-green-200 to-emerald-400"
+                      : "bg-gradient-to-r from-red-200 to-red-400"
                   }`}
                 />
 
@@ -341,21 +343,7 @@ export default function CoursesPage() {
 
                     {/* Status & Type Badges */}
                     <div className="flex gap-2 shrink-0">
-                      <Badge
-                        variant="outline"
-                        className={`gap-1 px-2.5 py-1 rounded-md text-xs font-semibold font-arabic border-0 ${
-                          course.isActive
-                            ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400"
-                            : "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400"
-                        }`}
-                      >
-                        {course.isActive ? (
-                          <CheckCircle className="h-3 w-3" />
-                        ) : (
-                          <XCircle className="h-3 w-3" />
-                        )}
-                        {course.isActive ? "نشط" : "غير نشط"}
-                      </Badge>
+                      <StatusBadge isActive={course.isActive} />
                       <Badge
                         variant="outline"
                         className={`gap-1 px-2.5 py-1 rounded-md text-xs font-semibold font-arabic border-0 ${
@@ -448,7 +436,6 @@ export default function CoursesPage() {
                         variant="none"
                         className="w-full h-10 gap-2 hover:gap-5 rounded-xl border-1 bg-sec hover:bg-transparent hover:border-sec hover:text-sec text-white shadow-sm transition-all"
                       >
-                        {/* <Eye className="h-4 w-4" /> */}
                         {locale == "en" && <ArrowRight />}
                         <span className="">{t("viewDetails")}</span>
                         {locale == "ar" && <ArrowLeft />}
@@ -499,7 +486,7 @@ export default function CoursesPage() {
         setOpen={setIsEditDialogOpen}
         selectedCourse={selectedCourse}
       />
-      <CourseDeleteDialogQB
+      <DeleteCourseDialogQB
         t={t}
         open={isDeleteDialogOpen}
         setOpen={setIsDeleteDialogOpen}
