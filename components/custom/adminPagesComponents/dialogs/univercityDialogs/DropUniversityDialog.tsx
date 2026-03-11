@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/store/store";
 import { useParams, useRouter } from "next/navigation"; // لاستخدام التوجيه بعد الحذف
 import { toast } from "sonner";
-import DeleteDialog from "@/components/custom/DeleteDialog";
+import DeleteDialog from "@/components/custom/common/DeleteDialog";
 import { deleteUniversity, fetchUniversities } from "@/store/admin"; // تأكد من صحة مسار الـ actions
 
 interface DropUniversityDialogProps {

@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/store/store";
 import { toast } from "sonner";
-import DeleteDialog from "@/components/custom/DeleteDialog";
+import DeleteDialog from "@/components/custom/common/DeleteDialog";
 import { deleteBank } from "@/store/admin";
 import { getCourseDetails } from "@/store/supervisor";
 import { useParams } from "next/navigation";

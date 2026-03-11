@@ -45,7 +45,7 @@ import {
 import { useTranslations } from "next-intl";
 import MainTitle from "@/components/custom/common/texts/MainTitle";
 import TextMuted from "@/components/custom/common/texts/TextMuted";
-import Background from "@/components/custom/Background";
+import Background from "@/components/custom/common/Background";
 
 export interface Question {
   id: number;

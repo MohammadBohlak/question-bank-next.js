@@ -57,9 +57,9 @@ import { deleteQuestion } from "@/store/question";
 import AddQuestion from "@/components/AddQuestion";
 import { useTranslations } from "next-intl";
 import MainTitle from "@/components/custom/common/texts/MainTitle";
-import Background from "@/components/custom/Background";
+import Background from "@/components/custom/common/Background";
 import TextMuted from "@/components/custom/common/texts/TextMuted";
-import StatsBank from "@/components/custom/questionsBankComponents/stats/StatsBank";
+import StatsBank from "@/components/custom/supervisorPagesComponents/stats/StatsBank";
 
 interface QuestionOption {
   id: number;

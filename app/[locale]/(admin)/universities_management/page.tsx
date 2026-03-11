@@ -59,16 +59,19 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
-import { Skeleton } from "@/components/ui/skeleton";
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
-import MainTitle from "@/components/custom/common/texts/MainTitle";
 import TextMuted from "@/components/custom/common/texts/TextMuted";
-import Sidebar from "@/components/Sidebar";
-import Background from "@/components/custom/Background";
-import StatsUniversities from "@/components/custom/universitiesManagementComponents/stats/StatsUniversities";
-import CustomSelect from "@/components/custom/common/CustomSelect";
-import DeleteUniversityDialog from "@/components/custom/universitiesManagementComponents/dialogs/DeleteUniversityDialog";
+import Background from "@/components/custom/common/Background";
+import StatsUniversities from "@/components/custom/adminPagesComponents/stats/StatsUniversities";
+import DeleteUniversityDialog from "@/components/custom/adminPagesComponents/dialogs/univercityDialogs/DeleteUniversityDialog";
+import renderSkeletons from "@/components/custom/adminPagesComponents/universitiesPage/renderSkeletons";
+import UniversitiesHeader from "@/components/custom/adminPagesComponents/universitiesPage/UniversitiesHeader";
+import UniversitiesFilters from "@/components/custom/adminPagesComponents/universitiesPage/UniversitiesFilters";
+import UniversitiesEmptyState from "@/components/custom/adminPagesComponents/universitiesPage/UniversitiesEmptyState";
+import UniversityFormDialog from "@/components/custom/adminPagesComponents/dialogs/univercityDialogs/UniversityFormDialog";
+import UniversitiesGridView from "@/components/custom/adminPagesComponents/universitiesPage/UniversitiesGridView";
+import UniversitiesListView from "@/components/custom/adminPagesComponents/universitiesPage/UniversitiesListView";
 export interface UniversityFormData {
   id: number;
   nameAr: string;
@@ -159,10 +162,9 @@ export default function UniversitiesPage() {
     try {
       await dispatch(fetchUniversities()).unwrap();
     } catch (error: unknown) {
-      // todo: لازم بس شيل التعليقات
-      // toast.error(
-      //   error instanceof Error ? error.message : "فشل في تحميل الجامعات",
-      // );
+      toast.error(
+        error instanceof Error ? error.message : "فشل في تحميل الجامعات",
+      );
     } finally {
       setIsLoading(false);
     }
@@ -366,37 +368,6 @@ export default function UniversitiesPage() {
     adminId: university.adminId ?? 0,
   });
 
-  // Loading skeleton
-  const renderSkeletons = () => {
-    return Array.from({ length: 8 }).map((_, index) => (
-      <div key={index} className="animate-pulse">
-        <div className="rounded-2xl border border-border-light dark:border-gray-700 bg-card-bg dark:bg-gray-800">
-          <div className="h-1 bg-primary dark:bg-blue-700" />
-          <div className="p-6 space-y-4">
-            <div className="flex justify-between">
-              <div className="space-y-2">
-                <Skeleton className="h-6 w-32 bg-bg-alt dark:bg-gray-700" />
-                <Skeleton className="h-4 w-24 bg-bg-alt dark:bg-gray-700" />
-              </div>
-              <Skeleton className="h-6 w-16 bg-bg-alt dark:bg-gray-700" />
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Skeleton className="h-4 w-full bg-bg-alt dark:bg-gray-700" />
-                <Skeleton className="h-4 w-full bg-bg-alt dark:bg-gray-700" />
-              </div>
-              <div className="space-y-2">
-                <Skeleton className="h-4 w-full bg-bg-alt dark:bg-gray-700" />
-                <Skeleton className="h-4 w-full bg-bg-alt dark:bg-gray-700" />
-              </div>
-            </div>
-            <Skeleton className="h-16 w-full rounded-xl bg-bg-alt dark:bg-gray-700" />
-          </div>
-        </div>
-      </div>
-    ));
-  };
-
   return (
     <>
       <div
@@ -404,134 +375,29 @@ export default function UniversitiesPage() {
         className="min-h-screen py-6 px-4 sm:px-6 lg:px-8 bg-bg dark:bg-gray-900"
       >
         <div className="max-w-7xl mx-auto">
-          {/* Header */}
-          <Background isHeader>
-            <div className="flex w-full justify-center  md:justify-start ">
-              <div className="w-full flex flex-col md:flex-row items-center md:justify-between  gap-4">
-                <div>
-                  <MainTitle className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-xl bg-linear-to-br from-prim to-sec shadow-md">
-                      <University className="h-6 w-6 text-white" />
-                    </div>
-                    {t("title")}
-                  </MainTitle>
-                  <TextMuted className="mt-2 flex items-center gap-2 text-gray-500 dark:text-gray-300">
-                    <Building className="h-4 w-4" />
-                    {t("subtitle")}
-                  </TextMuted>
-                </div>
-
-                {/* Action Buttons */}
-                <div className="flex items-center space-x-3">
-                  <Button
-                    variant="outline"
-                    className="gap-2 "
-                    onClick={() => loadUniversities()}
-                    disabled={isLoading}
-                  >
-                    <svg
-                      className="h-4 w-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                      />
-                    </svg>
-                    {t("common.refresh")}
-                  </Button>
-                  <Button
-                    className="gap-2  bg-btn  dark:bg-sec hover:opacity-80  text-text-light"
-                    onClick={handleOpenCreateDialog}
-                  >
-                    <Plus className="h-4 w-4" />
-                    {t("actions.addUniversity")}
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </Background>
-
+          <UniversitiesHeader
+            onRefresh={loadUniversities}
+            onAddClick={handleOpenCreateDialog}
+            isLoading={isLoading}
+          />
           {/* Stats Cards */}
-
           <StatsUniversities stats={stats} />
           {/* Filters and Controls */}
-          <Background>
-            <div className="w-full ">
-              <div className="flex flex-col lg:flex-row gap-4 ">
-                {/* Search */}
-
-                <div className="relative flex-1 flex flex-col space-y-2">
-                  <TextMuted>البحث</TextMuted>
-                  <div className="relative">
-                    <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-text dark:text-gray-400" />
-                    <Input
-                      placeholder={t("search.placeholder")}
-                      className="pr-10  rounded-xl border-border-light dark:border-gray-700 bg-input-bg dark:bg-gray-800 text-text dark:text-gray-300 transition-colors"
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                  </div>
-                </div>
-
-                {/* Filters */}
-                <div className="flex flex-wrap gap-3">
-                  <div className="flex flex-col space-y-2">
-                    <TextMuted>نوع الجامعة</TextMuted>
-
-                    <CustomSelect
-                      value={typeFilter}
-                      onChange={setTypeFilter}
-                      options={[
-                        { value: "all", label: t("filters.allTypes") },
-                        { value: "public", label: t("filters.public") },
-                        { value: "private", label: t("filters.private") },
-                      ]}
-                      placeholder={t("filters.type")}
-                      className="rounded-xl" // للحفاظ على التصميم الدائري
-                    />
-                  </div>
-                  <div className="flex flex-col space-y-2">
-                    <TextMuted>الحالة </TextMuted>
-                    <CustomSelect
-                      value={statusFilter}
-                      onChange={setStatusFilter}
-                      options={[
-                        { value: "all", label: t("filters.allStatuses") },
-                        { value: "active", label: t("filters.active") },
-                        { value: "inactive", label: t("filters.inactive") },
-                      ]}
-                      placeholder={t("filters.status")}
-                      className="w-[140px] h-11 rounded-xl"
-                    />
-                  </div>
-                  <div className="flex items-end">
-                    <div> </div>
-                    <Button
-                      variant="none"
-                      className="h-11 flex items-center border border-transparent bg-red-500 text-white hover:bg-transparent  hover:border-red-500 hover:text-red-500 dark:bg-red-500 dark:hover:bg-transparent "
-                      onClick={() => {
-                        setSearchTerm("");
-                        setTypeFilter("all");
-                        setStatusFilter("all");
-                      }}
-                      disabled={!rsesetFilter}
-                    >
-                      <span>
-                        <X />
-                      </span>
-
-                      <span>{t("filters.clearFilters")}</span>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Background>
+          <UniversitiesFilters
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            typeFilter={typeFilter}
+            setTypeFilter={setTypeFilter}
+            statusFilter={statusFilter}
+            setStatusFilter={setStatusFilter}
+            canReset={rsesetFilter}
+            onReset={() => {
+              setSearchTerm("");
+              setTypeFilter("all");
+              setStatusFilter("all");
+            }}
+            t={t}
+          />
           {/* View Controls and Stats */}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 ">
             <div>
@@ -585,153 +451,39 @@ export default function UniversitiesPage() {
           ) : (
             <>
               {viewMode === "grid" ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {filteredUniversities.map((university) => (
-                    <div key={university.id} className="relative group">
-                      <UniversityCard
-                        university={transformUniversityData(university)}
-                      />
-                      {/* Action buttons overlay */}
-                      <div className="absolute top-3 left-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                        <Button
-                          size="icon"
-                          variant="secondary"
-                          className="h-8 w-8 shadow-md bg-card-bg dark:bg-gray-800 hover:bg-bg-alt dark:hover:bg-gray-700"
-                          onClick={() =>
-                            handleOpenEditDialog(
-                              mapUniversityToForm(university),
-                            )
-                          }
-                          disabled={loading}
-                        >
-                          <Pencil className="h-3.5 w-3.5 text-primary dark:text-blue-400" />
-                        </Button>
-                        <Button
-                          size="icon"
-                          variant="destructive"
-                          className="h-8 w-8 shadow-md bg-card-bg dark:bg-gray-800 hover:bg-error/10 dark:hover:bg-red-900/30"
-                          onClick={() =>
-                            openDeleteDialog({
-                              id: university.id,
-                              nameAr: university.nameAr,
-                            })
-                          }
-                          disabled={loading}
-                        >
-                          <Trash2 className="h-3.5 w-3.5 text-error dark:text-red-400" />
-                        </Button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                <UniversitiesGridView
+                  universities={filteredUniversities.map(
+                    transformUniversityData,
+                  )}
+                  onEdit={handleOpenEditDialog}
+                  onDelete={openDeleteDialog}
+                  mapToForm={mapUniversityToForm}
+                  loading={loading}
+                />
               ) : (
-                // List View
-                <div className="space-y-3">
-                  {filteredUniversities.map((university) => (
-                    <div
-                      key={university.id}
-                      className="border border-border-light dark:border-gray-700 rounded-xl p-4 hover:shadow-md dark:hover:shadow-gray-900 transition-shadow bg-card-bg dark:bg-gray-800"
-                    >
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-4">
-                          <div>
-                            <h3 className="text-lg font-semibold leading-tight  text-text dark:text-gray-100">
-                              {locale == "ar"
-                                ? university.nameAr
-                                : university.nameEn}
-                            </h3>
-                            <p className="text-sm  text-right text-prim italic dark:text-gray-300">
-                              {locale == "en"
-                                ? university.nameAr
-                                : university.nameEn}
-                            </p>
-                          </div>
-                          <Badge
-                            variant={
-                              university.isPublic ? "default" : "secondary"
-                            }
-                            className={`${
-                              university.isPublic
-                                ? "text-secondary dark:text-blue-400 bg-secondary/20 dark:bg-blue-900/70 font-bold border-none"
-                                : "text-dark dark:text-gray-200 bg-dark/20 dark:bg-gray-700"
-                            }`}
-                          >
-                            {university.isPublic
-                              ? t("common.public")
-                              : t("common.private")}
-                          </Badge>
-                          <Badge
-                            variant="outline"
-                            className={`border ${
-                              university.isActive
-                                ? "bg-success/20 dark:bg-green-900/70 text-success dark:text-green-400 font-bold border-none"
-                                : "text-error dark:text-red-400 bg-error/20 dark:bg-red-900/30 font-bold border-none"
-                            }`}
-                          >
-                            {university.isActive
-                              ? t("common.active")
-                              : t("common.inactive")}
-                          </Badge>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Button
-                            size="sm"
-                            variant="ghost"
-                            onClick={() =>
-                              handleOpenEditDialog(
-                                mapUniversityToForm(university),
-                              )
-                            }
-                            disabled={loading}
-                            className="text-primary dark:text-blue-400 hover:bg-primary/10 dark:hover:bg-blue-900/30"
-                          >
-                            <Pencil className="h-4 w-4" />
-                          </Button>
-                          <Button
-                            size="sm"
-                            variant="ghost"
-                            onClick={() =>
-                              openDeleteDialog({
-                                id: university.id,
-                                nameAr: university.nameAr,
-                              })
-                            }
-                            disabled={loading}
-                            className="text-error dark:text-red-400 hover:bg-error/10 dark:hover:bg-red-900/30"
-                          >
-                            <Trash2 className="h-4 w-4" />
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                <UniversitiesListView
+                  // ✅ قم بتحويل البيانات هنا لضمان تطابق الأنواع
+                  universities={filteredUniversities.map((u) => ({
+                    ...u,
+                    programsCount: u.programsCount ?? 0, // تحويل null إلى 0
+                    admin: u.admin ?? t("common.noAdmin"), // تأمين حقل admin أيضاً
+                  }))}
+                  onEdit={handleOpenEditDialog}
+                  onDelete={openDeleteDialog}
+                  mapToForm={mapUniversityToForm}
+                  loading={loading}
+                  t={t}
+                  locale={locale as string}
+                />
               )}
 
               {/* Empty State */}
               {filteredUniversities.length === 0 && !isLoading && (
-                <div className="text-center py-16">
-                  <div className="mx-auto w-24 h-24 rounded-full flex items-center justify-center mb-6 bg-bg-alt dark:bg-gray-800">
-                    <Building className="h-12 w-12 text-text dark:text-gray-400" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3 text-prim dark:text-sec">
-                    {universities.length === 0
-                      ? t("emptyState.noUniversities")
-                      : t("emptyState.noResults")}
-                  </h3>
-                  <TextMuted className="mb-8 w-fit max-w-md mx-auto">
-                    {universities.length === 0
-                      ? t("emptyState.startAdding")
-                      : t("emptyState.adjustSearch")}
-                  </TextMuted>
-                  <Button
-                    onClick={handleOpenCreateDialog}
-                    className="gap-2 bg-btn hover:opacity-80 text-text-light"
-                  >
-                    <Plus className="h-5 w-5" />
-                    {t("actions.addNewUniversity")}
-                  </Button>
-                </div>
+                <UniversitiesEmptyState
+                  totalUniversitiesCount={universities.length}
+                  onAddClick={handleOpenCreateDialog}
+                  t={t}
+                />
               )}
             </>
           )}
@@ -745,295 +497,23 @@ export default function UniversitiesPage() {
           />
 
           {/* Create/Edit University Dialog */}
-
-          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-            <DialogContent
-              showCloseButton={false}
-              className="sm:max-w-[525px] rounded-2xl bg-card-bg dark:bg-gray-800 border-border dark:border-gray-700"
-            >
-              <DialogHeader className="flex flex-col space-y-2">
-                <DialogTitle className="text-xl font-semibold text-text-secondary dark:text-blue-300 flex items-center gap-3">
-                  {isEditMode ? (
-                    <>
-                      <div className="p-2 rounded-lg bg-btn">
-                        <Edit className="h-5 w-5 text-white" />
-                      </div>
-                      {t("dialog.editTitle")}
-                    </>
-                  ) : (
-                    <>
-                      <div className="p-2 rounded-lg bg-btn">
-                        <Plus className="h-5 w-5 text-white" />
-                      </div>
-                      {t("dialog.createTitle")}
-                    </>
-                  )}
-                </DialogTitle>
-                <DialogDescription>
-                  <TextMuted>
-                    {isEditMode
-                      ? t("dialog.editDescription")
-                      : t("dialog.createDescription")}
-                  </TextMuted>
-                </DialogDescription>
-              </DialogHeader>
-
-              <div className="space-y-5 py-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="nameAr"
-                      className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-2"
-                    >
-                      <FileText
-                        className="h-4 w-4 text-sec"
-                        strokeWidth={2.5}
-                      />
-                      {t("form.fields.nameAr")}{" "}
-                      <span className="text-error dark:text-red-400">*</span>
-                    </Label>
-                    <Input
-                      id="nameAr"
-                      name="nameAr"
-                      value={formData.nameAr}
-                      onChange={handleInputChange}
-                      placeholder={t("form.placeholders.nameAr")}
-                      className="rounded-lg border-border-light dark:border-gray-700 bg-input-bg dark:bg-gray-900 text-text dark:text-gray-300 transition-colors"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="nameEn"
-                      className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-2"
-                    >
-                      <Globe className="h-4 w-4 text-sec" strokeWidth={2.5} />
-                      {t("form.fields.nameEn")}{" "}
-                      <span className="text-error dark:text-red-400">*</span>
-                    </Label>
-                    <Input
-                      id="nameEn"
-                      name="nameEn"
-                      value={formData.nameEn}
-                      onChange={handleInputChange}
-                      placeholder={t("form.placeholders.nameEn")}
-                      className="rounded-lg border-border-light dark:border-gray-700 bg-input-bg dark:bg-gray-900 text-text dark:text-gray-300 transition-colors"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="code"
-                      className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-2"
-                    >
-                      <Hash className="h-4 w-4 text-sec" strokeWidth={2.5} />
-                      {t("form.fields.code")}{" "}
-                      <span className="text-error dark:text-red-400">*</span>
-                    </Label>
-                    <Input
-                      id="code"
-                      name="code"
-                      value={formData.code}
-                      onChange={handleInputChange}
-                      placeholder={t("form.placeholders.code")}
-                      className="rounded-lg font-mono border-border-light dark:border-gray-700 bg-input-bg dark:bg-gray-900 text-text dark:text-gray-300 transition-colors"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="country"
-                      className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-2"
-                    >
-                      <Globe className="h-4 w-4 text-sec" strokeWidth={2.5} />
-                      {t("form.fields.country")}
-                    </Label>
-                    <Input
-                      id="country"
-                      name="country"
-                      value={formData.country}
-                      onChange={handleInputChange}
-                      placeholder={t("form.placeholders.country")}
-                      className="rounded-lg border-border-light dark:border-gray-700 bg-input-bg dark:bg-gray-900 text-text dark:text-gray-300 transition-colors"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="city"
-                      className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-2"
-                    >
-                      <MapPin className="h-4 w-4 text-sec" strokeWidth={2.5} />
-                      {t("form.fields.city")}
-                    </Label>
-                    <Input
-                      id="city"
-                      name="city"
-                      value={formData.city}
-                      onChange={handleInputChange}
-                      placeholder={t("form.placeholders.city")}
-                      className="rounded-lg border-border-light dark:border-gray-700 bg-input-bg dark:bg-gray-900 text-text dark:text-gray-300 transition-colors"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="adminId"
-                      className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-2"
-                    >
-                      <UserCog className="h-4 w-4 text-sec" strokeWidth={2.5} />
-                      {t("form.fields.admin")}
-                    </Label>
-                    <Select
-                      name="adminId"
-                      onValueChange={(value) =>
-                        handleSelectChange("adminId", value)
-                      }
-                    >
-                      <SelectTrigger className="w-full rounded-lg border-border-light dark:border-gray-700 bg-input-bg dark:bg-gray-900 text-text dark:text-gray-300 transition-colors">
-                        <SelectValue
-                          placeholder={
-                            formData.admin
-                              ? formData.admin
-                              : t("form.placeholders.selectAdmin")
-                          }
-                        />
-                      </SelectTrigger>
-                      <SelectContent className="bg-card-bg dark:bg-gray-800 border-border-light dark:border-gray-700">
-                        {adminOptions.map((option) => (
-                          <SelectItem
-                            key={option.id}
-                            value={option.id.toString()}
-                            className="text-text dark:text-gray-300 focus:bg-bg-alt dark:focus:bg-gray-700"
-                          >
-                            {option.fullNameAr}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between p-4 rounded-xl bg-bg-alt dark:bg-gray-700/50">
-                  <div>
-                    <Label
-                      htmlFor="isPublic"
-                      className="text-sm font-medium block mb-1 text-gray-700 dark:text-gray-300 flex items-center gap-2"
-                    >
-                      <Building2
-                        className="h-4 w-4 text-sec"
-                        strokeWidth={2.5}
-                      />
-                      {t("form.fields.universityType")}
-                    </Label>
-                    <p className="text-sm text-text dark:text-gray-300">
-                      {formData.isPublic
-                        ? t("form.labels.publicUniversity")
-                        : t("form.labels.privateUniversity")}
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                      {formData.isPublic
-                        ? t("common.public")
-                        : t("common.private")}
-                    </span>
-                    <Switch
-                      dir="ltr"
-                      id="isPublic"
-                      checked={formData.isPublic}
-                      onCheckedChange={(checked) =>
-                        handleSwitchChange("isPublic", checked)
-                      }
-                      className="data-[state=checked]:bg-secondary data-[state=checked]:dark:bg-blue-600"
-                    />
-                  </div>
-                </div>
-                <div className="flex items-center justify-between p-4 rounded-xl bg-bg-alt dark:bg-gray-700/50">
-                  <div>
-                    <Label
-                      htmlFor="isActive"
-                      className="text-sm font-medium block mb-1 text-gray-700 dark:text-gray-300 flex items-center gap-2"
-                    >
-                      <Power className="h-4 w-4 text-sec" strokeWidth={2.5} />
-                      {t("form.fields.universityStatus")}
-                    </Label>
-                    <p className="text-sm text-text dark:text-gray-300">
-                      {formData.isActive
-                        ? t("common.active")
-                        : t("common.inactive")}
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                      {formData.isActive
-                        ? t("common.active")
-                        : t("common.inactive")}
-                    </span>
-                    <Switch
-                      dir="ltr"
-                      id="isActive"
-                      checked={formData.isActive}
-                      onCheckedChange={(checked) =>
-                        handleSwitchChange("isActive", checked)
-                      }
-                      className="data-[state=checked]:bg-success data-[state=checked]:dark:bg-green-600"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <DialogFooter className="gap-3">
-                <Button
-                  variant="outline"
-                  onClick={() => setIsDialogOpen(false)}
-                  disabled={loading}
-                  className="rounded-lg border-border-light dark:border-gray-700 text-gray-700 dark:text-gray-300 close-hover"
-                >
-                  <X className="h-4 w-4 ml-2" />
-                  {t("common.cancel")}
-                </Button>
-                <Button
-                  onClick={handleSubmit}
-                  disabled={loading}
-                  className="rounded-lg bg-btn hover:opacity-80 text-text-light"
-                >
-                  {loading ? (
-                    <>
-                      <svg
-                        className="animate-spin -mr-1 ml-2 h-4 w-4 text-white"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <circle
-                          className="opacity-25"
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="currentColor"
-                          strokeWidth="4"
-                        />
-                        <path
-                          className="opacity-75"
-                          fill="currentColor"
-                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                        />
-                      </svg>
-                      {t("common.processing")}
-                    </>
-                  ) : (
-                    <>
-                      <Save className="h-4 w-4 ml-2" />
-                      {isEditMode
-                        ? t("dialog.updateButton")
-                        : t("dialog.createButton")}
-                    </>
-                  )}
-                </Button>
-              </DialogFooter>
-            </DialogContent>
-          </Dialog>
+          <UniversityFormDialog
+            open={isDialogOpen}
+            onOpenChange={setIsDialogOpen}
+            isEditMode={isEditMode}
+            formData={formData}
+            onInputChange={handleInputChange}
+            onSwitchChange={handleSwitchChange}
+            onSelectChange={handleSelectChange}
+            onSubmit={handleSubmit}
+            onCancel={() => {
+              setIsDialogOpen(false);
+              resetForm();
+            }}
+            adminOptions={adminOptions}
+            loading={loading}
+            t={t}
+          />
         </div>
       </div>
     </>

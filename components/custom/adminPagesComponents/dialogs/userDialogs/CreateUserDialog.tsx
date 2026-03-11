@@ -5,8 +5,8 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/store/store";
 import { toast } from "sonner";
 import { useTranslations } from "next-intl";
-import { Input } from "./ui/input";
-import { Button } from "./ui/button";
+import { Input } from "../../../../ui/input";
+import { Button } from "../../../../ui/button";
 import {
   Select,
   SelectContent,
@@ -34,7 +34,7 @@ import {
   Phone,
   MapPin,
 } from "lucide-react";
-import TextMuted from "./custom/common/texts/TextMuted";
+import TextMuted from "../../../common/texts/TextMuted";
 interface CreateUserFormData {
   nameAr: string;
   fatherNameAr: string;

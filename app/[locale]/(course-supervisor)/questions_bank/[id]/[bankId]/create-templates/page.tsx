@@ -61,7 +61,7 @@ import { RootState, AppDispatch } from "@/store/store";
 import { getCourseBankDetails } from "@/store/supervisor";
 import { createTemplate } from "@/store/question";
 import { useTranslations } from "next-intl";
-import Background from "@/components/custom/Background";
+import Background from "@/components/custom/common/Background";
 import MainTitle from "@/components/custom/common/texts/MainTitle";
 import TextMuted from "@/components/custom/common/texts/TextMuted";
 import { cn } from "@/lib/utils";

@@ -82,10 +82,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 import MainTitle from "@/components/custom/common/texts/MainTitle";
 import TextMuted from "@/components/custom/common/texts/TextMuted";
-import Background from "@/components/custom/Background";
+import Background from "@/components/custom/common/Background";
 // import StatsCourse from "@/components/custom/questionsBankComponents/StatsCourse";
-import StatsCourse from "@/components/custom/universitiesManagementComponents/stats/StatsCourse";
-import DeleteCourseDialog from "@/components/custom/universitiesManagementComponents/dialogs/DeleteCourseDialog";
+import StatsCourse from "@/components/custom/adminPagesComponents/stats/StatsCourse";
+import DeleteCourseDialog from "@/components/custom/adminPagesComponents/dialogs/DeleteCourseDialog";
 
 interface CourseBank {
   id: number;

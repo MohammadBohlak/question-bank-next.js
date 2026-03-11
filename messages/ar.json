@@ -1,7 +1,8 @@
 {
   "badges": {
     "active": "نشط",
-    "inActive": "غير نشط"
+    "inActive": "غير نشط",
+    "unknown": "غير معروف"
   },
   "deleteDialog": {
     "del": "حذف",
@@ -617,20 +618,6 @@
       "createSuccess": "تم الإنشاء بنجاح",
       "deleteSuccess": "تم الحذف بنجاح"
     },
-    "common": {
-      "refresh": "تحديث",
-      "cancel": "إلغاء",
-      "delete": "حذف",
-      "processing": "جاري المعالجة...",
-      "public": "حكومي",
-      "private": "خاص",
-      "active": "نشط",
-      "inactive": "غير نشط"
-    },
-    "actions": {
-      "addUniversity": "إضافة جامعة",
-      "addNewUniversity": "إضافة جامعة جديدة"
-    },
     "stats": {
       "total": "الإجمالي",
       "active": "نشط",
@@ -640,6 +627,8 @@
     },
     "search": {
       "placeholder": "ابحث عن الجامعات بالاسم، الرمز، المدينة، أو الدولة...",
+      "label": "البحث",
+
       "resultsFound": {
         "showing": "عرض",
         "of": "من",
@@ -649,11 +638,13 @@
     },
     "filters": {
       "type": "النوع",
+      "typeLabel": "نوع الجامعة",
       "status": "الحالة",
       "allTypes": "جميع الأنواع",
       "allStatuses": "جميع الحالات",
       "public": "حكومي",
       "private": "خاص",
+      "statusLabel": "الحالة",
       "active": "نشط",
       "inactive": "غير نشط",
       "clearFilters": "مسح الفلاتر"
@@ -675,6 +666,31 @@
     "deleteConfirmation": {
       "title": "تأكيد الحذف",
       "message": "هل أنت متأكد من إجراء هذا الإجراء؟ لا يمكن التراجع عن هذا الإجراء."
+    },
+    "list": {
+      "fields": {
+        "code": "الرمز",
+        "location": "الموقع",
+        "programs": "البرامج",
+        "admin": "المسؤول"
+      }
+    },
+    "actions": {
+      "edit": "تعديل",
+      "delete": "حذف",
+      "addUniversity": "إضافة جامعة",
+      "addNewUniversity": "إضافة جامعة جديدة"
+    },
+    "common": {
+      "noAdmin": "غير محدد",
+      "refresh": "تحديث",
+      "cancel": "إلغاء",
+      "delete": "حذف",
+      "processing": "جاري المعالجة...",
+      "public": "حكومي",
+      "private": "خاص",
+      "active": "نشط",
+      "inactive": "غير نشط"
     },
     "cancel": "إلغاء",
     "delete": "حذف",

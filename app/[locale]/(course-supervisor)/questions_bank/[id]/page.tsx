@@ -75,12 +75,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "@/store/store";
 import { deleteBank } from "@/store/admin";
 import { useTranslations } from "next-intl";
-import Background from "@/components/custom/Background";
+import Background from "@/components/custom/common/Background";
 import MainTitle from "@/components/custom/common/texts/MainTitle";
 import TextMuted from "@/components/custom/common/texts/TextMuted";
-import StatsCourseSupervisor from "@/components/custom/questionsBankComponents/stats/StatsCourseSupervisor";
+import StatsCourseSupervisor from "@/components/custom/supervisorPagesComponents/stats/StatsCourseSupervisor";
 import CustomSelect from "@/components/custom/common/CustomSelect";
-import DeleteBankDialog from "@/components/custom/questionsBankComponents/dialogs/bankDialogs/DeleteBankDialog";
+import DeleteBankDialog from "@/components/custom/supervisorPagesComponents/dialogs/bankDialogs/DeleteBankDialog";
 
 // Define interfaces based on your Redux slice
 interface QuestionLevel {
@@ -1149,47 +1149,6 @@ export default function CourseDetailsPage() {
         setSelectedBank={setSelectedBank}
         t={t}
       />
-      {/* <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
-        <DialogContent
-          showCloseButton={false}
-          className="sm:max-w-[425px] bg-white dark:bg-gray-900 border border-rose-300 dark:border-rose-700"
-        >
-          <DialogHeader>
-            <DialogTitle className="text-start text-gray-900 dark:text-white font-arabic">
-              {t("deleteBankDialog.title")}
-            </DialogTitle>
-            <DialogDescription className="text-start text-gray-600 dark:text-gray-400 font-arabic">
-              {t("deleteBankDialog.description", {
-                code: selectedBank?.code || "",
-              })}
-            </DialogDescription>
-          </DialogHeader>
-          <div className="flex items-center gap-2 p-3 bg-rose-50 dark:bg-rose-900/30 rounded-lg">
-            <Trash2 className="h-4 w-4 text-rose-600 dark:text-rose-400" />
-            <p className="text-sm text-rose-700 dark:text-rose-300 font-arabic">
-              {t("deleteBankDialog.warning", {
-                count: selectedBank?.questionsCount || 0,
-              })}
-            </p>
-          </div>
-          <DialogFooter>
-            <Button
-              variant="outline"
-              onClick={() => setIsDeleteDialogOpen(false)}
-              className="border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 close-hover font-arabic"
-            >
-              {t("deleteBankDialog.cancel")}
-            </Button>
-            <Button
-              variant="destructive"
-              onClick={confirmDelete}
-              className="bg-rose-600 hover:bg-rose-700 dark:bg-rose-700 dark:hover:bg-rose-800 text-white font-arabic"
-            >
-              {t("deleteBankDialog.deleteBank")}
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog> */}
     </div>
   );
 }

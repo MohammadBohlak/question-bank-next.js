@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { deleteProgram, getProgramDetails } from "@/store/admin"; // تأكد من المسار الصحيح
 import { AppDispatch } from "@/store/store";
-import DeleteDialog from "../../DeleteDialog";
+import DeleteDialog from "../../common/DeleteDialog";
 
 interface DeleteProgramDialogProps {
   open: boolean;

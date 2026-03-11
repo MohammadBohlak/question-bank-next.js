@@ -65,8 +65,8 @@ import { useParams } from "next/navigation";
 import MainTitle from "@/components/custom/common/texts/MainTitle";
 import TextMuted from "@/components/custom/common/texts/TextMuted";
 import Sidebar from "@/components/Sidebar";
-import Background from "@/components/custom/Background";
-import StatsUniversities from "@/components/custom/universitiesManagementComponents/stats/StatsUniversities";
+import Background from "@/components/custom/common/Background";
+import StatsUniversities from "@/components/custom/adminPagesComponents/stats/StatsUniversities";
 import CustomSelect from "@/components/custom/common/CustomSelect";
 interface UniversityFormData {
   id: number;

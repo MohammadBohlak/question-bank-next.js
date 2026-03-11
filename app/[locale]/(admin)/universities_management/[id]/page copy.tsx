@@ -66,10 +66,10 @@ import {
 import { useTranslations } from "next-intl";
 import TextMuted from "@/components/custom/common/texts/TextMuted";
 import Sidebar from "@/components/Sidebar";
-import Background from "@/components/custom/Background";
+import Background from "@/components/custom/common/Background";
 import MainTitle from "@/components/custom/common/texts/MainTitle";
 import { cn } from "@/lib/utils";
-import StatsUniversity from "@/components/custom/universitiesManagementComponents/stats/StatsUniversity";
+import StatsUniversity from "@/components/custom/adminPagesComponents/stats/StatsUniversity";
 
 interface ProgramFormData {
   nameAr: string;

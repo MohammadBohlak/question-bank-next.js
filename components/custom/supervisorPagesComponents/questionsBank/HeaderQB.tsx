@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Background from "../Background";
+import Background from "../common/Background";
 import MainTitle from "../common/texts/MainTitle";
 import TextMuted from "../common/texts/TextMuted";
 import { Button } from "@/components/ui/button";
 import { Book, Loader2, Plus } from "lucide-react";
-import AddCourseDialogQB from "../questionsBankComponents/dialogs/courseDialogs/AddCourseDialogQB";
+import AddCourseDialogQB from "../supervisorPagesComponents/dialogs/courseDialogs/AddCourseDialogQB";
 
 // 1. تعريف الـ Interface للـ Props
 interface HeaderQuestionsBankProps {

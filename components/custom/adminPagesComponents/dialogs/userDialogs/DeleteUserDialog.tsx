@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "sonner";
-import DeleteDialog from "@/components/custom/DeleteDialog";
+import DeleteDialog from "@/components/custom/common/DeleteDialog";
 import { AppDispatch } from "@/store/store";
 import { deleteUser } from "@/store/user";
 import { getAllUsers } from "@/store/admin";

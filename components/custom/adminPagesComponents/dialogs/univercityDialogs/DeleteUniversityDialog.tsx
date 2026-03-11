@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/store/store";
 import { toast } from "sonner";
 import { deleteUniversity, fetchUniversities } from "@/store/admin";
-import DeleteDialog from "../../DeleteDialog";
+import DeleteDialog from "../../../common/DeleteDialog";
 
 interface DeleteUniversityDialogProps {
   open: boolean;

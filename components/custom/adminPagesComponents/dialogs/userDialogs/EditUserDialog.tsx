@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/store/store";
 import { updateUser } from "@/store/user";
 import { toast } from "sonner";
-import { Input } from "./ui/input";
+import { Input } from "../../../../ui/input";
 import {
   AtSign,
   Edit,
@@ -39,7 +39,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useParams } from "next/navigation";
-import TextMuted from "./custom/common/texts/TextMuted";
+import TextMuted from "../../../common/texts/TextMuted";
 interface EditUserDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;

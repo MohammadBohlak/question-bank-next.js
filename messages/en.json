@@ -1,7 +1,8 @@
 {
   "badges": {
     "active": "active",
-    "inActive": "In active"
+    "inActive": "In active",
+    "unknown": "Unknown"
   },
   "deleteDialog": {
     "del": "Delete",
@@ -616,20 +617,6 @@
       "createSuccess": "Created successfully",
       "deleteSuccess": "Deleted successfully"
     },
-    "common": {
-      "refresh": "Refresh",
-      "cancel": "Cancel",
-      "delete": "Delete",
-      "processing": "Processing...",
-      "public": "Public",
-      "private": "Private",
-      "active": "Active",
-      "inactive": "Inactive"
-    },
-    "actions": {
-      "addUniversity": "Add University",
-      "addNewUniversity": "Add New University"
-    },
     "stats": {
       "total": "Total",
       "active": "Active",
@@ -639,6 +626,7 @@
     },
     "search": {
       "placeholder": "Search universities by name, code, city, or country...",
+      "label": "Search",
       "resultsFound": {
         "showing": "Showing",
         "of": "of",
@@ -650,8 +638,12 @@
     "filters": {
       "type": "Type",
       "status": "Status",
+      "typeLabel": "University type",
+
       "allTypes": "All Types",
       "allStatuses": "All Statuses",
+      "statusLabel": "status",
+
       "public": "Public",
       "private": "Private",
       "active": "Active",
@@ -675,6 +667,32 @@
     "deleteConfirmation": {
       "title": "Confirm Deletion",
       "message": "Are you sure you want to proceed? This action cannot be undone."
+    },
+    "list": {
+      "fields": {
+        "code": "Code",
+        "location": "Location",
+        "programs": "Programs",
+        "admin": "Administrator"
+      }
+    },
+    "actions": {
+      "edit": "Edit",
+      "delete": "Delete",
+      "addUniversity": "Add University",
+      "addNewUniversity": "Add New University"
+    },
+    "common": {
+      "noAdmin": "Not assigned",
+
+      "refresh": "Refresh",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "processing": "Processing...",
+      "public": "Public",
+      "private": "Private",
+      "active": "Active",
+      "inactive": "Inactive"
     },
     "cancel": "Cancel",
     "delete": "Delete",

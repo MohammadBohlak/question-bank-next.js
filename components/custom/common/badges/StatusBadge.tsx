@@ -4,13 +4,21 @@ import { CheckCircle, XCircle } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 interface StatusBadgeProps {
-  isActive: boolean;
+  isActive?: boolean;
   // يمكنك إضافة خيار لإخفاء النص وإظهار الأيقونة فقط إذا أردت مستقبلاً
   // showText?: boolean;
 }
 
 const StatusBadge: React.FC<StatusBadgeProps> = ({ isActive }) => {
   const t = useTranslations("badges");
+
+  if (isActive == undefined)
+    return (
+      <Badge className="gap-1.5 px-3 py-1 font-bold rounded-md text-xs bg-gray-100 dark:bg-gray-900/30 text-gray-700 dark:text-gray-400 border-gray-200 dark:border-gray-800">
+        {t("unknown")}
+      </Badge>
+    );
+
   return (
     <Badge
       variant="outline"

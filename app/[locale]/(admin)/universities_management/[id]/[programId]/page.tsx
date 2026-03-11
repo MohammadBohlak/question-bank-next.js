@@ -78,9 +78,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import MainTitle from "@/components/custom/common/texts/MainTitle";
 import TextMuted from "@/components/custom/common/texts/TextMuted";
-import Background from "@/components/custom/Background";
-import StatsProgram from "@/components/custom/universitiesManagementComponents/stats/StatsProgram";
-import DeleteProgramDialog from "@/components/custom/universitiesManagementComponents/dialogs/DeleteProgramDialog";
+import Background from "@/components/custom/common/Background";
+import StatsProgram from "@/components/custom/adminPagesComponents/stats/StatsProgram";
+import DeleteProgramDialog from "@/components/custom/adminPagesComponents/dialogs/DeleteProgramDialog";
 
 export interface ProgramFormData {
   id: number;

@@ -39,13 +39,13 @@ import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import MainTitle from "@/components/custom/common/texts/MainTitle";
 import TextMuted from "@/components/custom/common/texts/TextMuted";
-import Background from "@/components/custom/Background";
+import Background from "@/components/custom/common/Background";
 import { useParams } from "next/navigation";
-import StatsCourses from "@/components/custom/questionsBankComponents/stats/StatsCourses";
+import StatsCourses from "@/components/custom/supervisorPagesComponents/stats/StatsCourses";
 import CustomSelect from "@/components/custom/common/CustomSelect";
-import AddCourseDialogQB from "@/components/custom/questionsBankComponents/dialogs/courseDialogs/AddCourseDialogQB";
-import EditCourseDialogQB from "@/components/custom/questionsBankComponents/dialogs/courseDialogs/EditCourseDialogQB";
-import DeleteCourseDialogQB from "@/components/custom/questionsBankComponents/dialogs/courseDialogs/DeleteCourseDialogQB";
+import AddCourseDialogQB from "@/components/custom/supervisorPagesComponents/dialogs/courseDialogs/AddCourseDialogQB";
+import EditCourseDialogQB from "@/components/custom/supervisorPagesComponents/dialogs/courseDialogs/EditCourseDialogQB";
+import DeleteCourseDialogQB from "@/components/custom/supervisorPagesComponents/dialogs/courseDialogs/DeleteCourseDialogQB";
 import StatusBadge from "@/components/custom/common/badges/StatusBadge";
 
 interface Course {

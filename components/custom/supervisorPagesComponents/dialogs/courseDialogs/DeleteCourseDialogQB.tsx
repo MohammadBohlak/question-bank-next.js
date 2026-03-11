@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useDispatch } from "react-redux";
-import DeleteDialog from "@/components/custom/DeleteDialog";
+import DeleteDialog from "@/components/custom/common/DeleteDialog";
 import { deletePrivateCourse, getCourses } from "@/store/supervisor";
 import { AppDispatch } from "@/store/store";
 import { toast } from "sonner";
